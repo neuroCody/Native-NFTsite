@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import HeaderBar from './HeaderComponent'
 import { View, Platform } from 'react-native';
 
 
@@ -12,6 +13,7 @@ class Main extends Component {
                     paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
                 }}
             >
+            <HeaderBar />
             </View>
         );
     }

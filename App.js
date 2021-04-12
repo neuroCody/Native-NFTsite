@@ -8,6 +8,9 @@ export default function App() {
       <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
       <Text>Hello World</Text>
+      <Text>this is the first Project</Text>
+      <Text>this is the first Project</Text>
+      <Text>this is the first Project</Text>
     </View>
   );
 }

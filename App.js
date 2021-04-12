@@ -13,6 +13,10 @@ export default function App() {
       <Text>this is the first Project</Text>
       <Text>this is the first Project</Text>
       <Text>this is the first Project</Text>
+      <Text>this is the first Project</Text>
+      <Text>this is the first Project</Text>
+      <Text>this is the first Project</Text>
+      <Text>Closing the loop</Text>
     </View>
   )
 }

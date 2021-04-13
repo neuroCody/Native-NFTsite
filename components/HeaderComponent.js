@@ -1,33 +1,12 @@
 import React, { Component, useState } from 'react';
-import { View, Image, SafeAreaView, StyleSheet, TextInput } from 'react-native';
+import { View, Image, SafeAreaView,  Text } from 'react-native';
+import Search from './SearchBarComponent';
 import { Header, SearchBar } from 'react-native-elements';
 
 // Function to Render Header Image
-const Search = () => {
-    const [text, onChangeText] = React.useState("Search");
 
-    return(
-        <SafeAreaView>
-            <TextInput
-                style={styles.input} 
-                onChangeText={onChangeText}
-                value={text}
-            />
-        </SafeAreaView>
-    )
-}
 
-const styles = StyleSheet.create({
-    input: {
-        height: 27, 
-        width: 150,
-        borderWidth: 1,
-        borderRadius: 5,
-        backgroundColor: "#FFF",
-        paddingLeft: 10,
-        margin: 3
-    }
-})
+
 
 const CustomLeftComponent = () => {
     return(
@@ -43,22 +22,23 @@ class HeaderBar extends Component {
         return(
             <View>
                 <Header 
-                    placement="left"
-                    leftComponent={<CustomLeftComponent />}
+                    
+                    leftComponent={{ icon: 'menu', color: '#8B51F5', size:45}}
                     centerComponent={{ 
-                        text: "Visualux",
-                        placement: 'left', 
+                        text: "Visualux", 
                         style:{ 
                             color: "#dbedf3",
-                            fontSize: 23,
-                            fontFamily: 'monospace',
-                            fontWeight: 'bold',
+                            fontSize: 37,
+                            fontFamily: 'satisfy-regular',
+
                         }
                     
                     }}
-                    rightComponent={<Search />}
-                    backgroundColor= "#283149"
+                    rightComponent={{ icon: 'search', color: '#D7EB5A', size: 37}}
+                    backgroundColor= "#232323"
                 />
+                {<Search />}
+                <Text>Here is some text</Text>
             </View>
         )
     }

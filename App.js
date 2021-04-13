@@ -1,8 +1,40 @@
-import React from 'react';
-import Main from './components/MainComponent'
+import React, { useState } from 'react';
+import * as Font from 'expo-font';
+import Main from './components/MainComponent';
+import { AppLoading } from 'expo';
+
+//Imported fonts
+const getFonts = () => {
+  return Font.loadAsync({
+    // <p> elemnts
+    'asap-regular': require('./assets/fonts/Asap-Regular.ttf'),
+
+    // site headers
+    'KoHo-regular': require('./assets/fonts/KoHo-Regular.ttf'),
+
+    // logo font
+    'satisfy-regular': require('./assets/fonts/Satisfy-Regular.ttf'),
+  })
+}
+
+
 
 export default function App() {
-  return (
-    <Main />
-  );
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  if(fontsLoaded){
+    return (
+      <Main />
+    );
+  }
+  else{
+    return(
+      <AppLoading 
+        startAsync={getFonts}
+        onFinish={() => setFontsLoaded(true)}
+      />
+    )
+  }
+  
+  
 }

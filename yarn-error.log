@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\CodySullivan\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @expo-google-fonts/Lexend expo-font@~8.2.1
+  C:\Program Files\nodejs\node.exe C:\Users\CodySullivan\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo @3
 
 PATH: 
   C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\CodySullivan\bin;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Users\darkp\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Intel\Intel(R) Memory And Storage Tool;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Users\CodySullivan\AppData\Local\Yarn\bin;C:\Users\CodySullivan\AppData\Local\Android\Sdk\platform-tools;C:\Users\CodySullivan\AppData\Local\Microsoft\WindowsApps;C:\Users\CodySullivan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\CodySullivan\AppData\Roaming\npm
@@ -14,8 +14,8 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@expo-google-fonts%2fLexend: Not found
-      at Request.params.callback [as _callback] (C:\Users\CodySullivan\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
+  Error: https://registry.yarnpkg.com/@3: Request "https://registry.yarnpkg.com/@3" returned a 405
+      at Request.params.callback [as _callback] (C:\Users\CodySullivan\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66997:18)
       at Request.self.callback (C:\Users\CodySullivan\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
       at Request.emit (events.js:314:20)
       at Request.<anonymous> (C:\Users\CodySullivan\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141634:10)

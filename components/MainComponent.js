@@ -11,6 +11,7 @@ class Main extends Component {
                 style={{
                     flex: 1,
                     paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+                    backgroundColor: '#272727'
                 }}
             >
             <HeaderBar />

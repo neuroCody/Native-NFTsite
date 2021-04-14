@@ -1,10 +1,22 @@
 import React, { Component, useState } from 'react';
 import { View,Text, StyleSheet } from 'react-native';
 import Search from './SearchBarComponent';
-import { Header, Card } from 'react-native-elements';
+import { Header, Icon } from 'react-native-elements';
 
 // Function to Render Header Image
 
+const CustomLeftComponent = ({navigation}) => {
+    return(
+        <Icon
+        name= 'bars'
+        type= 'font-awesome'
+        iconStyle={{
+            color: '#8B51F5',
+        }}
+        size={45}
+        />
+    )
+    }
 
 class HeaderBar extends Component {
 
@@ -15,7 +27,8 @@ class HeaderBar extends Component {
             <View>
                 <Header 
                     
-                    leftComponent={{ icon: 'menu', color: '#8B51F5', size:45}}
+                    // leftComponent={{ icon: 'menu', color: '#8B51F5', size:45, onPress:{()=> toggleDrawer()} }}
+                    leftComponent={<CustomLeftComponent />}
                     centerComponent={{ 
                         text: "Visualux", 
                         style:{

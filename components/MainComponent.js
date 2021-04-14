@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import HeaderBar from './HeaderComponent'
 import Home from './HomeComponent';
-import { View, Platform } from 'react-native';
+import Gallery from './GalleryComponent';
+import { View, Platform,  ScrollView } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator, drawerItems } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
+
 
 const HomeNav = createStackNavigator(
     {
@@ -20,12 +21,30 @@ const HomeNav = createStackNavigator(
     }
 )
 
+const GalleryNav = createStackNavigator(
+    {
+        Gallery: { 
+            screen: Gallery, 
+        },
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                display: 'none',
+            }, 
+        }
+    },
+    
+)
+
 const MainNavigator = createDrawerNavigator(
     {
         Home:{ 
-            screen: HomeNav
+            screen: HomeNav,
         },
-        // Gallery: {},
+        Gallery: { 
+            screen: GalleryNav
+        },
         // Featured: {},
         // FAQ: {},
         // Sell: {
@@ -39,6 +58,9 @@ const MainNavigator = createDrawerNavigator(
         //         drawerLabel: 'Sign Up'
         //     }
         // },
+    },
+    {
+        drawerBackgroundColor: '#232323'
     }
 )
 

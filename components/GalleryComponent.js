@@ -6,7 +6,7 @@ import HeaderBar from './HeaderComponent';
 
 
 
-class Home extends Component{
+class Gallery extends Component{
 
 
     render(){
@@ -29,7 +29,7 @@ class Home extends Component{
                 }}
             >
                 <Card.Image 
-                source={require('./images/organic_mass.jpg')}
+                source={require('./images/prism-cloud.jpg')}
                 style={styles.cardImg}>
 
                 </Card.Image>
@@ -54,7 +54,7 @@ class Home extends Component{
                 }}
             >
                 <Card.Image 
-                source={require('./images/laser_cloud.jpg')}
+                source={require('./images/pastel_street.jpg')}
                 style={styles.cardImg}>
 
                 </Card.Image>
@@ -84,4 +84,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default Home;
+export default Gallery;

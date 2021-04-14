@@ -11,6 +11,7 @@ const getFonts = () => {
 
     // site headers
     'KoHo-regular': require('./assets/fonts/KoHo-Regular.ttf'),
+    'KoHo-bold': require('./assets/fonts/KoHo-Bold.ttf'),
 
     // logo font
     'satisfy-regular': require('./assets/fonts/Satisfy-Regular.ttf'),

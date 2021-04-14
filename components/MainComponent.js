@@ -5,6 +5,10 @@ import { View, Platform } from 'react-native';
 
 class Main extends Component {
 
+    state = {
+        searchBarFocused: true
+    }
+
     render () {
         return (
             <View 

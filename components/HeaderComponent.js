@@ -5,12 +5,6 @@ import { Header, Card } from 'react-native-elements';
 
 // Function to Render Header Image
 
-const styles = StyleSheet.create({
-    cardImg: {
-        width: 'auto',
-        height: 350
-    }
-})
 
 class HeaderBar extends Component {
 
@@ -36,38 +30,6 @@ class HeaderBar extends Component {
                     backgroundColor= "#232323"
                 />
                 {<Search />}
-                <View>
-
-                {/* placeholder Card component (Start)*/}
-                    <Card
-                        containerStyle = {{
-                            backgroundColor: '#48494B',
-                            display: 'flex',
-                            borderColor: '#78797B',
-                            borderWidth: 3,
-                            borderRadius: 6,
-                            padding: 0
-                            
-                        }}
-                    >
-                        <Card.Image 
-                        source={require('./images/laser_cloud.jpg')}
-                        style={styles.cardImg}>
-                        
-                        </Card.Image>
-                        <Text
-                            style={{
-                                margin: 10, 
-                                fontFamily: "KoHo-bold",
-                                color: '#f2f2f2'
-                                }}>
-                            Laser Cloud
-                        </Text>
-                        
-                    </Card>
-                {/* placeholder Card component (End)*/}
-
-                </View>
             </View>
         )
     }

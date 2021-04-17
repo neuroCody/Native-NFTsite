@@ -5,7 +5,7 @@ import { Header, Icon } from "react-native-elements"
 
 // Function to Render Header Image
 
-const CustomLeftComponent = ({ navigation }) => {
+const CustomLeftComponent = () => {
   return (
     <Icon
       name='bars'

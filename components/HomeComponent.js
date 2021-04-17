@@ -13,7 +13,6 @@ class Home extends Component{
 
         return(
             <View style={{ backgroundColor: '#232323', paddingBottom: 500}}>
-            <HeaderBar />
             <ScrollView
                 style={{ height:600}}
             >

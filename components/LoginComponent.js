@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import { Text, View, StyleSheet, Button } from "react-native"
-import { Card, Input } from "react-native-elements"
+import { Text, View, StyleSheet,  } from "react-native"
+import { Card, Input, Button } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 
 //need to find way to style button, input typing, and nested text
@@ -25,7 +25,7 @@ class Login extends Component {
           placeholder='password'
           placeholderTextColor={"#D7EB5A"}
         />
-        <Button title={"Sign In"} color={"#D7EB5A"} />
+        <Button title={"Sign In"} titleStyle={{color: "#232323"}} buttonStyle={{ backgroundColor: "#D7EB5A"}}/>
         <Text style={styles.shiftLeft}>
           <Text style={styles.forgotPassword}>Don't have an account?</Text>
           <Text style={styles.signUp}>Sign Up</Text>
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     backgroundColor: "#000000",
+    borderBottomColor: '#232323',
     borderRadius: 5,
     padding: 8,
   },
@@ -69,10 +70,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   signUp: {
+    flex: 1,
     fontFamily: "asap-regular",
     fontSize: 15,
     color: "#8B51F5",
-    alignSelf: "flex-end",
+    flexDirection: 'row-reverse',
     marginBottom: 20,
   },
   shiftLeft: {

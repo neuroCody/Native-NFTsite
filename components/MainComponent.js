@@ -138,18 +138,7 @@ const LoginNav = createStackNavigator(
           onPress={() => navigation.toggleDrawer()}
         />
       ),
-      headerRight: (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
-        />
-      ),
+      
     }),
   }
 )

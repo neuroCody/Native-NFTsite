@@ -1,7 +1,11 @@
 import React, { Component } from "react"
 import { NavigationActions } from "react-navigation"
 import { ScrollView, Text, View, StyleSheet } from "react-native"
-import SafeAreaView from "react-native-safe-area-view"
+import SafeAreaView from "react-native-safe-area-view";
+import { Icon } from "react-native-elements";
+
+
+
 
 class CustomDrawerContentComponent extends Component {
   navigateToScreen = (route) => () => {
@@ -21,7 +25,20 @@ class CustomDrawerContentComponent extends Component {
             <View style={{ flex: 2 }}>
               <Text style={styles.drawerHeaderText}>Visualux</Text>
             </View>
+            <View >
+            <Icon
+                name='chevron-left'
+                type='font-awesome'
+                iconStyle={{
+                  color: "#8B51F5",
+                  margin: 10
+                }}
+                size={20}
+                onPress={() => this.props.navigation.closeDrawer()}
+              />
+            </View>
           </View>
+          {/* Home Navigator */}
           <View style={styles.drawerItem}>
             <Text
               style={styles.drawerItemText}
@@ -30,6 +47,7 @@ class CustomDrawerContentComponent extends Component {
               Home
             </Text>
           </View>
+          {/* Gallery Navigator */}
           <View style={styles.drawerItem}>
             <Text
               style={styles.drawerItemText}
@@ -38,6 +56,34 @@ class CustomDrawerContentComponent extends Component {
               Gallery
             </Text>
           </View>
+           {/* Featured Navigator */}
+          <View style={styles.drawerItem}>
+            <Text
+              style={styles.drawerItemText}
+              onPress={(() => this, this.navigateToScreen("Featured"))}
+            >
+              Featured
+            </Text>
+          </View>
+          {/* Faq Navigator */}
+          <View style={styles.drawerItem}>
+            <Text
+              style={styles.drawerItemText}
+              onPress={(() => this, this.navigateToScreen("Faq"))}
+            >
+              Faq
+            </Text>
+          </View>
+          {/* Sell Navigator */}
+          <View style={styles.sellItem} >
+            <Text
+              style={styles.sellItemText}
+              onPress={(() => this, this.navigateToScreen("Sell"))}
+            >
+              Sell on Visualux
+            </Text>
+          </View>
+          {/* Login Navigator */}
           <View style={styles.drawerItem}>
             <Text
               style={styles.drawerItemText}
@@ -46,6 +92,7 @@ class CustomDrawerContentComponent extends Component {
               Login
             </Text>
           </View>
+          {/* Sign Up Navigator */}
           <View style={styles.drawerItem}>
             <Text
               style={[styles.drawerItemTextDark, styles.signUpBackground]}
@@ -73,10 +120,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   drawerHeaderText: {
-    alignSelf: "center",
+    textAlign: "center",
     color: "#fff",
-    fontSize: 34,
+    fontSize: 30,
     fontFamily: "satisfy-regular",
+    marginLeft: '15%'
   },
   stackIcon: {
     marginLeft: 10,
@@ -104,6 +152,22 @@ const styles = StyleSheet.create({
     paddingRight: 70,
     paddingLeft: 70,
     borderRadius: 10,
+  },
+  sellItem: {
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 15,
+    borderBottomColor: '#78797B',
+    borderBottomWidth: 1,
+    borderTopColor: '#78797B',
+    borderTopWidth: 1,
+  },
+  sellItemText: {
+    color: "#D7EB5A",
+    fontSize: 24,
+    fontFamily: "asap-regular",
+    paddingTop: 25,
+    paddingBottom: 25
   },
 })
 

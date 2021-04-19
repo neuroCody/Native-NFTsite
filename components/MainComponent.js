@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import Home from "./HomeComponent"
-import Gallery from "./GalleryComponent"
+import Featured from "./FeaturedComponent";
+import Gallery from "./GalleryComponent";
+import Faq from "./FaqComponent";
+import Sell from "./SellComponent";
 import Login from "./LoginComponent"
 import SignUp from "./SignUpComponent"
 import { View, Platform, StyleSheet } from "react-native"
@@ -25,8 +28,8 @@ const HomeNav = createStackNavigator(
       headerTitleStyle: {
         fontFamily: "satisfy-regular",
         color: "#F2F2F2",
-        fontSize: 45,
-        marginLeft: "25%",
+        fontSize: 30,
+        marginLeft: "33%",
       },
       headerLeft: (
         <Icon
@@ -74,8 +77,149 @@ const GalleryNav = createStackNavigator(
       headerTitleStyle: {
         fontFamily: "satisfy-regular",
         color: "#F2F2F2",
-        fontSize: 45,
-        marginLeft: "25%",
+        fontSize: 30,
+        marginLeft: "33%",
+      },
+      headerLeft: (
+        <Icon
+          name='bars'
+          type='font-awesome'
+          iconStyle={{
+            color: "#8B51F5",
+            margin: 15,
+          }}
+          size={35}
+          onPress={() => navigation.toggleDrawer()}
+        />
+      ),
+      headerRight: (
+        <Icon
+          name='search'
+          type='font-awesome'
+          iconStyle={{
+            color: "#D7EB5A",
+            margin: 20,
+            marginBottom: 35,
+          }}
+          size={32}
+        />
+      ),
+    }),
+  }
+)
+
+const FeaturedNav = createStackNavigator(
+  {
+    Featured: { screen: Featured },
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      title: "Visualux",
+      headerStyle: {
+        backgroundColor: "#232323",
+        paddingBottom: 10,
+        marginTop: 0,
+        // textAlign: 'center',
+      },
+      headerTitleStyle: {
+        fontFamily: "satisfy-regular",
+        color: "#F2F2F2",
+        fontSize: 30,
+        marginLeft: "33%",
+      },
+      headerLeft: (
+        <Icon
+          name='bars'
+          type='font-awesome'
+          iconStyle={{
+            color: "#8B51F5",
+            margin: 15,
+          }}
+          size={35}
+          onPress={() => navigation.toggleDrawer()}
+        />
+      ),
+      headerRight: (
+        <Icon
+          name='search'
+          type='font-awesome'
+          iconStyle={{
+            color: "#D7EB5A",
+            margin: 20,
+            marginBottom: 35,
+          }}
+          size={32}
+        />
+      ),
+    }),
+  }
+)
+
+const FaqNav = createStackNavigator(
+  {
+    Faq: { screen: Faq },
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      title: "Visualux",
+      headerStyle: {
+        backgroundColor: "#232323",
+        paddingBottom: 10,
+        marginTop: 0,
+        // textAlign: 'center',
+      },
+      headerTitleStyle: {
+        fontFamily: "satisfy-regular",
+        color: "#F2F2F2",
+        fontSize: 30,
+        marginLeft: "33%",
+      },
+      headerLeft: (
+        <Icon
+          name='bars'
+          type='font-awesome'
+          iconStyle={{
+            color: "#8B51F5",
+            margin: 15,
+          }}
+          size={35}
+          onPress={() => navigation.toggleDrawer()}
+        />
+      ),
+      headerRight: (
+        <Icon
+          name='search'
+          type='font-awesome'
+          iconStyle={{
+            color: "#D7EB5A",
+            margin: 20,
+            marginBottom: 35,
+          }}
+          size={32}
+        />
+      ),
+    }),
+  }
+)
+
+const SellNav = createStackNavigator(
+  {
+    Sell: { screen: Sell },
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      title: "Visualux",
+      headerStyle: {
+        backgroundColor: "#232323",
+        paddingBottom: 10,
+        marginTop: 0,
+        // textAlign: 'center',
+      },
+      headerTitleStyle: {
+        fontFamily: "satisfy-regular",
+        color: "#F2F2F2",
+        fontSize: 30,
+        marginLeft: "33%",
       },
       headerLeft: (
         <Icon
@@ -123,8 +267,8 @@ const LoginNav = createStackNavigator(
       headerTitleStyle: {
         fontFamily: "satisfy-regular",
         color: "#F2F2F2",
-        fontSize: 45,
-        marginLeft: "25%",
+        fontSize: 30,
+        marginLeft: "33%",
       },
       headerLeft: (
         <Icon
@@ -161,8 +305,8 @@ const SignUpNav = createStackNavigator(
       headerTitleStyle: {
         fontFamily: "satisfy-regular",
         color: "#F2F2F2",
-        fontSize: 45,
-        marginLeft: "25%",
+        fontSize: 30,
+        marginLeft: "33%",
       },
       headerLeft: (
         <Icon
@@ -197,8 +341,18 @@ const MainNavigator = createDrawerNavigator(
     Home: {
       screen: HomeNav,
     },
+    
     Gallery: {
       screen: GalleryNav,
+    },
+    Featured: { 
+      screen: FeaturedNav,
+    },
+    FAQ: {
+      screen: FaqNav,
+    },
+    Sell: {
+      screen: SellNav
     },
     Login: {
       screen: LoginNav,
@@ -207,9 +361,9 @@ const MainNavigator = createDrawerNavigator(
       screen: SignUpNav,
     },
   },
-  // Featured: {},
-  // FAQ: {},
-  // Sell: {
+  
+  
+  
   //     navigationOptions: {
   //         drawerLabel: 'Sell on Visualux'
   //     }

@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { Text, View, StyleSheet } from "react-native"
 import { Card } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
-import HeaderBar from "./HeaderComponent"
 
 class Gallery extends Component {
   render() {
@@ -72,4 +71,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Gallery
+export default Gallery;

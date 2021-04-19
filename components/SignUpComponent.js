@@ -6,7 +6,7 @@ import { ScrollView } from "react-native-gesture-handler"
 class SignUp extends Component {
   render() {
     return (
-      <View style={{ backgroundColor: "#232323", paddingBottom: 500 }}>
+      <View style={{ flex: 1, backgroundColor: "#232323" }}>
         <Text></Text>
       </View>
     )

@@ -6,12 +6,14 @@ import Faq from "./FaqComponent";
 import Sell from "./SellComponent";
 import Login from "./LoginComponent"
 import SignUp from "./SignUpComponent"
-import { View, Platform, StyleSheet } from "react-native"
+import { View, Platform, StyleSheet, Text } from "react-native"
 import { Icon } from "react-native-elements"
 import { createStackNavigator } from "react-navigation-stack"
 import { createDrawerNavigator } from "react-navigation-drawer"
 import { createAppContainer } from "react-navigation"
 import CustomDrawerContentComponent from "./DrawerStyleComponent"
+import SearchBar from './SearchBarComponent';
+
 
 const HomeNav = createStackNavigator(
   {
@@ -53,6 +55,7 @@ const HomeNav = createStackNavigator(
             marginBottom: 35,
           }}
           size={32}
+          // onPress={this.toggleSearch}
         />
       ),
     }),
@@ -381,9 +384,8 @@ const MainNavigator = createDrawerNavigator(
 const AppNavigator = createAppContainer(MainNavigator)
 
 class Main extends Component {
-  state = {
-    searchBarFocused: true,
-  }
+
+  
 
   render() {
     return (
@@ -400,6 +402,7 @@ class Main extends Component {
             backgroundColor: "#272727",
           }}
         />
+        <Text>Hello</Text>
       </View>
     )
   }

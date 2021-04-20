@@ -14,9 +14,11 @@ const SearchBar = () => {
                 backgroundColor: '#232323', 
                 justifyContent: 'center'
             }}
+            
         >
             <SafeAreaView
                 style={{flex: 1,}}
+                
             >
                 <TextInput
                     placeholder="Search"
@@ -27,6 +29,29 @@ const SearchBar = () => {
             </SafeAreaView>
             </Animatable.View>
     )
+}
+
+class SearchBarView extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showSearch: "none"
+        }
+    }
+    
+    toggleSearch = (e) => {
+        this.setState({showSearch: !this.state.showSearch});
+    }
+
+    render() {
+        return(
+            <View
+                display= {this.state.showSearch ? 'none' : 'flex'
+            }>
+                <SearchBar />
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -44,4 +69,4 @@ const styles = StyleSheet.create({
     
 })
 
-export default SearchBar
+export default SearchBarView

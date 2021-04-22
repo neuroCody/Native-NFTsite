@@ -1,21 +1,20 @@
 import React, { Component } from "react"
 import { Text, View, StyleSheet } from "react-native"
 import { Card } from "react-native-elements"
-import { ScrollView } from "react-native-gesture-handler";
-import SearchBarView from './SearchBarComponent';
-
-
-
-
+import { ScrollView } from "react-native-gesture-handler"
+import SearchBarView from "./SearchBarComponent"
 
 class Home extends Component {
-
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: "#232323" }}>
         <SearchBarView />
         <ScrollView style={{ height: 600 }}>
           <View>
+            <View style={styles.banner}>
+              <Text style={styles.bannerText}>Buy and Sell NFT Art</Text>
+              <Text style={{ color: "#D7EB5A" }}>Learn more</Text>
+            </View>
             <Card
               containerStyle={{
                 backgroundColor: "#48494B",
@@ -75,6 +74,14 @@ const styles = StyleSheet.create({
   cardImg: {
     width: "auto",
     height: 350,
+  },
+  banner: {
+    padding: 50,
+  },
+  bannerText: {
+    fontSize: 50,
+    fontFamily: "KoHo-bold",
+    color: "#F2F2F2",
   },
 })
 

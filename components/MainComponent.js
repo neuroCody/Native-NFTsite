@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import Home from "./HomeComponent"
-import Featured from "./FeaturedComponent";
-import Gallery from "./GalleryComponent";
-import Faq from "./FaqComponent";
-import Sell from "./SellComponent";
+import Featured from "./FeaturedComponent"
+import Gallery from "./GalleryComponent"
+import Faq from "./FaqComponent"
+import Sell from "./SellComponent"
 import Login from "./LoginComponent"
 import SignUp from "./SignUpComponent"
 import { View, Platform, StyleSheet, Text } from "react-native"
@@ -12,8 +12,7 @@ import { createStackNavigator } from "react-navigation-stack"
 import { createDrawerNavigator } from "react-navigation-drawer"
 import { createAppContainer } from "react-navigation"
 import CustomDrawerContentComponent from "./DrawerStyleComponent"
-import SearchBar from './SearchBarComponent';
-
+import SearchBar from "./SearchBarComponent"
 
 const HomeNav = createStackNavigator(
   {
@@ -285,7 +284,6 @@ const LoginNav = createStackNavigator(
           onPress={() => navigation.toggleDrawer()}
         />
       ),
-      
     }),
   }
 )
@@ -344,18 +342,18 @@ const MainNavigator = createDrawerNavigator(
     Home: {
       screen: HomeNav,
     },
-    
+
     Gallery: {
       screen: GalleryNav,
     },
-    Featured: { 
+    Featured: {
       screen: FeaturedNav,
     },
     FAQ: {
       screen: FaqNav,
     },
     Sell: {
-      screen: SellNav
+      screen: SellNav,
     },
     Login: {
       screen: LoginNav,
@@ -364,9 +362,7 @@ const MainNavigator = createDrawerNavigator(
       screen: SignUpNav,
     },
   },
-  
-  
-  
+
   //     navigationOptions: {
   //         drawerLabel: 'Sell on Visualux'
   //     }
@@ -384,9 +380,6 @@ const MainNavigator = createDrawerNavigator(
 const AppNavigator = createAppContainer(MainNavigator)
 
 class Main extends Component {
-
-  
-
   render() {
     return (
       <View
@@ -402,7 +395,6 @@ class Main extends Component {
             backgroundColor: "#272727",
           }}
         />
-        <Text>Hello</Text>
       </View>
     )
   }

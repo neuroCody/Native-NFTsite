@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#232323",
     borderRadius: 5,
     padding: 12,
+    color: "#D7EB5A",
   },
   forgotPassword: {
     fontFamily: "asap-regular",

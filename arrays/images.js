@@ -5,6 +5,7 @@ export const IMAGES = [
     image: "/images/ai_napoleon.jpeg",
     price: 54321,
     views: 547,
+    date: 3/20/2021
   },
   {
     id: 1,
@@ -12,6 +13,7 @@ export const IMAGES = [
     image: "/images/blue_volcano.jpg",
     price: 23840,
     views: 7335,
+    date: 3/21/2021
   },
   {
     id: 2,
@@ -19,6 +21,7 @@ export const IMAGES = [
     image: "/images/cats.jpg",
     price: 67000,
     views: 8733,
+    date: 3/21/2021
   },
   {
     id: 3,
@@ -26,6 +29,7 @@ export const IMAGES = [
     image: "/images/edge-of-the-earth.jpg",
     price: 754,
     views: 56465,
+    date: 3/22/2021
   },
   {
     id: 4,
@@ -33,6 +37,7 @@ export const IMAGES = [
     image: "/images/elon_and_doge.jpg",
     price: 987,
     views: 2908,
+    date: 3/22/2021
   },
   {
     id: 5,
@@ -40,6 +45,7 @@ export const IMAGES = [
     image: "/images/galaxyraccoon.jpg",
     price: 47500,
     views: 523,
+    date: 3/23/2021
   },
   {
     id: 6,
@@ -47,6 +53,7 @@ export const IMAGES = [
     image: "/images/geo-room.jpg",
     price: 47500,
     views: 700,
+    date: 3/23/2021
   },
   {
     id: 7,
@@ -54,6 +61,7 @@ export const IMAGES = [
     image: "/images/goat-sheman.webp",
     price: 435,
     views: 7437658,
+    date: 3/23/2021
   },
   {
     id: 8,
@@ -61,6 +69,7 @@ export const IMAGES = [
     image: "/images/laser_cloud.jpg",
     price: 9764,
     views: 4327648,
+    date: 3/23/2021
   },
   {
     id: 9,
@@ -68,6 +77,7 @@ export const IMAGES = [
     image: "/images/nebulashorejpg.jpg",
     price: 35422,
     views: 42958,
+    date: 3/25/2021
   },
   {
     id: 10,
@@ -75,6 +85,7 @@ export const IMAGES = [
     image: "/images/organic_mass.jpg",
     price: 6500,
     views: 479382,
+    date: 3/25/2021
   },
   {
     id: 11,
@@ -82,6 +93,7 @@ export const IMAGES = [
     image: "/images/pastel_street.jpg",
     price: 2525,
     views: 329685,
+    date: 3/26/2021
   },
   {
     id: 12,
@@ -89,6 +101,7 @@ export const IMAGES = [
     image: "/images/post-internet.jpg",
     price: 8764,
     views: 689493,
+    date: 3/27/2021
   },
   {
     id: 13,
@@ -96,6 +109,7 @@ export const IMAGES = [
     image: "/images/priester-moon.jpg",
     price: 87675,
     views: 28596096,
+    date: 3/27/2021
   },
   {
     id: 14,
@@ -103,6 +117,7 @@ export const IMAGES = [
     image: "/images/priester-pink-eclipse.jpg",
     price: 8764,
     views: 3965891,
+    date: 3/28/2021
   },
   {
     id: 15,
@@ -110,6 +125,7 @@ export const IMAGES = [
     image: "/images/priester-tetra.jpg",
     price: 1358,
     views: 6437642,
+    date: 3/28/2021
   },
   {
     id: 16,
@@ -117,6 +133,7 @@ export const IMAGES = [
     image: "/images/prism-cloud.jpg",
     price: 4652,
     views: 277385,
+    date: 3/28/2021
   },
   {
     id: 17,
@@ -124,6 +141,7 @@ export const IMAGES = [
     image: "/images/rainbow-checkered-floor.jpeg",
     price: 94765,
     views: 27775,
+    date: 3/28/2021
   },
   {
     id: 18,
@@ -131,6 +149,7 @@ export const IMAGES = [
     image: "/images/uniswap.jpg",
     price: 85245,
     views: 756437,
+    date: 3/29/2021
   },
   {
     id: 19,
@@ -138,6 +157,7 @@ export const IMAGES = [
     image: "/images/vaporwave-in-space.jpg",
     price: 91894,
     views: 238709,
+    date: 3/29/2021
   },
   {
     id: 20,
@@ -145,6 +165,7 @@ export const IMAGES = [
     image: "/images/yo.png",
     price: 2600,
     views: 654275,
+    date: 3/29/2021
   },
   {
     id: 21,
@@ -152,5 +173,6 @@ export const IMAGES = [
     image: "/images/respect-the-earth.jpg",
     price: 35436,
     views: 8765484,
+    date: 3/29/2021
   },
 ]

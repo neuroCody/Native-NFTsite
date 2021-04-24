@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
     
 })
 
-export default SearchBarView
+export default SearchBarView;

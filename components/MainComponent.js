@@ -6,7 +6,7 @@ import Faq from "./FaqComponent";
 import Sell from "./SellComponent";
 import Login from "./LoginComponent"
 import SignUp from "./SignUpComponent"
-import { View, Platform, StyleSheet, Text } from "react-native"
+import { View, Platform, StyleSheet, Text, ProgressViewIOSComponent } from "react-native"
 import { Icon } from "react-native-elements"
 import { createStackNavigator } from "react-navigation-stack"
 import { createDrawerNavigator } from "react-navigation-drawer"
@@ -163,7 +163,7 @@ const FaqNav = createStackNavigator(
     Faq: { screen: Faq },
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: ({navigation}) => ({
       title: "Visualux",
       headerStyle: {
         backgroundColor: "#232323",
@@ -199,6 +199,7 @@ const FaqNav = createStackNavigator(
             marginBottom: 35,
           }}
           size={32}
+          onPress={() => props.toggleSearch()}
         />
       ),
     }),
@@ -402,7 +403,6 @@ class Main extends Component {
             backgroundColor: "#272727",
           }}
         />
-        <Text>Hello</Text>
       </View>
     )
   }

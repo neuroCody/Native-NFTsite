@@ -4,10 +4,18 @@ import { Card } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
+import { IMAGES } from "../arrays/images"
 
 const Tab = createMaterialTopTabNavigator()
 
 class Gallery extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      image: IMAGES,
+    }
+  }
+
   render() {
     return (
       <NavigationContainer>

@@ -6,6 +6,7 @@ import Faq from "./FaqComponent"
 import Sell from "./SellComponent"
 import Login from "./LoginComponent"
 import SignUp from "./SignUpComponent"
+import SearchTest from './SearchTestComponent'
 import { View, Platform, StyleSheet, Text, ProgressViewIOSComponent } from "react-native"
 import { Icon } from "react-native-elements"
 import { createStackNavigator } from "react-navigation-stack"
@@ -338,6 +339,8 @@ const SignUpNav = createStackNavigator(
   }
 )
 
+const Test = SearchTest
+
 const MainNavigator = createDrawerNavigator(
   {
     Home: {
@@ -361,6 +364,9 @@ const MainNavigator = createDrawerNavigator(
     },
     SignUp: {
       screen: SignUpNav,
+    },
+    Test: {
+      screen: Test,
     },
   },
 
@@ -409,4 +415,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Main
+export default Main;

@@ -101,6 +101,15 @@ class CustomDrawerContentComponent extends Component {
               Sign Up
             </Text>
           </View>
+
+          <View style={styles.drawerItem}>
+            <Text
+              style={styles.drawerItemText}
+              onPress={(() => this, this.navigateToScreen("Test"))}
+            >
+              Test
+            </Text>
+          </View>
         </SafeAreaView>
       </ScrollView>
     )

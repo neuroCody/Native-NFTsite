@@ -11,21 +11,24 @@ class Login extends Component {
     return (
       <View style={styles.viewBackground}>
         <Text style={styles.loginHeader}>Login</Text>
-        <Text style={styles.inputHeader}>Email</Text>
+
+        <Text style={styles.inputHeaderEmail}>Email</Text>
         <TextInput
           style={styles.input}
           placeholder='example@example.com'
           placeholderTextColor={"#D7EB5A"}
         />
-        <Text style={styles.inputHeader}>
-          <Text>Password</Text>
+
+        <View style={{ flexDirection: "row" }}>
+          <Text style={styles.inputHeaderPassword}>Password</Text>
           <Text style={styles.forgotPassword}>Forgot password?</Text>
-        </Text>
+        </View>
         <TextInput
           style={styles.input}
           placeholder='password'
           placeholderTextColor={"#D7EB5A"}
         />
+
         <Button
           title={"Login"}
           titleStyle={{ color: "#232323", fontSize: 24 }}
@@ -38,10 +41,11 @@ class Login extends Component {
             borderRadius: 17,
           }}
         />
-        <Text style={styles.forgotPassword}>
-          <Text>Don't have an account?</Text>
-          {/* <SignUpLink /> */}
-        </Text>
+
+        <View style={{ flexDirection: "row" }}>
+          <Text style={styles.noAccount}>Don't have an account?</Text>
+          <Text style={styles.signUp}>Sign Up</Text>
+        </View>
       </View>
     )
   }
@@ -68,11 +72,18 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 40,
   },
-  inputHeader: {
+  inputHeaderEmail: {
     fontFamily: "asap-regular",
     fontSize: 20,
     color: "#D7EB5A",
     marginLeft: 30,
+    marginBottom: 20,
+  },
+  inputHeaderPassword: {
+    marginLeft: 30,
+    fontFamily: "asap-regular",
+    fontSize: 20,
+    color: "#D7EB5A",
     marginBottom: 20,
   },
   input: {
@@ -86,21 +97,24 @@ const styles = StyleSheet.create({
     color: "#D7EB5A",
   },
   forgotPassword: {
+    marginLeft: 140,
     fontFamily: "asap-regular",
     fontSize: 15,
     color: "#78797B",
-    marginTop: 20,
-    marginBottom: 20,
-    marginLeft: 20,
+  },
+  noAccount: {
+    marginLeft: 30,
+    fontFamily: "asap-regular",
+    fontSize: 15,
+    color: "#78797B",
+    marginTop: 30,
   },
   signUp: {
-    flex: 1,
+    marginLeft: 120,
     fontFamily: "asap-regular",
     fontSize: 15,
     color: "#8B51F5",
-    flexDirection: "row-reverse",
-    marginBottom: 20,
-    marginLeft: 20,
+    marginTop: 30,
   },
 })
 export default Login

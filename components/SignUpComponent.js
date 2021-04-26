@@ -46,10 +46,10 @@ class SignUp extends Component {
               borderRadius: 17,
             }}
           />
-          <Text style={styles.shiftLeft}>
-            <Text style={styles.forgotPassword}>Already have an account?</Text>
-            <Text style={styles.signUp}>Login</Text>
-          </Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={styles.yesAccount}>Already have an account?</Text>
+            <Text style={styles.login}>Login</Text>
+          </View>
         </View>
       </ScrollView>
     )
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#232323",
     borderRadius: 5,
     padding: 12,
+    color: "#D7EB5A",
   },
   forgotPassword: {
     fontFamily: "asap-regular",
@@ -92,16 +93,21 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     marginBottom: 20,
   },
-  signUp: {
-    flex: 1,
+  yesAccount: {
+    marginLeft: 30,
+    fontFamily: "asap-regular",
+    fontSize: 15,
+    color: "#78797B",
+    marginTop: 30,
+    marginBottom: 50,
+  },
+  login: {
+    marginLeft: 120,
     fontFamily: "asap-regular",
     fontSize: 15,
     color: "#8B51F5",
-    flexDirection: "row-reverse",
-    marginBottom: 20,
-  },
-  shiftLeft: {
-    marginLeft: 20,
+    marginTop: 30,
+    marginBottom: 50,
   },
 })
 

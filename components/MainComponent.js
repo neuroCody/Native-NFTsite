@@ -6,7 +6,13 @@ import Faq from "./FaqComponent"
 import Sell from "./SellComponent"
 import Login from "./LoginComponent"
 import SignUp from "./SignUpComponent"
-import { View, Platform, StyleSheet, Text, ProgressViewIOSComponent } from "react-native"
+import {
+  View,
+  Platform,
+  StyleSheet,
+  Text,
+  ProgressViewIOSComponent,
+} from "react-native"
 import { Icon } from "react-native-elements"
 import { createStackNavigator } from "react-navigation-stack"
 import { createDrawerNavigator } from "react-navigation-drawer"
@@ -162,7 +168,7 @@ const FaqNav = createStackNavigator(
     Faq: { screen: Faq },
   },
   {
-    defaultNavigationOptions: ({navigation}) => ({
+    defaultNavigationOptions: ({ navigation }) => ({
       title: "Visualux",
       headerStyle: {
         backgroundColor: "#232323",
@@ -265,13 +271,12 @@ const LoginNav = createStackNavigator(
         backgroundColor: "#232323",
         paddingBottom: 10,
         marginTop: 0,
-        // textAlign: 'center',
       },
       headerTitleStyle: {
         fontFamily: "satisfy-regular",
         color: "#F2F2F2",
-        fontSize: 30,
-        marginLeft: "33%",
+        fontSize: 55,
+        marginLeft: "20%",
       },
       headerLeft: (
         <Icon
@@ -302,13 +307,13 @@ const SignUpNav = createStackNavigator(
         backgroundColor: "#232323",
         paddingBottom: 10,
         marginTop: 0,
-        // textAlign: 'center',
       },
       headerTitleStyle: {
         fontFamily: "satisfy-regular",
         color: "#F2F2F2",
         fontSize: 30,
-        marginLeft: "33%",
+        fontSize: 55,
+        marginLeft: "20%",
       },
       headerLeft: (
         <Icon
@@ -320,18 +325,6 @@ const SignUpNav = createStackNavigator(
           }}
           size={35}
           onPress={() => navigation.toggleDrawer()}
-        />
-      ),
-      headerRight: (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
         />
       ),
     }),

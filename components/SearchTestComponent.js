@@ -8,7 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 
 
-function SearchScreen({ navigation }) {
+function SellScreen({ navigation }) {
     const [shouldShow, setShouldShow] = useState(false);
 
     useLayoutEffect(() => {
@@ -121,7 +121,7 @@ function SearchScreen({ navigation }) {
 
 const Stack = createStackNavigator();
 
-function SearchTest({navigation}) {
+function Sell({navigation}) {
     
 
     return (
@@ -129,7 +129,7 @@ function SearchTest({navigation}) {
         <Stack.Navigator>
         <Stack.Screen
             name="Visualux"
-            component={SearchScreen}
+            component={SellScreen}
             options= {{
                 Headertitle: "Visualux",
                 headerStyle: {
@@ -188,4 +188,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default SearchTest;
+export default Sell;

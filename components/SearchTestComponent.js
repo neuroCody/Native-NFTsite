@@ -4,12 +4,11 @@ import { Icon, Card } from 'react-native-elements';
 import { ScrollView } from "react-native-gesture-handler"
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
-import * as Animatable from 'react-native-animatable';
 
 
 
 
-function HomeScreen({ navigation }) {
+function SellScreen({ navigation }) {
     const [shouldShow, setShouldShow] = useState(false);
 
     useLayoutEffect(() => {
@@ -34,18 +33,17 @@ function HomeScreen({ navigation }) {
 
     return(
     <SafeAreaView
-                style={{flex: 1, backgroundColor: '#232323'}}
+                style={{flex: 1,}}
                 
             >
             {shouldShow ? (
-        <Animatable.View 
+        <View 
             animation="slideInRight" 
-            duration={900} 
+            duration={1000} 
             style={{
                 height: 40, 
                 backgroundColor: '#232323', 
-                justifyContent: 'center',
-                zIndex: 10,
+                justifyContent: 'center'
             }}
             
         >
@@ -55,7 +53,7 @@ function HomeScreen({ navigation }) {
                 // onChangeText={onChangeText}
                 // value={text}
             />
-        </Animatable.View>
+        </View>
             ) : null}
     
         <View style={{ flex: 1, backgroundColor: "#232323" }}>
@@ -123,7 +121,7 @@ function HomeScreen({ navigation }) {
 
 const Stack = createStackNavigator();
 
-function Home({navigation}) {
+function Sell({navigation}) {
     
 
     return (
@@ -131,7 +129,7 @@ function Home({navigation}) {
         <Stack.Navigator>
         <Stack.Screen
             name="Visualux"
-            component={HomeScreen}
+            component={SellScreen}
             options= {{
                 Headertitle: "Visualux",
                 headerStyle: {
@@ -190,4 +188,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default Home;
+export default Sell;

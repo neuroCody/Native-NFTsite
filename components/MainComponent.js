@@ -6,6 +6,7 @@ import Faq from "./FaqComponent"
 import Sell from "./SellComponent"
 import Login from "./LoginComponent"
 import SignUp from "./SignUpComponent"
+<<<<<<< HEAD
 import {
   View,
   Platform,
@@ -13,156 +14,23 @@ import {
   Text,
   ProgressViewIOSComponent,
 } from "react-native"
+=======
+import SearchTest from './SearchTestComponent'
+import { View, Platform, StyleSheet, Text, } from "react-native"
+>>>>>>> f5843d1ee753250d9d525c9492e542fe0b26d385
 import { Icon } from "react-native-elements"
 import { createStackNavigator } from "react-navigation-stack"
 import { createDrawerNavigator } from "react-navigation-drawer"
 import { createAppContainer } from "react-navigation"
 import CustomDrawerContentComponent from "./DrawerStyleComponent"
-import SearchBar from "./SearchBarComponent"
 
-const HomeNav = createStackNavigator(
-  {
-    Home: { screen: Home },
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      title: "Visualux",
-      headerStyle: {
-        backgroundColor: "#232323",
-        paddingBottom: 10,
-        marginTop: 0,
-      },
-      headerTitleStyle: {
-        fontFamily: "satisfy-regular",
-        color: "#F2F2F2",
-        fontSize: 30,
-        marginLeft: "33%",
-      },
-      headerLeft: (
-        <Icon
-          name='bars'
-          type='font-awesome'
-          iconStyle={{
-            color: "#8B51F5",
-            margin: 15,
-          }}
-          size={35}
-          onPress={() => navigation.toggleDrawer()}
-        />
-      ),
-      headerRight: (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
-          // onPress={this.toggleSearch}
-        />
-      ),
-    }),
-  }
-)
+const HomeNav = Home;
 
-const GalleryNav = createStackNavigator(
-  {
-    Gallery: {
-      screen: Gallery,
-    },
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      title: "Visualux",
-      headerStyle: {
-        backgroundColor: "#232323",
-        paddingBottom: 10,
-        marginTop: 0,
-        // textAlign: 'center',
-      },
-      headerTitleStyle: {
-        fontFamily: "satisfy-regular",
-        color: "#F2F2F2",
-        fontSize: 30,
-        marginLeft: "33%",
-      },
-      headerLeft: (
-        <Icon
-          name='bars'
-          type='font-awesome'
-          iconStyle={{
-            color: "#8B51F5",
-            margin: 15,
-          }}
-          size={35}
-          onPress={() => navigation.toggleDrawer()}
-        />
-      ),
-      headerRight: (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
-        />
-      ),
-    }),
-  }
-)
+const GalleryNav = Gallery;
 
-const FeaturedNav = createStackNavigator(
-  {
-    Featured: { screen: Featured },
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      title: "Visualux",
-      headerStyle: {
-        backgroundColor: "#232323",
-        paddingBottom: 10,
-        marginTop: 0,
-        // textAlign: 'center',
-      },
-      headerTitleStyle: {
-        fontFamily: "satisfy-regular",
-        color: "#F2F2F2",
-        fontSize: 30,
-        marginLeft: "33%",
-      },
-      headerLeft: (
-        <Icon
-          name='bars'
-          type='font-awesome'
-          iconStyle={{
-            color: "#8B51F5",
-            margin: 15,
-          }}
-          size={35}
-          onPress={() => navigation.toggleDrawer()}
-        />
-      ),
-      headerRight: (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
-        />
-      ),
-    }),
-  }
-)
+const FeaturedNav = Featured;
 
+<<<<<<< HEAD
 const FaqNav = createStackNavigator(
   {
     Faq: { screen: Faq },
@@ -210,53 +78,11 @@ const FaqNav = createStackNavigator(
     }),
   }
 )
+=======
+const FaqNav = Faq;
+>>>>>>> f5843d1ee753250d9d525c9492e542fe0b26d385
 
-const SellNav = createStackNavigator(
-  {
-    Sell: { screen: Sell },
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      title: "Visualux",
-      headerStyle: {
-        backgroundColor: "#232323",
-        paddingBottom: 10,
-        marginTop: 0,
-        // textAlign: 'center',
-      },
-      headerTitleStyle: {
-        fontFamily: "satisfy-regular",
-        color: "#F2F2F2",
-        fontSize: 30,
-        marginLeft: "33%",
-      },
-      headerLeft: (
-        <Icon
-          name='bars'
-          type='font-awesome'
-          iconStyle={{
-            color: "#8B51F5",
-            margin: 15,
-          }}
-          size={35}
-          onPress={() => navigation.toggleDrawer()}
-        />
-      ),
-      headerRight: (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
-        />
-      ),
-    }),
-  }
-)
+const SellNav = Sell;
 
 const LoginNav = createStackNavigator(
   {
@@ -331,6 +157,8 @@ const SignUpNav = createStackNavigator(
   }
 )
 
+const Test = SearchTest
+
 const MainNavigator = createDrawerNavigator(
   {
     Home: {
@@ -343,7 +171,7 @@ const MainNavigator = createDrawerNavigator(
     Featured: {
       screen: FeaturedNav,
     },
-    FAQ: {
+    Faq: {
       screen: FaqNav,
     },
     Sell: {
@@ -402,4 +230,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Main
+export default Main;

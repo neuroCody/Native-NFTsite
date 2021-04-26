@@ -1,14 +1,115 @@
-import React, { Component } from "react"
-import { Text, View, StyleSheet } from "react-native"
-import { Card } from "react-native-elements"
+import React, { Component, useState, useLayoutEffect } from "react"
+import { Text, View, StyleSheet, SafeAreaView, TextInput } from "react-native"
+import { Icon, Card } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native"
+import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { IMAGES } from "../arrays/images"
+import * as Animatable from 'react-native-animatable';
+
+function GalleryScreen({ navigation }) {
+  const [shouldShow, setShouldShow] = useState(false);
+
+  useLayoutEffect(() => {
+  navigation.setOptions({
+      
+      headerRight: () => (
+      <Icon
+      name='search'
+      type='font-awesome'
+      iconStyle={{
+          color: "#D7EB5A",
+          margin: 20,
+          marginBottom: 35,
+          
+      }}
+      size={32}
+          onPress={() => setShouldShow(!shouldShow)} />
+      ),
+  });
+  })
+
+
+  return(
+  <SafeAreaView
+              style={{flex: 1, backgroundColor: '#232323'}}
+              
+          >
+          {shouldShow ? (
+      <Animatable.View 
+          animation="slideInRight" 
+          duration={900} 
+          style={{
+              height: 40, 
+              backgroundColor: '#232323', 
+              justifyContent: 'center'
+          }}
+          
+      >
+          <TextInput
+              placeholder="Search"
+              style={styles.input} 
+              // onChangeText={onChangeText}
+              // value={text}
+          />
+      </Animatable.View>
+          ) : null}
+      <GalleryNav />
+      
+  </SafeAreaView>
+  
+  );
+}
+
+const Stack = createStackNavigator();
+
+function Gallery({navigation}) {
+  
+
+  return (
+  <NavigationContainer
+  independent={true}
+  >
+      <Stack.Navigator>
+      <Stack.Screen
+          name="Visualux"
+          component={GalleryScreen}
+          options= {{
+              Headertitle: "Visualux",
+              headerStyle: {
+                  backgroundColor: "#232323",
+              },
+              headerTitleStyle: {
+                  fontFamily: "satisfy-regular",
+                  color: "#F2F2F2",
+                  fontSize: 30,
+                  marginLeft: "33%",
+              },
+              headerLeft: () => (
+                  <Icon
+                  name='bars'
+                  type='font-awesome'
+                  iconStyle={{
+                      color: "#8B51F5",
+                      margin: 15,
+                  }}
+                  size={35}
+                  onPress={() => navigation.toggleDrawer()}
+                  />
+              ),
+              
+          }}
+          />
+      </Stack.Navigator>
+  </NavigationContainer>
+  );
+
+}
 
 const Tab = createMaterialTopTabNavigator()
 
-class Gallery extends Component {
+class GalleryNav extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -18,14 +119,23 @@ class Gallery extends Component {
 
   render() {
     return (
-      <NavigationContainer>
-        <Tab.Navigator>
+
+        <Tab.Navigator
+          tabBarOptions={{
+            indicatorStyle: {
+            width: 0, height: 0, elevation: 0,},
+            activeTintColor: "#D7EB5A",
+            inactiveTintColor: "#F2F2F2",
+            style: {
+              backgroundColor: "#232323",
+            }
+            }}
+        >
           <Tab.Screen name='Most Viewed' component={MostViewed} />
           <Tab.Screen name='Newest' component={Newest} />
           <Tab.Screen name='Price: low to high' component={LowToHigh} />
           <Tab.Screen name='Price: high to low' component={HighToLow} />
         </Tab.Navigator>
-      </NavigationContainer>
     )
   }
 }
@@ -143,10 +253,28 @@ function HighToLow() {
 }
 
 const styles = StyleSheet.create({
+  input: {
+      height: 34, 
+      borderColor: '#D7EB5A',
+      borderWidth: 1,
+      borderRadius: 5,
+      color: '#D7EB5A',
+      backgroundColor: "#232323",
+      paddingLeft: 10,
+      margin: 3,
+      fontFamily: 'KoHo-regular',
+  },
   cardImg: {
-    width: "auto",
-    height: 350,
+      width: "auto",
+      height: 350,
+  },
+  banner: {
+      padding: 50,
+  },
+  bannerText: {
+      fontSize: 50,
+      fontFamily: "KoHo-bold",
+      color: "#F2F2F2",
   },
 })
-
-export default Gallery
+export default Gallery;

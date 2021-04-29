@@ -6,83 +6,23 @@ import Faq from "./FaqComponent"
 import Sell from "./SellComponent"
 import Login from "./LoginComponent"
 import SignUp from "./SignUpComponent"
-<<<<<<< HEAD
-import {
-  View,
-  Platform,
-  StyleSheet,
-  Text,
-  ProgressViewIOSComponent,
-} from "react-native"
-=======
-import SearchTest from './SearchTestComponent'
-import { View, Platform, StyleSheet, Text, } from "react-native"
->>>>>>> f5843d1ee753250d9d525c9492e542fe0b26d385
+import SearchTest from "./SearchTestComponent"
+import { View, Platform, StyleSheet, Text } from "react-native"
 import { Icon } from "react-native-elements"
 import { createStackNavigator } from "react-navigation-stack"
 import { createDrawerNavigator } from "react-navigation-drawer"
 import { createAppContainer } from "react-navigation"
 import CustomDrawerContentComponent from "./DrawerStyleComponent"
 
-const HomeNav = Home;
+const HomeNav = Home
 
-const GalleryNav = Gallery;
+const GalleryNav = Gallery
 
-const FeaturedNav = Featured;
+const FeaturedNav = Featured
 
-<<<<<<< HEAD
-const FaqNav = createStackNavigator(
-  {
-    Faq: { screen: Faq },
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      title: "Visualux",
-      headerStyle: {
-        backgroundColor: "#232323",
-        paddingBottom: 10,
-        marginTop: 0,
-        // textAlign: 'center',
-      },
-      headerTitleStyle: {
-        fontFamily: "satisfy-regular",
-        color: "#F2F2F2",
-        fontSize: 30,
-        marginLeft: "33%",
-      },
-      headerLeft: (
-        <Icon
-          name='bars'
-          type='font-awesome'
-          iconStyle={{
-            color: "#8B51F5",
-            margin: 15,
-          }}
-          size={35}
-          onPress={() => navigation.toggleDrawer()}
-        />
-      ),
-      headerRight: (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
-          onPress={() => props.toggleSearch()}
-        />
-      ),
-    }),
-  }
-)
-=======
-const FaqNav = Faq;
->>>>>>> f5843d1ee753250d9d525c9492e542fe0b26d385
+const FaqNav = Faq
 
-const SellNav = Sell;
+const SellNav = Sell
 
 const LoginNav = createStackNavigator(
   {
@@ -230,4 +170,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Main;
+export default Main

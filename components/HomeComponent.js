@@ -45,7 +45,6 @@ function HomeScreen({ navigation }) {
                 height: 40, 
                 backgroundColor: '#232323', 
                 justifyContent: 'center',
-                zIndex: 10,
             }}
             
         >

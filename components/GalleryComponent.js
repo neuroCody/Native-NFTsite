@@ -129,43 +129,75 @@ class GalleryNav extends Component {
 }
 
 function MostViewed() {
+
+  const MostViewedArray = IMAGES.filter(({views}) => views > 100000 );
+  const SortedViewArray = MostViewedArray.sort(function(a, b) {return b.views - a.views});
+
   return (
-    <View style={{ flex: 1, backgroundColor: "#232323" }}>
-      <ScrollView style={{ height: 600 }}>
-        <View>
-          <Card containerStyle={styles.cardContainer}>
-            <Card.Image
-              source={require("./images/prism-cloud.jpg")}
-              style={styles.cardImg}
-            ></Card.Image>
-            <Text style={styles.cardTitle}>Home Page</Text>
-          </Card>
-          <Card containerStyle={styles.card}>
-            <Card.Image
-              source={require("./images/pastel_street.jpg")}
-              style={styles.cardImg}
-            ></Card.Image>
-            <Text style={styles.cardTitle}>Home Page</Text>
-          </Card>
-        </View>
-      </ScrollView>
+    <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
+    <View>
+      {SortedViewArray.map((i) => {
+        return (
+          <View key={i.id}>
+            <Card containerStyle={styles.cardContainer}>
+              <Card.Image
+                style={styles.cardImg}
+                source={i.image}
+              ></Card.Image>
+              <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                <Text style={styles.cardTitle}>{i.title}</Text>
+                <Text style={styles.price}> Price: ${i.price}</Text>
+              </Text>
+              <View style={styles.line}></View>
+              <View
+                style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+              >
+                <Text style={styles.artistHeader}>Artist</Text>
+                <Text style={styles.artistName}>{i.title}</Text>
+              </View>
+            </Card>
+            <View style={{ marginBottom: 50 }}></View>
+          </View>
+        )
+      })}
     </View>
+  </ScrollView>
   )
 }
 
 function Newest() {
+
+  const NewestDate = IMAGES.sort(function(a, b) {return a.date - b.date})
+  
   return (
-    <ScrollView>
-      <View>
-        <Card containerStyle={styles.cardContainer}>
-          <Card.Image
-            source={require("./images/prism-cloud.jpg")}
-            style={styles.cardImg}
-          ></Card.Image>
-          <Text style={styles.cardTitle}>Home Page</Text>
-        </Card>
-      </View>
-    </ScrollView>
+    <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
+    <View>
+      {NewestDate.map((i) => {
+        return (
+          <View key={i.id}>
+            <Card containerStyle={styles.cardContainer}>
+              <Card.Image
+                style={styles.cardImg}
+                source={i.image}
+              ></Card.Image>
+              <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                <Text style={styles.cardTitle}>{i.title}</Text>
+                <Text style={styles.price}> Price: ${i.price}</Text>
+              </Text>
+              <View style={styles.line}></View>
+              <View
+                style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+              >
+                <Text style={styles.artistHeader}>Artist</Text>
+                <Text style={styles.artistName}>{i.title}</Text>
+              </View>
+            </Card>
+            <View style={{ marginBottom: 50 }}></View>
+          </View>
+        )
+      })}
+    </View>
+  </ScrollView>
   )
 }
 ////fix styling in the cards
@@ -287,6 +319,11 @@ const styles = StyleSheet.create({
   },
   artistName: {
     fontFamily: "KoHo-regular",
+  },
+  viewsHeader: {
+    fontFamily: "KoHo-bold",
+    display: 'flex',
+    flexDirection: 'row-reverse',
   },
   banner: {
     padding: 50,

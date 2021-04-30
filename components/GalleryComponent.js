@@ -138,14 +138,14 @@ function MostViewed() {
               source={require("./images/prism-cloud.jpg")}
               style={styles.cardImg}
             ></Card.Image>
-            <Text style={styles.cardText}>Home Page</Text>
+            <Text style={styles.cardTitle}>Home Page</Text>
           </Card>
           <Card containerStyle={styles.card}>
             <Card.Image
               source={require("./images/pastel_street.jpg")}
               style={styles.cardImg}
             ></Card.Image>
-            <Text style={styles.cardText}>Home Page</Text>
+            <Text style={styles.cardTitle}>Home Page</Text>
           </Card>
         </View>
       </ScrollView>
@@ -162,24 +162,42 @@ function Newest() {
             source={require("./images/prism-cloud.jpg")}
             style={styles.cardImg}
           ></Card.Image>
-          <Text style={styles.cardText}>Home Page</Text>
+          <Text style={styles.cardTitle}>Home Page</Text>
         </Card>
       </View>
     </ScrollView>
   )
 }
-
-////need to add .sort() to sort prices in map function
+////fix styling in the cards
 function LowToHigh() {
+  const LowtoHighArray = IMAGES.sort(function (a, b) {
+    return a.price - b.price
+  })
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
       <View>
-        {IMAGES.map((i) => {
+        {LowtoHighArray.map((i) => {
           return (
-            <Card key={i.id} containerStyle={styles.cardContainer}>
-              <Card.Image style={styles.cardImg} source={i.image}></Card.Image>
-              <Text style={styles.cardText}>{i.title}</Text>
-            </Card>
+            <View key={i.id}>
+              <Card containerStyle={styles.cardContainer}>
+                <Card.Image
+                  style={styles.cardImg}
+                  source={i.image}
+                ></Card.Image>
+                <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                  <Text style={styles.cardTitle}>{i.title}</Text>
+                  <Text style={styles.price}> Price: ${i.price}</Text>
+                </Text>
+                <View style={styles.line}></View>
+                <View
+                  style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+                >
+                  <Text style={styles.artistHeader}>Artist</Text>
+                  <Text style={styles.artistName}>{i.title}</Text>
+                </View>
+              </Card>
+              <View style={{ marginBottom: 50 }}></View>
+            </View>
           )
         })}
       </View>
@@ -188,15 +206,34 @@ function LowToHigh() {
 }
 
 function HighToLow() {
+  const highToLowArray = IMAGES.sort(function (a, b) {
+    return b.price - a.price
+  })
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
       <View>
-        {IMAGES.map((i) => {
+        {highToLowArray.map((i) => {
           return (
-            <Card key={i.id} containerStyle={styles.cardContainer}>
-              <Card.Image style={styles.cardImg} source={i.image}></Card.Image>
-              <Text style={styles.cardText}>{i.title}</Text>
-            </Card>
+            <View key={i.id}>
+              <Card containerStyle={styles.cardContainer}>
+                <Card.Image
+                  style={styles.cardImg}
+                  source={i.image}
+                ></Card.Image>
+                <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                  <Text style={styles.cardTitle}>{i.title}</Text>
+                  <Text style={styles.price}> Price: ${i.price}</Text>
+                </Text>
+                <View style={styles.line}></View>
+                <View
+                  style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+                >
+                  <Text style={styles.artistHeader}>Artist</Text>
+                  <Text style={styles.artistName}>{i.title}</Text>
+                </View>
+              </Card>
+              <View style={{ marginBottom: 50 }}></View>
+            </View>
           )
         })}
       </View>
@@ -228,10 +265,28 @@ const styles = StyleSheet.create({
     width: "auto",
     height: 350,
   },
-  cardText: {
-    margin: 10,
+  cardTitle: {
+    marginLeft: 10,
     fontFamily: "KoHo-bold",
+    fontSize: 18,
     color: "#f2f2f2",
+  },
+  price: {
+    fontFamily: "KoHo-regular",
+    color: "#78797B",
+    flexDirection: "row-reverse",
+  },
+  line: {
+    borderBottomWidth: 2,
+    borderBottomColor: "#78797B",
+    padding: 2,
+    margin: 10,
+  },
+  artistHeader: {
+    fontFamily: "KoHo-bold",
+  },
+  artistName: {
+    fontFamily: "KoHo-regular",
   },
   banner: {
     padding: 50,

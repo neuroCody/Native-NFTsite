@@ -1,11 +1,8 @@
 import React, { Component } from "react"
 import { NavigationActions } from "react-navigation"
 import { ScrollView, Text, View, StyleSheet } from "react-native"
-import SafeAreaView from "react-native-safe-area-view";
-import { Icon } from "react-native-elements";
-
-
-
+import SafeAreaView from "react-native-safe-area-view"
+import { Icon } from "react-native-elements"
 
 class CustomDrawerContentComponent extends Component {
   navigateToScreen = (route) => () => {
@@ -25,13 +22,13 @@ class CustomDrawerContentComponent extends Component {
             <View style={{ flex: 2 }}>
               <Text style={styles.drawerHeaderText}>Visualux</Text>
             </View>
-            <View >
-            <Icon
+            <View>
+              <Icon
                 name='chevron-left'
                 type='font-awesome'
                 iconStyle={{
                   color: "#8B51F5",
-                  margin: 10
+                  marginRight: 25,
                 }}
                 size={20}
                 onPress={() => this.props.navigation.closeDrawer()}
@@ -56,7 +53,7 @@ class CustomDrawerContentComponent extends Component {
               Gallery
             </Text>
           </View>
-           {/* Featured Navigator */}
+          {/* Featured Navigator */}
           <View style={styles.drawerItem}>
             <Text
               style={styles.drawerItemText}
@@ -75,7 +72,7 @@ class CustomDrawerContentComponent extends Component {
             </Text>
           </View>
           {/* Sell Navigator */}
-          <View style={styles.sellItem} >
+          <View style={styles.sellItem}>
             <Text
               style={styles.sellItemText}
               onPress={(() => this, this.navigateToScreen("Sell"))}
@@ -124,7 +121,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 30,
     fontFamily: "satisfy-regular",
-    marginLeft: '15%'
+    marginLeft: "15%",
   },
   stackIcon: {
     marginLeft: 10,
@@ -157,9 +154,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
-    borderBottomColor: '#78797B',
+    borderBottomColor: "#78797B",
     borderBottomWidth: 1,
-    borderTopColor: '#78797B',
+    borderTopColor: "#78797B",
     borderTopWidth: 1,
   },
   sellItemText: {
@@ -167,7 +164,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: "asap-regular",
     paddingTop: 25,
-    paddingBottom: 25
+    paddingBottom: 25,
   },
 })
 

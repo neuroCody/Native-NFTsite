@@ -1,12 +1,18 @@
-import React, { Component } from "react"
-import SignUp from "./SignUpComponent"
+import React, { Component, UseState } from "react"
+import { NavigationActions } from "react-navigation"
 import { Text, View, StyleSheet, TextInput } from "react-native"
-import { Card, Input, Button } from "react-native-elements"
+import { Button } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 
 //need to find way to style button, input typing, and nested text
 
 class Login extends Component {
+  navigateToScreen = (route) => () => {
+    const navigateAction = NavigationActions.navigate({
+      routeName: route,
+    })
+    this.props.navigation.dispatch(navigateAction)
+  }
   render() {
     return (
       <View style={styles.viewBackground}>
@@ -44,7 +50,12 @@ class Login extends Component {
 
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.noAccount}>Don't have an account?</Text>
-          <Text style={styles.signUp}>Sign Up</Text>
+          <Text
+            style={styles.signUp}
+            onPress={(() => this, this.navigateToScreen("SignUp"))}
+          >
+            Sign Up
+          </Text>
         </View>
       </View>
     )

@@ -1,9 +1,16 @@
 import React, { Component } from "react"
+import { NavigationActions } from "react-navigation"
 import { Text, View, StyleSheet, TextInput } from "react-native"
-import { Card, Input, Button } from "react-native-elements"
+import { Button } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 
 class SignUp extends Component {
+  navigateToScreen = (route) => () => {
+    const navigateAction = NavigationActions.navigate({
+      routeName: route,
+    })
+    this.props.navigation.dispatch(navigateAction)
+  }
   render() {
     return (
       <ScrollView>
@@ -48,7 +55,12 @@ class SignUp extends Component {
           />
           <View style={{ flexDirection: "row" }}>
             <Text style={styles.yesAccount}>Already have an account?</Text>
-            <Text style={styles.login}>Login</Text>
+            <Text
+              style={styles.login}
+              onPress={(() => this, this.navigateToScreen("Login"))}
+            >
+              Login
+            </Text>
           </View>
         </View>
       </ScrollView>

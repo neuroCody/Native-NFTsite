@@ -125,14 +125,6 @@ const MainNavigator = createDrawerNavigator(
     },
   },
 
-  //     navigationOptions: {
-  //         drawerLabel: 'Sell on Visualux'
-  //     }
-  // },
-  //     navigationOptions: {
-  //         drawerLabel: 'Sign Up'
-  //     }
-  // },
   {
     drawerBackgroundColor: "#232323",
     contentComponent: CustomDrawerContentComponent,

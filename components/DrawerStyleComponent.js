@@ -1,19 +1,14 @@
 import React, { Component } from "react"
-import { NavigationActions } from "react-navigation"
 import { ScrollView, Text, View, StyleSheet } from "react-native"
 import SafeAreaView from "react-native-safe-area-view"
 import { Icon } from "react-native-elements"
 
-class CustomDrawerContentComponent extends Component {
-  navigateToScreen = (route) => () => {
-    const navigateAction = NavigationActions.navigate({
-      routeName: route,
-    })
-    this.props.navigation.dispatch(navigateAction)
-  }
-  render() {
+function CustomDrawerContentComponent(props) {
+
+  const {navigation} = props
+  
     return (
-      <ScrollView>
+      <ScrollView  style={{backgroundColor: "#232323"}}>
         <SafeAreaView
           style={styles.container}
           forceInset={{ top: "always", horizontal: "never" }}
@@ -31,7 +26,7 @@ class CustomDrawerContentComponent extends Component {
                   marginRight: 25,
                 }}
                 size={20}
-                onPress={() => this.props.navigation.closeDrawer()}
+                onPress={() => props.navigation.closeDrawer()}
               />
             </View>
           </View>
@@ -39,7 +34,7 @@ class CustomDrawerContentComponent extends Component {
           <View style={styles.drawerItem}>
             <Text
               style={styles.drawerItemText}
-              onPress={(() => this, this.navigateToScreen("Home"))}
+              onPress={(() => navigation.navigate("Home"))}
             >
               Home
             </Text>
@@ -48,25 +43,16 @@ class CustomDrawerContentComponent extends Component {
           <View style={styles.drawerItem}>
             <Text
               style={styles.drawerItemText}
-              onPress={(() => this, this.navigateToScreen("Gallery"))}
+              onPress={(() => navigation.navigate("Gallery"))}
             >
               Gallery
-            </Text>
-          </View>
-          {/* Featured Navigator */}
-          <View style={styles.drawerItem}>
-            <Text
-              style={styles.drawerItemText}
-              onPress={(() => this, this.navigateToScreen("Featured"))}
-            >
-              Featured
             </Text>
           </View>
           {/* Faq Navigator */}
           <View style={styles.drawerItem}>
             <Text
               style={styles.drawerItemText}
-              onPress={(() => this, this.navigateToScreen("Faq"))}
+              onPress={(() => navigation.navigate("Faq"))}
             >
               Faq
             </Text>
@@ -75,7 +61,7 @@ class CustomDrawerContentComponent extends Component {
           <View style={styles.sellItem}>
             <Text
               style={styles.sellItemText}
-              onPress={(() => this, this.navigateToScreen("Sell"))}
+              onPress={(() => navigation.navigate("Sell"))}
             >
               Sell on Visualux
             </Text>
@@ -84,7 +70,7 @@ class CustomDrawerContentComponent extends Component {
           <View style={styles.drawerItem}>
             <Text
               style={styles.drawerItemText}
-              onPress={(() => this, this.navigateToScreen("Login"))}
+              onPress={(() => navigation.navigate("Login"))}
             >
               Login
             </Text>
@@ -93,7 +79,7 @@ class CustomDrawerContentComponent extends Component {
           <View style={styles.drawerItem}>
             <Text
               style={[styles.drawerItemTextDark, styles.signUpBackground]}
-              onPress={(() => this, this.navigateToScreen("SignUp"))}
+              onPress={(() => navigation.navigate("SignUp"))}
             >
               Sign Up
             </Text>
@@ -101,12 +87,13 @@ class CustomDrawerContentComponent extends Component {
         </SafeAreaView>
       </ScrollView>
     )
-  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#232323",
+    
   },
   drawerHeader: {
     backgroundColor: "#232323",

@@ -1,13 +1,10 @@
 import React, { useState, useLayoutEffect } from "react"
-import Faq from "./FaqComponent"
 import { Text, View, SafeAreaView, TextInput, StyleSheet } from "react-native"
 import { Icon, Card } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import * as Animatable from "react-native-animatable"
-
-// const faqNav = Faq
 
 function HomeScreen({ navigation }) {
   const [shouldShow, setShouldShow] = useState(false)
@@ -56,7 +53,12 @@ function HomeScreen({ navigation }) {
           <View>
             <View style={styles.banner}>
               <Text style={styles.bannerText}>Buy and Sell NFT Art</Text>
-              <Text style={{ color: "#D7EB5A" }}>Learn more</Text>
+              <Text
+                style={{ color: "#D7EB5A" }}
+                onPress={() => navigation.navigate("Faq")}
+              >
+                Learn more
+              </Text>
             </View>
             <Card
               containerStyle={{
@@ -117,38 +119,36 @@ const Stack = createStackNavigator()
 
 function Home({ navigation }) {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name='Visualux'
-          component={HomeScreen}
-          options={{
-            Headertitle: "Visualux",
-            headerStyle: {
-              backgroundColor: "#232323",
-            },
-            headerTitleStyle: {
-              fontFamily: "satisfy-regular",
-              color: "#F2F2F2",
-              fontSize: 30,
-              marginLeft: "33%",
-            },
-            headerLeft: () => (
-              <Icon
-                name='bars'
-                type='font-awesome'
-                iconStyle={{
-                  color: "#8B51F5",
-                  margin: 15,
-                }}
-                size={35}
-                onPress={() => navigation.toggleDrawer()}
-              />
-            ),
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name='Visualux'
+        component={HomeScreen}
+        options={{
+          Headertitle: "Visualux",
+          headerStyle: {
+            backgroundColor: "#232323",
+          },
+          headerTitleStyle: {
+            fontFamily: "satisfy-regular",
+            color: "#F2F2F2",
+            fontSize: 30,
+            marginLeft: "33%",
+          },
+          headerLeft: () => (
+            <Icon
+              name='bars'
+              type='font-awesome'
+              iconStyle={{
+                color: "#8B51F5",
+                margin: 15,
+              }}
+              size={35}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        }}
+      />
+    </Stack.Navigator>
   )
 }
 

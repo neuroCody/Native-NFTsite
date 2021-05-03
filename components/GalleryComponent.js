@@ -5,7 +5,6 @@ import {
   StyleSheet,
   SafeAreaView,
   TextInput,
-  Image,
   TouchableOpacity,
   Modal,
   Alert,
@@ -140,6 +139,12 @@ class MostViewed extends Component {
     super(props);
     this.state= {
       showModal: false,
+      id: '',
+      title: '',
+      image: '',
+      price: '',
+      views: '',
+      date: '',
     }
   }
 
@@ -250,18 +255,18 @@ class MostViewed extends Component {
               borderRadius: 17,
             }}
             onPress={() => 
-                                Alert.alert(
-                                    'Connect Wallet',
-                                    'Please connect your ETH Wallet to continue',
-                                    [
-                                        {
-                                            text: 'OK',
-                                            style: 'cancel'
-                                        }
-                                    ],
-                                    {cancelable: true}
-                                )
-                            }
+                Alert.alert(
+                    'Connect Wallet',
+                    'Please connect your ETH Wallet to continue',
+                    [
+                        {
+                            text: 'OK',
+                            style: 'cancel'
+                        }
+                    ],
+                    {cancelable: true}
+                )
+            }
           />
         </Card>
         </View>

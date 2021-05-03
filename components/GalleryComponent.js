@@ -6,14 +6,17 @@ import {
   SafeAreaView,
   TextInput,
   Image,
+  TouchableOpacity,
+  Modal,
 } from "react-native"
-import { Icon, Card } from "react-native-elements"
+import { Icon, Card, Button } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { IMAGES } from "../arrays/images"
 import * as Animatable from "react-native-animatable"
+
 
 function GalleryScreen({ navigation }) {
   const [shouldShow, setShouldShow] = useState(false)
@@ -128,8 +131,22 @@ class GalleryNav extends Component {
   }
 }
 
-function MostViewed() {
 
+
+class MostViewed extends Component {
+
+  constructor(props){
+    super(props);
+    this.state= {
+      showModal: false,
+    }
+  }
+
+  toggleModal() {
+    this.setState({showModal: !this.state.showModal});
+}
+
+  render(){
   const MostViewedArray = IMAGES.filter(({views}) => views > 100000 );
   const SortedViewArray = MostViewedArray.sort(function(a, b) {return b.views - a.views});
 
@@ -139,30 +156,104 @@ function MostViewed() {
       {SortedViewArray.map((i) => {
         return (
           <View key={i.id}>
-            <Card containerStyle={styles.cardContainer}>
-              <Card.Image
-                style={styles.cardImg}
-                source={i.image}
-              ></Card.Image>
-              <Text style={{ marginLeft: 10, marginTop: 10 }}>
-                <Text style={styles.cardTitle}>{i.title}</Text>
-                <Text style={styles.price}> Price: ${i.price}</Text>
-              </Text>
-              <View style={styles.line}></View>
-              <View
-                style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
-              >
-                <Text style={styles.artistHeader}>Artist</Text>
-                <Text style={styles.artistName}>{i.title}</Text>
-              </View>
-            </Card>
+              <Card containerStyle={styles.cardContainer}>
+              <TouchableOpacity
+              onPress={() => {this.toggleModal(this.setState(i))}}
+                >
+                <Card.Image
+                  style={styles.cardImg}
+                  source={i.image}
+                ></Card.Image>
+                </TouchableOpacity>
+                <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                  <Text style={styles.cardTitle}>{i.title}</Text>
+                  <Text style={styles.price}> Price: ${i.price}</Text>
+                </Text>
+                <View style={styles.line}></View>
+                <View
+                  style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+                >
+                  <Text style={styles.artistHeader}>Artist</Text>
+                  <Text style={styles.artistName}>{i.title}</Text>
+                </View>
+              </Card>
             <View style={{ marginBottom: 50 }}></View>
+            
           </View>
         )
       })}
+      
     </View>
+    <Modal
+          animationType={'slide'}
+          transparent={false}
+          visible={this.state.showModal}
+          onRequestClose={() => this.toggleModal()}
+      >
+      <View style={styles.modal}>
+      <View>
+      <Icon 
+          name='close'
+          type='font-awesome'
+          iconStyle={{
+                  color: "#8B51F5",
+                }}
+          size={20}
+          onPress={()=> this.toggleModal()}
+        />
+        </View>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Text style={styles.modalTitle}>
+        {this.state.title}
+        </Text>
+        <Icon 
+          name='heart'
+          type='font-awesome'
+          iconStyle={{
+                  color: "#D7EB5A",
+                  marginRight: '30%',
+                  marginTop: 14
+                }}
+          size={20}
+          
+        />
+        </View>
+        
+        <Card containerStyle={styles.cardContainer}>
+          <Card.Image
+            style={styles.cardImg}
+            source={this.state.image}
+          ></Card.Image>
+          <Text style={{ marginLeft: 10, marginTop: 10 }}>
+            
+            <Text style={styles.modalArtist}>Artist</Text>
+          </Text>
+          <View style={styles.line}></View>
+          <View
+            style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+          >
+            <Text style={styles.modalHeader}>Current Price</Text>
+            <Text style={styles.modalPrice}>${this.state.price}</Text>
+          </View>
+          <Button
+            title={"Buy Now"}
+            titleStyle={{ color: "#232323", fontSize: 20 }}
+            buttonStyle={{
+              backgroundColor: "#D7EB5A",
+              marginTop: 15,
+              marginLeft: 25,
+              marginRight: 25,
+              marginBottom: 50,
+              padding: 15,
+              borderRadius: 17,
+            }}
+          />
+        </Card>
+        </View>
+      </Modal>
   </ScrollView>
   )
+  }
 }
 
 function Newest() {
@@ -333,5 +424,25 @@ const styles = StyleSheet.create({
     fontFamily: "KoHo-bold",
     color: "#F2F2F2",
   },
+  modal: {
+      backgroundColor: "#232323",
+      height: '100%'
+  },
+  modalTitle: {
+    fontSize: 25,
+    fontFamily: "KoHo-bold",
+    color: "#F2F2F2",
+    marginLeft: 15,
+  },
+  modalHeader:{
+    fontFamily: "KoHo-bold",
+    fontSize: 18,
+    color: "#f2f2f2",
+  },
+  modalPrice: {
+    fontSize: 30,
+    fontFamily: "KoHo-bold",
+    color: "#F2F2F2",
+  }
 })
 export default Gallery

@@ -72,6 +72,9 @@ class UploadListing extends Component {
     }
   }
 
+  //Await Async for gallery and camera permissions
+  //image placeholder
+
   render() {
     return (
       <View>
@@ -120,8 +123,8 @@ class UploadListing extends Component {
         <TextInput placeholder='Title' style={styles.textInput} />
         <Text style={styles.inputHeader}>Description</Text>
         <TextInput
-          multiline={true}
-          numberofLines={5}
+          multiline
+          numberOfLines={5}
           placeholder='Description'
           style={styles.textInput}
         />
@@ -208,7 +211,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000",
     borderBottomColor: "#232323",
     borderRadius: 5,
-    padding: 12,
+    padding: 10,
     color: "#D7EB5A",
   },
   banner: {

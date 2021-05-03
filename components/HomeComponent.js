@@ -1,10 +1,13 @@
 import React, { useState, useLayoutEffect } from "react"
+import Faq from "./FaqComponent"
 import { Text, View, SafeAreaView, TextInput, StyleSheet } from "react-native"
 import { Icon, Card } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import * as Animatable from "react-native-animatable"
+
+// const faqNav = Faq
 
 function HomeScreen({ navigation }) {
   const [shouldShow, setShouldShow] = useState(false)

@@ -3,6 +3,7 @@
 // import { createStore } from "redux"
 // import { Provider } from "react-redux"
 // import App from "./App"
+
 // function fs(state = { x: 7, y: 1 }, action) {
 //   console.log("kjaskfjkdjkd", action)
 //   switch (action.type) {

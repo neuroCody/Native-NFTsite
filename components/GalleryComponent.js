@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   Modal,
+  Alert,
 } from "react-native"
 import { Icon, Card, Button } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
@@ -191,14 +192,15 @@ class MostViewed extends Component {
           onRequestClose={() => this.toggleModal()}
       >
       <View style={styles.modal}>
-      <View>
+      <View style={{padding: 10}}>
       <Icon 
           name='close'
           type='font-awesome'
           iconStyle={{
                   color: "#8B51F5",
+                  marginLeft: '90%'
                 }}
-          size={20}
+          size={35}
           onPress={()=> this.toggleModal()}
         />
         </View>
@@ -214,7 +216,7 @@ class MostViewed extends Component {
                   marginRight: '30%',
                   marginTop: 14
                 }}
-          size={20}
+          size={25}
           
         />
         </View>
@@ -247,6 +249,19 @@ class MostViewed extends Component {
               padding: 15,
               borderRadius: 17,
             }}
+            onPress={() => 
+                                Alert.alert(
+                                    'Connect Wallet',
+                                    'Please connect your ETH Wallet to continue',
+                                    [
+                                        {
+                                            text: 'OK',
+                                            style: 'cancel'
+                                        }
+                                    ],
+                                    {cancelable: true}
+                                )
+                            }
           />
         </Card>
         </View>

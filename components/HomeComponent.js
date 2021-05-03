@@ -1,10 +1,13 @@
 import React, { useState, useLayoutEffect } from "react"
+
 import { Text, View, SafeAreaView, TextInput, StyleSheet } from "react-native"
 import { Icon, Card } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import * as Animatable from "react-native-animatable"
+
+
 
 function HomeScreen({ navigation }) {
   const [shouldShow, setShouldShow] = useState(false)
@@ -53,7 +56,7 @@ function HomeScreen({ navigation }) {
           <View>
             <View style={styles.banner}>
               <Text style={styles.bannerText}>Buy and Sell NFT Art</Text>
-              <Text style={{ color: "#D7EB5A" }}>Learn more</Text>
+              <Text style={{ color: "#D7EB5A" }} onPress={() => navigation.navigate('Faq')}>Learn more</Text>
             </View>
             <Card
               containerStyle={{
@@ -114,7 +117,6 @@ const Stack = createStackNavigator()
 
 function Home({ navigation }) {
   return (
-    <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name='Visualux'
@@ -145,7 +147,6 @@ function Home({ navigation }) {
           }}
         />
       </Stack.Navigator>
-    </NavigationContainer>
   )
 }
 

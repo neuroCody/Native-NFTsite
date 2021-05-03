@@ -1,21 +1,15 @@
 import React, { Component, UseState } from "react"
 import { NavigationActions } from "react-navigation"
 import { Text, View, StyleSheet, TextInput } from "react-native"
-import { Button } from "react-native-elements"
-import { ScrollView } from "react-native-gesture-handler"
+import { Button, Icon } from "react-native-elements"
+import { createStackNavigator } from "@react-navigation/stack"
 
 //need to find way to style button, input typing, and nested text
 
-class Login extends Component {
-  navigateToScreen = (route) => () => {
-    const navigateAction = NavigationActions.navigate({
-      routeName: route,
-    })
-    this.props.navigation.dispatch(navigateAction)
-  }
-  render() {
-    return (
-      <View style={styles.viewBackground}>
+function LoginScreen({navigation}) {
+
+  return(
+    <View style={styles.viewBackground}>
         <Text style={styles.loginHeader}>Login</Text>
 
         <Text style={styles.inputHeaderEmail}>Email</Text>
@@ -52,14 +46,51 @@ class Login extends Component {
           <Text style={styles.noAccount}>Don't have an account?</Text>
           <Text
             style={styles.signUp}
-            onPress={(() => this, this.navigateToScreen("SignUp"))}
+            onPress={(() => navigation.navigate("SignUp"))}
           >
             Sign Up
           </Text>
         </View>
       </View>
+  )
+}
+
+const Stack = createStackNavigator();
+
+function Login({navigation}) {
+  
+    return (
+      <Stack.Navigator>
+        <Stack.Screen
+          name='Visualux'
+          component={LoginScreen}
+          options={{
+            Headertitle: "Visualux",
+            headerStyle: {
+              backgroundColor: "#232323",
+            },
+            headerTitleStyle: {
+              fontFamily: "satisfy-regular",
+              color: "#F2F2F2",
+              fontSize: 30,
+              marginLeft: "33%",
+            },
+            headerLeft: () => (
+              <Icon
+                name='bars'
+                type='font-awesome'
+                iconStyle={{
+                  color: "#8B51F5",
+                  margin: 15,
+                }}
+                size={35}
+                onPress={() => navigation.toggleDrawer()}
+              />
+            ),
+          }}
+        />
+      </Stack.Navigator>
     )
-  }
 }
 
 // function SignUpLink({ navigation }) {

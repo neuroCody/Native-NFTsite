@@ -147,7 +147,6 @@ const Stack = createStackNavigator()
 
 function Sell({ navigation }) {
   return (
-    <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name='Visualux'
@@ -178,7 +177,6 @@ function Sell({ navigation }) {
           }}
         />
       </Stack.Navigator>
-    </NavigationContainer>
   )
 }
 

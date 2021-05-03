@@ -73,7 +73,6 @@ function Faq({navigation}) {
     
 
     return (
-    <NavigationContainer>
         <Stack.Navigator>
         <Stack.Screen
             name="Visualux"
@@ -105,7 +104,6 @@ function Faq({navigation}) {
             }}
             />
         </Stack.Navigator>
-    </NavigationContainer>
     );
 
 }

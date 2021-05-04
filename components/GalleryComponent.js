@@ -147,10 +147,10 @@ class MostViewed extends Component {
       date: '',
     }
   }
-
+  // MODAL
   toggleModal() {
     this.setState({showModal: !this.state.showModal});
-}
+  }
 
   render(){
   const MostViewedArray = IMAGES.filter(({views}) => views > 100000 );
@@ -190,6 +190,7 @@ class MostViewed extends Component {
       })}
       
     </View>
+    {/* MODAL START */}
     <Modal
           animationType={'slide'}
           transparent={false}
@@ -271,6 +272,7 @@ class MostViewed extends Component {
         </Card>
         </View>
       </Modal>
+      {/* MODAL END */}
   </ScrollView>
   )
   }
@@ -308,6 +310,7 @@ function Newest() {
         )
       })}
     </View>
+    
   </ScrollView>
   )
 }

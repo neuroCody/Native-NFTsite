@@ -1,10 +1,139 @@
-import React, { useState, useLayoutEffect }from 'react';
-import { Text, View, SafeAreaView, TextInput, StyleSheet } from 'react-native';
-import { Icon, Card } from 'react-native-elements';
-import { ScrollView } from "react-native-gesture-handler"
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from "@react-navigation/stack";
-import * as Animatable from 'react-native-animatable';
+import React, { Component, useState, useLayoutEffect }from 'react'
+import { Text, View, SafeAreaView, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import { Icon, Card } from 'react-native-elements'
+import { ScrollView } from 'react-native-gesture-handler'
+import { createStackNavigator } from '@react-navigation/stack'
+import * as Animatable from 'react-native-animatable'
+import Accordion from 'react-native-collapsible/Accordion'
+
+const SECTIONS = [
+    {
+        title: "NFT?",
+        content: "NFT's are like cryptocurrency but even more confusing!"
+    },
+    {
+        title: "Valuable?",
+        content: "Sure, they can be as valuable as a rolex watch or a pack of gum."
+    },
+    {
+        title: "Me NFT?",
+        content: `Possibly! there are currently cryptoesque blockchains that are using the same computing rigs designed for mining called Folders, or to be more specific, using them to map the data of protien folds. The exact stuff you and I are made up of!`,
+    }
+]
+
+
+
+
+
+class AccordionView extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state= {
+            activeSections: [],
+            expanded: false,
+        }
+    }
+
+    toggleExpanded = () => {
+        this.setState({expanded: !this.state.expanded})
+    }
+
+    renderHeader = (section) => {
+        return(
+            
+            <View style={styles.header}>
+                
+                        <Text style={styles.headerText}>
+                        {section.title}
+                        </Text>
+                    
+                    
+                    <Icon 
+                            name={this.state.expanded ? 'minus' : 'plus'}
+                            type='font-awesome'
+                            iconStyle={{
+                            color: "#8B51F5",
+                            paddingBottom: 10,
+                            paddingLeft: '20%'
+                            }}
+                            size={35}
+                        />
+                    
+                    
+                
+            </View>
+        
+        )
+    }
+
+    
+
+    plusIcon = () => {
+        return(
+            <View>
+                    <Icon 
+                        display={!this.state.icon}
+                        name='plus'
+                        type='font-awesome'
+                        iconStyle={{
+                        color: "#8B51F5",
+                        paddingBottom: 10,
+                        paddingLeft: '20%'
+                        }}
+                        size={35}
+                    />
+                </View>
+        )
+    }
+    
+    minusIcon = (props) => {
+        return(
+            <View>
+                    <Icon 
+                        display={this.state.icon}
+                        name='minus'
+                        type='font-awesome'
+                        iconStyle={{
+                        color: "#8B51F5",
+                        paddingBottom: 10,
+                        paddingLeft: '20%'
+                        }}
+                        size={35}
+                    />
+                </View>
+        )
+    }
+
+    renderContent = (section) => {
+        return(
+            <View style={styles.content}>
+                <Text style={styles.contentText}>{section.content}</Text>
+            </View>
+        )
+    }
+
+    updateSections = (activeSections) => {
+        this.setState({activeSections});
+        this.toggleExpanded();
+    }
+
+    render() {
+        return(
+            
+            <Accordion
+                sections={SECTIONS}
+                activeSections={this.state.activeSections}
+                // renderSectionTitle={this.renderSectionTitle}
+                renderHeader={this.renderHeader}
+                renderContent={this.renderContent}
+                onChange={this.updateSections}
+            />
+            
+        )
+    }
+}
+
 
 function FaqScreen({ navigation }) {
     const [shouldShow, setShouldShow] = useState(false);
@@ -56,16 +185,21 @@ function FaqScreen({ navigation }) {
             <View style={{ flex: 1, backgroundColor: "#232323" }}>
                 <ScrollView style={{ height: 600 }}>
                     <Text
-                        style={{
-                            color: '#F2F2F2'
-                        }}
-                    > WAT IS NTF DOES???</Text>
+                        style={styles.bannerText}
+                    >
+                    Frequently{'\n'}
+                    Asked{'\n'}
+                    Questions{'\n'}
+                    </Text>
+                    <AccordionView />
                 </ScrollView>
             </View>
     </SafeAreaView>
     
     );
 }
+
+
 
 const Stack = createStackNavigator();
 
@@ -120,6 +254,47 @@ const styles = StyleSheet.create({
         margin: 3,
         fontFamily: 'KoHo-regular',
     },
+    bannerText: {
+        fontSize: 50,
+        fontFamily: "KoHo-bold",
+        color: "#F2F2F2",
+    },
+    header: {
+        flex: 1,
+        flexDirection: "row",
+        alignItems:'center',
+        justifyContent: 'center',
+        textAlign: "center",
+        borderBottomWidth: 2,
+        borderBottomColor: "#48494B",
+        padding: 2,
+        margin: 10,
+    },
+    headerText: {
+        color: "#D7EB5A",
+        fontSize: 35,
+        fontFamily: "asap-regular",
+        paddingBottom: 20,
+    },
+    content: {
+        flexGrow: 1,
+        alignItems:'center',
+        justifyContent: 'center',
+        textAlign: "center",
+        padding: 5,
+    },
+    contentText: {
+        color: "#F2F2F2",
+        fontFamily: 'asap-regular',
+        fontSize: 17,
+        flexGrow: 1,
+        alignItems:'center',
+        justifyContent: 'center',
+        textAlign: "center",
+        padding: 5,
+        borderBottomWidth: 2,
+        borderBottomColor: "#48494B",
+    }
 })
 
 export default Faq;

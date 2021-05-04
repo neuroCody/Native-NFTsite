@@ -17,7 +17,6 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { IMAGES } from "../arrays/images"
 import * as Animatable from "react-native-animatable"
 
-
 function GalleryScreen({ navigation }) {
   const [shouldShow, setShouldShow] = useState(false)
 
@@ -131,46 +130,107 @@ class GalleryNav extends Component {
   }
 }
 
-
-
 class MostViewed extends Component {
-
-  constructor(props){
-    super(props);
-    this.state= {
+  constructor(props) {
+    super(props)
+    this.state = {
       showModal: false,
-      id: '',
-      title: '',
-      image: '',
-      price: '',
-      views: '',
-      date: '',
+      id: "",
+      title: "",
+      image: "",
+      price: "",
+      views: "",
+      date: "",
     }
   }
 
   toggleModal() {
-    this.setState({showModal: !this.state.showModal});
+    this.setState({ showModal: !this.state.showModal })
+  }
+
+  render() {
+    const MostViewedArray = IMAGES.filter(({ views }) => views > 100000)
+    const SortedViewArray = MostViewedArray.sort(function (a, b) {
+      return b.views - a.views
+    })
+
+    return (
+      <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
+        <View>
+          {SortedViewArray.map((i) => {
+            return (
+              <View key={i.id}>
+                <Card containerStyle={styles.cardContainer}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.toggleModal(this.setState(i))
+                    }}
+                  >
+                    <Card.Image
+                      style={styles.cardImg}
+                      source={i.image}
+                    ></Card.Image>
+                  </TouchableOpacity>
+                  <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                    <Text style={styles.cardTitle}>{i.title}</Text>
+                    <Text style={styles.price}> Price: ${i.price}</Text>
+                  </Text>
+                  <View style={styles.line}></View>
+                  <View
+                    style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+                  >
+                    <Text style={styles.artistHeader}>Artist</Text>
+                    <Text style={styles.artistName}>{i.title}</Text>
+                  </View>
+                </Card>
+                <View style={{ marginBottom: 50 }}></View>
+              </View>
+            )
+          })}
+          <Modal
+            animationType={"slide"}
+            transparent={false}
+            visible={this.props.showModal}
+            onRequestClose={() => this.props.toggleModal()}
+          >
+            <Card containerStyle={styles.cardContainer}>
+              <Card.Image
+                style={styles.cardImg}
+                source={this.props.image}
+              ></Card.Image>
+              <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                <Text style={styles.cardTitle}>{this.props.title}</Text>
+                <Text style={styles.price}> Price: ${this.props.price}</Text>
+              </Text>
+              <View style={styles.line}></View>
+              <View style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}>
+                <Text style={styles.artistHeader}>YO</Text>
+                <Text style={styles.artistName}>{this.props.artist}</Text>
+              </View>
+            </Card>
+          </Modal>
+        </View>
+      </ScrollView>
+    )
+  }
 }
 
-  render(){
-  const MostViewedArray = IMAGES.filter(({views}) => views > 100000 );
-  const SortedViewArray = MostViewedArray.sort(function(a, b) {return b.views - a.views});
+function Newest() {
+  const NewestDate = IMAGES.sort(function (a, b) {
+    return a.date - b.date
+  })
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
-    <View>
-      {SortedViewArray.map((i) => {
-        return (
-          <View key={i.id}>
+      <View>
+        {NewestDate.map((i) => {
+          return (
+            <View key={i.id}>
               <Card containerStyle={styles.cardContainer}>
-              <TouchableOpacity
-              onPress={() => {this.toggleModal(this.setState(i))}}
-                >
                 <Card.Image
                   style={styles.cardImg}
                   source={i.image}
                 ></Card.Image>
-                </TouchableOpacity>
                 <Text style={{ marginLeft: 10, marginTop: 10 }}>
                   <Text style={styles.cardTitle}>{i.title}</Text>
                   <Text style={styles.price}> Price: ${i.price}</Text>
@@ -183,132 +243,12 @@ class MostViewed extends Component {
                   <Text style={styles.artistName}>{i.title}</Text>
                 </View>
               </Card>
-            <View style={{ marginBottom: 50 }}></View>
-            
-          </View>
-        )
-      })}
-      
-    </View>
-    <Modal
-          animationType={'slide'}
-          transparent={false}
-          visible={this.state.showModal}
-          onRequestClose={() => this.toggleModal()}
-      >
-      <View style={styles.modal}>
-      <View style={{padding: 10}}>
-      <Icon 
-          name='close'
-          type='font-awesome'
-          iconStyle={{
-                  color: "#8B51F5",
-                  marginLeft: '90%'
-                }}
-          size={35}
-          onPress={()=> this.toggleModal()}
-        />
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Text style={styles.modalTitle}>
-        {this.state.title}
-        </Text>
-        <Icon 
-          name='heart'
-          type='font-awesome'
-          iconStyle={{
-                  color: "#D7EB5A",
-                  marginRight: '30%',
-                  marginTop: 14
-                }}
-          size={25}
-          
-        />
-        </View>
-        
-        <Card containerStyle={styles.cardContainer}>
-          <Card.Image
-            style={styles.cardImg}
-            source={this.state.image}
-          ></Card.Image>
-          <Text style={{ marginLeft: 10, marginTop: 10 }}>
-            
-            <Text style={styles.modalArtist}>Artist</Text>
-          </Text>
-          <View style={styles.line}></View>
-          <View
-            style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
-          >
-            <Text style={styles.modalHeader}>Current Price</Text>
-            <Text style={styles.modalPrice}>${this.state.price}</Text>
-          </View>
-          <Button
-            title={"Buy Now"}
-            titleStyle={{ color: "#232323", fontSize: 20 }}
-            buttonStyle={{
-              backgroundColor: "#D7EB5A",
-              marginTop: 15,
-              marginLeft: 25,
-              marginRight: 25,
-              marginBottom: 50,
-              padding: 15,
-              borderRadius: 17,
-            }}
-            onPress={() => 
-                Alert.alert(
-                    'Connect Wallet',
-                    'Please connect your ETH Wallet to continue',
-                    [
-                        {
-                            text: 'OK',
-                            style: 'cancel'
-                        }
-                    ],
-                    {cancelable: true}
-                )
-            }
-          />
-        </Card>
-        </View>
-      </Modal>
-  </ScrollView>
-  )
-  }
-}
-
-function Newest() {
-
-  const NewestDate = IMAGES.sort(function(a, b) {return a.date - b.date})
-  
-  return (
-    <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
-    <View>
-      {NewestDate.map((i) => {
-        return (
-          <View key={i.id}>
-            <Card containerStyle={styles.cardContainer}>
-              <Card.Image
-                style={styles.cardImg}
-                source={i.image}
-              ></Card.Image>
-              <Text style={{ marginLeft: 10, marginTop: 10 }}>
-                <Text style={styles.cardTitle}>{i.title}</Text>
-                <Text style={styles.price}> Price: ${i.price}</Text>
-              </Text>
-              <View style={styles.line}></View>
-              <View
-                style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
-              >
-                <Text style={styles.artistHeader}>Artist</Text>
-                <Text style={styles.artistName}>{i.title}</Text>
-              </View>
-            </Card>
-            <View style={{ marginBottom: 50 }}></View>
-          </View>
-        )
-      })}
-    </View>
-  </ScrollView>
+              <View style={{ marginBottom: 50 }}></View>
+            </View>
+          )
+        })}
+      </View>
+    </ScrollView>
   )
 }
 ////fix styling in the cards
@@ -433,8 +373,8 @@ const styles = StyleSheet.create({
   },
   viewsHeader: {
     fontFamily: "KoHo-bold",
-    display: 'flex',
-    flexDirection: 'row-reverse',
+    display: "flex",
+    flexDirection: "row-reverse",
   },
   banner: {
     padding: 50,
@@ -445,8 +385,8 @@ const styles = StyleSheet.create({
     color: "#F2F2F2",
   },
   modal: {
-      backgroundColor: "#232323",
-      height: '100%'
+    backgroundColor: "#232323",
+    height: "100%",
   },
   modalTitle: {
     fontSize: 25,
@@ -454,7 +394,7 @@ const styles = StyleSheet.create({
     color: "#F2F2F2",
     marginLeft: 15,
   },
-  modalHeader:{
+  modalHeader: {
     fontFamily: "KoHo-bold",
     fontSize: 18,
     color: "#f2f2f2",
@@ -463,6 +403,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: "KoHo-bold",
     color: "#F2F2F2",
-  }
+  },
 })
 export default Gallery

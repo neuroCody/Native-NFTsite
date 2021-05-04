@@ -8,6 +8,7 @@ import * as Animatable from "react-native-animatable"
 
 function HomeScreen({ navigation }) {
   const [shouldShow, setShouldShow] = useState(false)
+  const [overlay, setOverlay] = useState(false)
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -27,11 +28,15 @@ function HomeScreen({ navigation }) {
     })
   })
 
+  // const openSearchOverlay=()=>{
+  // styles.searchOverlay
+  // }
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#232323" }}>
+    <SafeAreaView style={styles.mainView}>
       {shouldShow ? (
         <Animatable.View
-          animation='slideInRight'
+          animation='slideInDown'
           duration={900}
           style={{
             height: 40,
@@ -48,7 +53,7 @@ function HomeScreen({ navigation }) {
         </Animatable.View>
       ) : null}
 
-      <View style={{ flex: 1, backgroundColor: "#232323" }}>
+      <View style={styles.mainView}>
         <ScrollView style={{ height: 600 }}>
           <View>
             <View style={styles.banner}>
@@ -60,6 +65,7 @@ function HomeScreen({ navigation }) {
                 Learn more
               </Text>
             </View>
+
             <Card
               containerStyle={{
                 backgroundColor: "#48494B",
@@ -153,6 +159,10 @@ function Home({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  mainView: {
+    flex: 1,
+    backgroundColor: "#232323",
+  },
   input: {
     height: 34,
     borderColor: "#D7EB5A",
@@ -176,6 +186,14 @@ const styles = StyleSheet.create({
     fontFamily: "KoHo-bold",
     color: "#F2F2F2",
   },
+  // searchOverlay: {
+  //   position: "absolute",
+  //   top: 0,
+  //   bottom: 0,
+  //   left: 0,
+  //   right: 0,
+  //   backgroundColor: "",
+  // },
 })
 
 export default Home

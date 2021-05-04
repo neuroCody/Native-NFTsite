@@ -143,8 +143,9 @@ class MostViewed extends Component {
       date: "",
     }
   }
-
+  // MODAL
   toggleModal() {
+<<<<<<< HEAD
     this.setState({ showModal: !this.state.showModal })
   }
 
@@ -214,6 +215,10 @@ class MostViewed extends Component {
     )
   }
 }
+=======
+    this.setState({showModal: !this.state.showModal});
+  }
+>>>>>>> 92d5505cf9f6a7462a875ea5075177e25d69ade8
 
 function Newest() {
   const NewestDate = IMAGES.sort(function (a, b) {
@@ -243,12 +248,144 @@ function Newest() {
                   <Text style={styles.artistName}>{i.title}</Text>
                 </View>
               </Card>
+<<<<<<< HEAD
               <View style={{ marginBottom: 50 }}></View>
             </View>
           )
         })}
       </View>
     </ScrollView>
+=======
+            <View style={{ marginBottom: 50 }}></View>
+            
+          </View>
+        )
+      })}
+      
+    </View>
+    {/* MODAL START */}
+    <Modal
+          animationType={'slide'}
+          transparent={false}
+          visible={this.state.showModal}
+          onRequestClose={() => this.toggleModal()}
+      >
+      <View style={styles.modal}>
+      <View style={{padding: 10}}>
+      <Icon 
+          name='close'
+          type='font-awesome'
+          iconStyle={{
+                  color: "#8B51F5",
+                  marginLeft: '90%'
+                }}
+          size={35}
+          onPress={()=> this.toggleModal()}
+        />
+        </View>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Text style={styles.modalTitle}>
+        {this.state.title}
+        </Text>
+        <Icon 
+          name='heart'
+          type='font-awesome'
+          iconStyle={{
+                  color: "#D7EB5A",
+                  marginRight: '30%',
+                  marginTop: 14
+                }}
+          size={25}
+          
+        />
+        </View>
+        
+        <Card containerStyle={styles.cardContainer}>
+          <Card.Image
+            style={styles.cardImg}
+            source={this.state.image}
+          ></Card.Image>
+          <Text style={{ marginLeft: 10, marginTop: 10 }}>
+            
+            <Text style={styles.modalArtist}>Artist</Text>
+          </Text>
+          <View style={styles.line}></View>
+          <View
+            style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+          >
+            <Text style={styles.modalHeader}>Current Price</Text>
+            <Text style={styles.modalPrice}>${this.state.price}</Text>
+          </View>
+          <Button
+            title={"Buy Now"}
+            titleStyle={{ color: "#232323", fontSize: 20 }}
+            buttonStyle={{
+              backgroundColor: "#D7EB5A",
+              marginTop: 15,
+              marginLeft: 25,
+              marginRight: 25,
+              marginBottom: 50,
+              padding: 15,
+              borderRadius: 17,
+            }}
+            onPress={() => 
+                Alert.alert(
+                    'Connect Wallet',
+                    'Please connect your ETH Wallet to continue',
+                    [
+                        {
+                            text: 'OK',
+                            style: 'cancel'
+                        }
+                    ],
+                    {cancelable: true}
+                )
+            }
+          />
+        </Card>
+        </View>
+      </Modal>
+      {/* MODAL END */}
+  </ScrollView>
+  )
+  }
+}
+
+function Newest() {
+
+  const NewestDate = IMAGES.sort(function(a, b) {return a.date - b.date})
+  
+  return (
+    <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
+    <View>
+      {NewestDate.map((i) => {
+        return (
+          <View key={i.id}>
+            <Card containerStyle={styles.cardContainer}>
+              <Card.Image
+                style={styles.cardImg}
+                source={i.image}
+              ></Card.Image>
+              <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                <Text style={styles.cardTitle}>{i.title}</Text>
+                <Text style={styles.price}> Price: ${i.price}</Text>
+              </Text>
+              <View style={styles.line}></View>
+              <View
+                style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+              >
+                <Text style={styles.artistHeader}>Artist</Text>
+                <Text style={styles.artistName}>{i.title}</Text>
+              </View>
+            </Card>
+            <View style={{ marginBottom: 50 }}></View>
+          </View>
+        )
+      })}
+    </View>
+    
+  </ScrollView>
+>>>>>>> 92d5505cf9f6a7462a875ea5075177e25d69ade8
   )
 }
 ////fix styling in the cards

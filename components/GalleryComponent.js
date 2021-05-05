@@ -145,7 +145,6 @@ class MostViewed extends Component {
   }
   // MODAL
   toggleModal() {
-<<<<<<< HEAD
     this.setState({ showModal: !this.state.showModal })
   }
 
@@ -188,277 +187,502 @@ class MostViewed extends Component {
               </View>
             )
           })}
-          <Modal
-            animationType={"slide"}
-            transparent={false}
-            visible={this.props.showModal}
-            onRequestClose={() => this.props.toggleModal()}
-          >
+        </View>
+        <Modal
+          animationType={"slide"}
+          transparent={false}
+          visible={this.state.showModal}
+          onRequestClose={() => this.toggleModal()}
+        >
+          <View style={styles.modal}>
+            <View style={{ padding: 10 }}>
+              <Icon
+                name='close'
+                type='font-awesome'
+                iconStyle={{
+                  color: "#8B51F5",
+                  marginLeft: "90%",
+                }}
+                size={35}
+                onPress={() => this.toggleModal()}
+              />
+            </View>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <Text style={styles.modalTitle}>{this.state.title}</Text>
+              <Icon
+                name='heart'
+                type='font-awesome'
+                iconStyle={{
+                  color: "#D7EB5A",
+                  marginRight: "30%",
+                  marginTop: 14,
+                }}
+                size={25}
+              />
+            </View>
             <Card containerStyle={styles.cardContainer}>
               <Card.Image
                 style={styles.cardImg}
-                source={this.props.image}
+                source={this.state.image}
               ></Card.Image>
               <Text style={{ marginLeft: 10, marginTop: 10 }}>
-                <Text style={styles.cardTitle}>{this.props.title}</Text>
-                <Text style={styles.price}> Price: ${this.props.price}</Text>
+                <Text style={styles.modalArtist}>Artist</Text>
               </Text>
               <View style={styles.line}></View>
               <View style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}>
-                <Text style={styles.artistHeader}>YO</Text>
-                <Text style={styles.artistName}>{this.props.artist}</Text>
+                <Text style={styles.modalHeader}>Current Price</Text>
+                <Text style={styles.modalPrice}>${this.state.price}</Text>
               </View>
+              <Button
+                title={"Buy Now"}
+                titleStyle={{ color: "#232323", fontSize: 20 }}
+                buttonStyle={{
+                  backgroundColor: "#D7EB5A",
+                  marginTop: 15,
+                  marginLeft: 25,
+                  marginRight: 25,
+                  marginBottom: 50,
+                  padding: 15,
+                  borderRadius: 17,
+                }}
+                onPress={() =>
+                  Alert.alert(
+                    "Connect Wallet",
+                    "Please connect your ETH Wallet to continue",
+                    [
+                      {
+                        text: "OK",
+                        style: "cancel",
+                      },
+                    ],
+                    { cancelable: true }
+                  )
+                }
+              />
             </Card>
-          </Modal>
-        </View>
+          </View>
+        </Modal>
       </ScrollView>
     )
   }
 }
-=======
-    this.setState({showModal: !this.state.showModal});
+
+class Newest extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showModal: false,
+      id: "",
+      title: "",
+      image: "",
+      price: "",
+      views: "",
+      date: "",
+    }
   }
->>>>>>> 92d5505cf9f6a7462a875ea5075177e25d69ade8
+  // MODAL
+  toggleModal() {
+    this.setState({ showModal: !this.state.showModal })
+  }
 
-function Newest() {
-  const NewestDate = IMAGES.sort(function (a, b) {
-    return a.date - b.date
-  })
+  render() {
+    const NewestDate = IMAGES.sort(function (a, b) {
+      return a.date - b.date
+    })
 
-  return (
-    <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
-      <View>
-        {NewestDate.map((i) => {
-          return (
-            <View key={i.id}>
-              <Card containerStyle={styles.cardContainer}>
-                <Card.Image
-                  style={styles.cardImg}
-                  source={i.image}
-                ></Card.Image>
-                <Text style={{ marginLeft: 10, marginTop: 10 }}>
-                  <Text style={styles.cardTitle}>{i.title}</Text>
-                  <Text style={styles.price}> Price: ${i.price}</Text>
-                </Text>
-                <View style={styles.line}></View>
-                <View
-                  style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
-                >
-                  <Text style={styles.artistHeader}>Artist</Text>
-                  <Text style={styles.artistName}>{i.title}</Text>
-                </View>
-              </Card>
-<<<<<<< HEAD
-              <View style={{ marginBottom: 50 }}></View>
-            </View>
-          )
-        })}
-      </View>
-    </ScrollView>
-=======
-            <View style={{ marginBottom: 50 }}></View>
-            
-          </View>
-        )
-      })}
-      
-    </View>
-    {/* MODAL START */}
-    <Modal
-          animationType={'slide'}
+    return (
+      <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
+        <View>
+          {NewestDate.map((i) => {
+            return (
+              <View key={i.id}>
+                <Card containerStyle={styles.cardContainer}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.toggleModal(this.setState(i))
+                    }}
+                  >
+                    <Card.Image
+                      style={styles.cardImg}
+                      source={i.image}
+                    ></Card.Image>
+                  </TouchableOpacity>
+                  <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                    <Text style={styles.cardTitle}>{i.title}</Text>
+                    <Text style={styles.price}> Price: ${i.price}</Text>
+                  </Text>
+                  <View style={styles.line}></View>
+                  <View
+                    style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+                  >
+                    <Text style={styles.artistHeader}>Artist</Text>
+                    <Text style={styles.artistName}>{i.title}</Text>
+                  </View>
+                </Card>
+                <View style={{ marginBottom: 50 }}></View>
+              </View>
+            )
+          })}
+        </View>
+        <Modal
+          animationType={"slide"}
           transparent={false}
           visible={this.state.showModal}
           onRequestClose={() => this.toggleModal()}
-      >
-      <View style={styles.modal}>
-      <View style={{padding: 10}}>
-      <Icon 
-          name='close'
-          type='font-awesome'
-          iconStyle={{
+        >
+          <View style={styles.modal}>
+            <View style={{ padding: 10 }}>
+              <Icon
+                name='close'
+                type='font-awesome'
+                iconStyle={{
                   color: "#8B51F5",
-                  marginLeft: '90%'
+                  marginLeft: "90%",
                 }}
-          size={35}
-          onPress={()=> this.toggleModal()}
-        />
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Text style={styles.modalTitle}>
-        {this.state.title}
-        </Text>
-        <Icon 
-          name='heart'
-          type='font-awesome'
-          iconStyle={{
+                size={35}
+                onPress={() => this.toggleModal()}
+              />
+            </View>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <Text style={styles.modalTitle}>{this.state.title}</Text>
+              <Icon
+                name='heart'
+                type='font-awesome'
+                iconStyle={{
                   color: "#D7EB5A",
-                  marginRight: '30%',
-                  marginTop: 14
+                  marginRight: "30%",
+                  marginTop: 14,
                 }}
-          size={25}
-          
-        />
-        </View>
-        
-        <Card containerStyle={styles.cardContainer}>
-          <Card.Image
-            style={styles.cardImg}
-            source={this.state.image}
-          ></Card.Image>
-          <Text style={{ marginLeft: 10, marginTop: 10 }}>
-            
-            <Text style={styles.modalArtist}>Artist</Text>
-          </Text>
-          <View style={styles.line}></View>
-          <View
-            style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
-          >
-            <Text style={styles.modalHeader}>Current Price</Text>
-            <Text style={styles.modalPrice}>${this.state.price}</Text>
-          </View>
-          <Button
-            title={"Buy Now"}
-            titleStyle={{ color: "#232323", fontSize: 20 }}
-            buttonStyle={{
-              backgroundColor: "#D7EB5A",
-              marginTop: 15,
-              marginLeft: 25,
-              marginRight: 25,
-              marginBottom: 50,
-              padding: 15,
-              borderRadius: 17,
-            }}
-            onPress={() => 
-                Alert.alert(
-                    'Connect Wallet',
-                    'Please connect your ETH Wallet to continue',
-                    [
-                        {
-                            text: 'OK',
-                            style: 'cancel'
-                        }
-                    ],
-                    {cancelable: true}
-                )
-            }
-          />
-        </Card>
-        </View>
-      </Modal>
-      {/* MODAL END */}
-  </ScrollView>
-  )
-  }
-}
-
-function Newest() {
-
-  const NewestDate = IMAGES.sort(function(a, b) {return a.date - b.date})
-  
-  return (
-    <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
-    <View>
-      {NewestDate.map((i) => {
-        return (
-          <View key={i.id}>
+                size={25}
+              />
+            </View>
             <Card containerStyle={styles.cardContainer}>
               <Card.Image
                 style={styles.cardImg}
-                source={i.image}
+                source={this.state.image}
               ></Card.Image>
               <Text style={{ marginLeft: 10, marginTop: 10 }}>
-                <Text style={styles.cardTitle}>{i.title}</Text>
-                <Text style={styles.price}> Price: ${i.price}</Text>
+                <Text style={styles.modalArtist}>Artist</Text>
               </Text>
               <View style={styles.line}></View>
-              <View
-                style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
-              >
-                <Text style={styles.artistHeader}>Artist</Text>
-                <Text style={styles.artistName}>{i.title}</Text>
+              <View style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}>
+                <Text style={styles.modalHeader}>Current Price</Text>
+                <Text style={styles.modalPrice}>${this.state.price}</Text>
               </View>
+              <Button
+                title={"Buy Now"}
+                titleStyle={{ color: "#232323", fontSize: 20 }}
+                buttonStyle={{
+                  backgroundColor: "#D7EB5A",
+                  marginTop: 15,
+                  marginLeft: 25,
+                  marginRight: 25,
+                  marginBottom: 50,
+                  padding: 15,
+                  borderRadius: 17,
+                }}
+                onPress={() =>
+                  Alert.alert(
+                    "Connect Wallet",
+                    "Please connect your ETH Wallet to continue",
+                    [
+                      {
+                        text: "OK",
+                        style: "cancel",
+                      },
+                    ],
+                    { cancelable: true }
+                  )
+                }
+              />
             </Card>
-            <View style={{ marginBottom: 50 }}></View>
           </View>
-        )
-      })}
-    </View>
-    
-  </ScrollView>
->>>>>>> 92d5505cf9f6a7462a875ea5075177e25d69ade8
-  )
+        </Modal>
+      </ScrollView>
+    )
+  }
 }
 ////fix styling in the cards
-function LowToHigh() {
-  const LowtoHighArray = IMAGES.sort(function (a, b) {
-    return a.price - b.price
-  })
-  return (
-    <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
-      <View>
-        {LowtoHighArray.map((i) => {
-          return (
-            <View key={i.id}>
-              <Card containerStyle={styles.cardContainer}>
-                <Card.Image
-                  style={styles.cardImg}
-                  source={i.image}
-                ></Card.Image>
-                <Text style={{ marginLeft: 10, marginTop: 10 }}>
-                  <Text style={styles.cardTitle}>{i.title}</Text>
-                  <Text style={styles.price}> Price: ${i.price}</Text>
-                </Text>
-                <View style={styles.line}></View>
-                <View
-                  style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
-                >
-                  <Text style={styles.artistHeader}>Artist</Text>
-                  <Text style={styles.artistName}>{i.title}</Text>
-                </View>
-              </Card>
-              <View style={{ marginBottom: 50 }}></View>
+class LowToHigh extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showModal: false,
+      id: "",
+      title: "",
+      image: "",
+      price: "",
+      views: "",
+      date: "",
+    }
+  }
+  // MODAL
+  toggleModal() {
+    this.setState({ showModal: !this.state.showModal })
+  }
+  render() {
+    const LowtoHighArray = IMAGES.sort(function (a, b) {
+      return a.price - b.price
+    })
+    return (
+      <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
+        <View>
+          {LowtoHighArray.map((i) => {
+            return (
+              <View key={i.id}>
+                <Card containerStyle={styles.cardContainer}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.toggleModal(this.setState(i))
+                    }}
+                  >
+                    <Card.Image
+                      style={styles.cardImg}
+                      source={i.image}
+                    ></Card.Image>
+                  </TouchableOpacity>
+                  <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                    <Text style={styles.cardTitle}>{i.title}</Text>
+                    <Text style={styles.price}> Price: ${i.price}</Text>
+                  </Text>
+                  <View style={styles.line}></View>
+                  <View
+                    style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+                  >
+                    <Text style={styles.artistHeader}>Artist</Text>
+                    <Text style={styles.artistName}>{i.title}</Text>
+                  </View>
+                </Card>
+                <View style={{ marginBottom: 50 }}></View>
+              </View>
+            )
+          })}
+        </View>
+        <Modal
+          animationType={"slide"}
+          transparent={false}
+          visible={this.state.showModal}
+          onRequestClose={() => this.toggleModal()}
+        >
+          <View style={styles.modal}>
+            <View style={{ padding: 10 }}>
+              <Icon
+                name='close'
+                type='font-awesome'
+                iconStyle={{
+                  color: "#8B51F5",
+                  marginLeft: "90%",
+                }}
+                size={35}
+                onPress={() => this.toggleModal()}
+              />
             </View>
-          )
-        })}
-      </View>
-    </ScrollView>
-  )
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <Text style={styles.modalTitle}>{this.state.title}</Text>
+              <Icon
+                name='heart'
+                type='font-awesome'
+                iconStyle={{
+                  color: "#D7EB5A",
+                  marginRight: "30%",
+                  marginTop: 14,
+                }}
+                size={25}
+              />
+            </View>
+            <Card containerStyle={styles.cardContainer}>
+              <Card.Image
+                style={styles.cardImg}
+                source={this.state.image}
+              ></Card.Image>
+              <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                <Text style={styles.modalArtist}>Artist</Text>
+              </Text>
+              <View style={styles.line}></View>
+              <View style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}>
+                <Text style={styles.modalHeader}>Current Price</Text>
+                <Text style={styles.modalPrice}>${this.state.price}</Text>
+              </View>
+              <Button
+                title={"Buy Now"}
+                titleStyle={{ color: "#232323", fontSize: 20 }}
+                buttonStyle={{
+                  backgroundColor: "#D7EB5A",
+                  marginTop: 15,
+                  marginLeft: 25,
+                  marginRight: 25,
+                  marginBottom: 50,
+                  padding: 15,
+                  borderRadius: 17,
+                }}
+                onPress={() =>
+                  Alert.alert(
+                    "Connect Wallet",
+                    "Please connect your ETH Wallet to continue",
+                    [
+                      {
+                        text: "OK",
+                        style: "cancel",
+                      },
+                    ],
+                    { cancelable: true }
+                  )
+                }
+              />
+            </Card>
+          </View>
+        </Modal>
+      </ScrollView>
+    )
+  }
 }
 
-function HighToLow() {
-  const highToLowArray = IMAGES.sort(function (a, b) {
-    return b.price - a.price
-  })
-  return (
-    <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
-      <View>
-        {highToLowArray.map((i) => {
-          return (
-            <View key={i.id}>
-              <Card containerStyle={styles.cardContainer}>
-                <Card.Image
-                  style={styles.cardImg}
-                  source={i.image}
-                ></Card.Image>
-                <Text style={{ marginLeft: 10, marginTop: 10 }}>
-                  <Text style={styles.cardTitle}>{i.title}</Text>
-                  <Text style={styles.price}> Price: ${i.price}</Text>
-                </Text>
-                <View style={styles.line}></View>
-                <View
-                  style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
-                >
-                  <Text style={styles.artistHeader}>Artist</Text>
-                  <Text style={styles.artistName}>{i.title}</Text>
-                </View>
-              </Card>
-              <View style={{ marginBottom: 50 }}></View>
+class HighToLow extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showModal: false,
+      id: "",
+      title: "",
+      image: "",
+      price: "",
+      views: "",
+      date: "",
+    }
+  }
+  // MODAL
+  toggleModal() {
+    this.setState({ showModal: !this.state.showModal })
+  }
+  render() {
+    const highToLowArray = IMAGES.sort(function (a, b) {
+      return b.price - a.price
+    })
+    return (
+      <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
+        <View>
+          {highToLowArray.map((i) => {
+            return (
+              <View key={i.id}>
+                <Card containerStyle={styles.cardContainer}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.toggleModal(this.setState(i))
+                    }}
+                  >
+                    <TouchableOpacity
+                      onPress={() => {
+                        this.toggleModal(this.setState(i))
+                      }}
+                    >
+                      <Card.Image
+                        style={styles.cardImg}
+                        source={i.image}
+                      ></Card.Image>
+                    </TouchableOpacity>
+                  </TouchableOpacity>
+                  <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                    <Text style={styles.cardTitle}>{i.title}</Text>
+                    <Text style={styles.price}> Price: ${i.price}</Text>
+                  </Text>
+                  <View style={styles.line}></View>
+                  <View
+                    style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+                  >
+                    <Text style={styles.artistHeader}>Artist</Text>
+                    <Text style={styles.artistName}>{i.title}</Text>
+                  </View>
+                </Card>
+                <View style={{ marginBottom: 50 }}></View>
+              </View>
+            )
+          })}
+        </View>
+        <Modal
+          animationType={"slide"}
+          transparent={false}
+          visible={this.state.showModal}
+          onRequestClose={() => this.toggleModal()}
+        >
+          <View style={styles.modal}>
+            <View style={{ padding: 10 }}>
+              <Icon
+                name='close'
+                type='font-awesome'
+                iconStyle={{
+                  color: "#8B51F5",
+                  marginLeft: "90%",
+                }}
+                size={35}
+                onPress={() => this.toggleModal()}
+              />
             </View>
-          )
-        })}
-      </View>
-    </ScrollView>
-  )
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <Text style={styles.modalTitle}>{this.state.title}</Text>
+              <Icon
+                name='heart'
+                type='font-awesome'
+                iconStyle={{
+                  color: "#D7EB5A",
+                  marginRight: "30%",
+                  marginTop: 14,
+                }}
+                size={25}
+              />
+            </View>
+            <Card containerStyle={styles.cardContainer}>
+              <Card.Image
+                style={styles.cardImg}
+                source={this.state.image}
+              ></Card.Image>
+              <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                <Text style={styles.modalArtist}>Artist</Text>
+              </Text>
+              <View style={styles.line}></View>
+              <View style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}>
+                <Text style={styles.modalHeader}>Current Price</Text>
+                <Text style={styles.modalPrice}>${this.state.price}</Text>
+              </View>
+              <Button
+                title={"Buy Now"}
+                titleStyle={{ color: "#232323", fontSize: 20 }}
+                buttonStyle={{
+                  backgroundColor: "#D7EB5A",
+                  marginTop: 15,
+                  marginLeft: 25,
+                  marginRight: 25,
+                  marginBottom: 50,
+                  padding: 15,
+                  borderRadius: 17,
+                }}
+                onPress={() =>
+                  Alert.alert(
+                    "Connect Wallet",
+                    "Please connect your ETH Wallet to continue",
+                    [
+                      {
+                        text: "OK",
+                        style: "cancel",
+                      },
+                    ],
+                    { cancelable: true }
+                  )
+                }
+              />
+            </Card>
+          </View>
+        </Modal>
+      </ScrollView>
+    )
+  }
 }
 
 const styles = StyleSheet.create({

@@ -39,71 +39,30 @@ class AccordionView extends Component {
         this.setState({expanded: !this.state.expanded})
     }
 
-    renderHeader = (section) => {
+    renderHeader = (section, isActive) => {
         return(
             
             <View style={styles.header}>
                 
-                        <Text style={styles.headerText}>
-                        {section.title}
-                        </Text>
-                    
-                    
-                    <Icon 
-                            name={this.state.expanded ? 'minus' : 'plus'}
-                            type='font-awesome'
-                            iconStyle={{
-                            color: "#8B51F5",
-                            paddingBottom: 10,
-                            paddingLeft: '20%'
-                            }}
-                            size={35}
-                        />
-                    
-                    
+                <Text style={styles.headerText}>
+                {section.title}
+                </Text>
+                <Icon 
+                    name={this.state.expanded ? 'minus' : 'plus'}
+                    type='font-awesome'
+                    iconStyle={{
+                    color: "#8B51F5",
+                    paddingBottom: 10,
+                    paddingLeft: '20%'
+                    }}
+                    size={35}
+                />
                 
             </View>
         
         )
     }
 
-    
-
-    plusIcon = () => {
-        return(
-            <View>
-                    <Icon 
-                        display={!this.state.icon}
-                        name='plus'
-                        type='font-awesome'
-                        iconStyle={{
-                        color: "#8B51F5",
-                        paddingBottom: 10,
-                        paddingLeft: '20%'
-                        }}
-                        size={35}
-                    />
-                </View>
-        )
-    }
-    
-    minusIcon = (props) => {
-        return(
-            <View>
-                    <Icon 
-                        display={this.state.icon}
-                        name='minus'
-                        type='font-awesome'
-                        iconStyle={{
-                        color: "#8B51F5",
-                        paddingBottom: 10,
-                        paddingLeft: '20%'
-                        }}
-                        size={35}
-                    />
-                </View>
-        )
-    }
 
     renderContent = (section) => {
         return(
@@ -115,8 +74,10 @@ class AccordionView extends Component {
 
     updateSections = (activeSections) => {
         this.setState({activeSections});
-        this.toggleExpanded();
-    }
+        this.toggleExpanded(activeSections[0])
+        console.log(activeSections[0])
+        // console.log(this.state.activeSections)
+    }   
 
     render() {
         return(

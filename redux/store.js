@@ -1,5 +1,3 @@
-// import { createStore } from 'redux'
+import { createStore } from "redux"
 
-//     export const state = createStore(
-
-//     )
+export const store = createStore()

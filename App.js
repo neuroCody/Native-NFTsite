@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Provider } from "react-redux"
-import { state } from "./redux/store"
+import { store } from "./redux/store"
 import * as Font from "expo-font"
 import Main from "./components/MainComponent"
 import { AppLoading } from "expo"
@@ -25,9 +25,9 @@ export default function App() {
 
   if (fontsLoaded) {
     return (
-      // <Provider store={state}>
-      <Main />
-      // </Provider>
+      <Provider store={store}>
+        <Main />
+      </Provider>
     )
   } else {
     ///Unsure whether to wrap APPLOADING in PROVIDER

@@ -15,8 +15,23 @@ import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { IMAGES } from "../arrays/images"
+// import { NewestArr } from '../redux/newest'
+import { connect } from 'react-redux'
 import * as Animatable from "react-native-animatable"
 
+const mapStateToProps = (state) => {
+  // console.log("this should be an Array" + state)
+  return {
+    newest: state.NewestArr,
+  }
+  
+}
+
+// const mapDispatchToProps = {
+//   NewestArr,
+// }
+
+// Search Bar START
 function GalleryScreen({ navigation }) {
   const [shouldShow, setShouldShow] = useState(false)
 
@@ -62,7 +77,9 @@ function GalleryScreen({ navigation }) {
     </SafeAreaView>
   )
 }
+// Search Bar END
 
+// Header/Navigator START
 const Stack = createStackNavigator()
 
 function Gallery({ navigation }) {
@@ -101,7 +118,9 @@ function Gallery({ navigation }) {
     </NavigationContainer>
   )
 }
+// Header/Navigator END
 
+// Tab Navigator START
 const Tab = createMaterialTopTabNavigator()
 
 class GalleryNav extends Component {
@@ -129,7 +148,9 @@ class GalleryNav extends Component {
     )
   }
 }
+// Tab Navigtor END
 
+// Most Viewed START
 class MostViewed extends Component {
   constructor(props) {
     super(props)
@@ -268,34 +289,50 @@ class MostViewed extends Component {
     )
   }
 }
+// Most Viewed END
 
-class Newest extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      showModal: false,
-      id: "",
-      title: "",
-      image: "",
-      price: "",
-      views: "",
-      date: "",
-    }
-  }
-  // MODAL
-  toggleModal() {
-    this.setState({ showModal: !this.state.showModal })
-  }
+function RenderTabArr(props) {
+  
+  if (props) {
+    return (
+      <Card containerStyle={styles.cardContainer}>
+      {/* <TouchableOpacity
+        onPress={() => {
+          this.toggleModal(this.setState(i))
+        }}
+      > */}
+        <Card.Image
+          style={styles.cardImg}
+          source={props.image}
+        ></Card.Image>
+      {/* </TouchableOpacity> */}
+      <Text style={{ marginLeft: 10, marginTop: 10 }}>
+        <Text style={styles.cardTitle}>{props.title}</Text>
+        <Text style={styles.price}> Price: ${props.price}</Text>
+      </Text>
+      <View style={styles.line}></View>
+      <View
+        style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+      >
+        <Text style={styles.artistHeader}>Artist</Text>
+        <Text style={styles.artistName}>{props.title}</Text>
+      </View>
+    </Card>
+    );
+}
+return <View />
+}
 
-  render() {
-    const NewestDate = IMAGES.sort(function (a, b) {
-      return a.date - b.date
-    })
+// Newest START
+function Newest() {
+  
+ 
 
     return (
       <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
         <View>
-          {NewestDate.map((i) => {
+          <RenderTabArr />
+          {/* {NewestDate.map((i) => {
             return (
               <View key={i.id}>
                 <Card containerStyle={styles.cardContainer}>
@@ -324,12 +361,12 @@ class Newest extends Component {
                 <View style={{ marginBottom: 50 }}></View>
               </View>
             )
-          })}
+          })} */}
         </View>
-        <Modal
+        {/* <Modal
           animationType={"slide"}
           transparent={false}
-          visible={this.state.showModal}
+          visible={this.props.showModal}
           onRequestClose={() => this.toggleModal()}
         >
           <View style={styles.modal}>
@@ -401,11 +438,13 @@ class Newest extends Component {
               />
             </Card>
           </View>
-        </Modal>
+        </Modal> */}
       </ScrollView>
     )
-  }
+  
 }
+// Newest END
+
 ////fix styling in the cards
 class LowToHigh extends Component {
   constructor(props) {
@@ -766,4 +805,4 @@ const styles = StyleSheet.create({
     color: "#F2F2F2",
   },
 })
-export default Gallery
+export default connect(mapStateToProps)(Gallery)

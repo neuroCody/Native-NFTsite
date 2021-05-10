@@ -1,9 +1,11 @@
 import React, { useState } from "react"
 import { Provider } from "react-redux"
-import { state } from "./redux/store"
 import * as Font from "expo-font"
 import Main from "./components/MainComponent"
+import { ConfigureStore } from './redux/store';
 import { AppLoading } from "expo"
+
+const store = ConfigureStore()
 
 //Imported fonts
 const getFonts = () => {
@@ -25,14 +27,16 @@ export default function App() {
 
   if (fontsLoaded) {
     return (
-      // <Provider store={state}>
+      <Provider store={store}>
       <Main />
-      // </Provider>
+      </Provider>
     )
   } else {
     ///Unsure whether to wrap APPLOADING in PROVIDER
     return (
+      // <Provider store={store}>
       <AppLoading startAsync={getFonts} onFinish={() => setFontsLoaded(true)} />
+      // </Provider>
     )
   }
 }

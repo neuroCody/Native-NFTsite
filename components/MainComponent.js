@@ -18,7 +18,7 @@ function MainNavigator() {
     <NavigationContainer >
       <Drawer.Navigator drawerContent={props => <CustomDrawerContentComponent {...props} />} >
         <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Gallery" component={Gallery} onPress={console.log('was pressed')}/>
+        <Drawer.Screen name="Gallery" component={Gallery} />
         <Drawer.Screen name="Faq" component={Faq} />
         <Drawer.Screen name="Sell" component={Sell} />
         <Drawer.Screen name="Login" component={Login} />

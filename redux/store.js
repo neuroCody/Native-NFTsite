@@ -1,5 +1,11 @@
-// import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
+import { NewestArr } from './newest'
 
-//     export const state = createStore(
-
-//     )
+export const ConfigureStore = () => {
+  const store = createStore(
+    combineReducers({
+        NewestArr: NewestArr,
+    })
+  )
+  return store
+}

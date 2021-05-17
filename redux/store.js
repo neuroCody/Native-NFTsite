@@ -1,11 +1,12 @@
-import { createStore, combineReducers } from 'redux'
-import { NewestArr } from './newest'
+import { createStore, combineReducers } from "redux"
+import { galleryReducer } from "./galleryReducer"
 
-export const ConfigureStore = () => {
-  const store = createStore(
-    combineReducers({
-        NewestArr: NewestArr,
-    })
-  )
-  return store
+const rootReducer = {
+  gallery: galleryReducer,
 }
+
+const store = createStore(rootReducer)
+
+console.log("this is reducer", rootReducer)
+
+export default store

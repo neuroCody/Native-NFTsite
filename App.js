@@ -2,10 +2,8 @@ import React, { useState } from "react"
 import { Provider } from "react-redux"
 import * as Font from "expo-font"
 import Main from "./components/MainComponent"
-import { ConfigureStore } from './redux/store';
+import { store } from "./redux/store"
 import { AppLoading } from "expo"
-
-const store = ConfigureStore()
 
 //Imported fonts
 const getFonts = () => {
@@ -26,9 +24,10 @@ export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false)
 
   if (fontsLoaded) {
+    console.log("This is store:", store)
     return (
       <Provider store={store}>
-      <Main />
+        <Main />
       </Provider>
     )
   } else {

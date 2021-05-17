@@ -1,4 +1,5 @@
 import React, { Component, useState, useLayoutEffect } from "react"
+import { useSelector } from "react-redux"
 import {
   Text,
   View,
@@ -15,21 +16,13 @@ import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { IMAGES } from "../arrays/images"
-// import { NewestArr } from '../redux/newest'
-import { connect } from 'react-redux'
+import { galleryReducer } from "../redux/galleryReducer"
+import { connect } from "react-redux"
 import * as Animatable from "react-native-animatable"
 
-const mapStateToProps = (state) => {
-  // console.log("this should be an Array" + state)
-  return {
-    newest: state.NewestArr,
-  }
-  
-}
+//REDUX
 
-// const mapDispatchToProps = {
-//   NewestArr,
-// }
+//REDUX
 
 // Search Bar START
 function GalleryScreen({ navigation }) {
@@ -291,79 +284,72 @@ class MostViewed extends Component {
 }
 // Most Viewed END
 
-function RenderTabArr(props) {
-  
+{
+  /*function RenderTabArr(props) {
   if (props) {
     return (
       <Card containerStyle={styles.cardContainer}>
-      {/* <TouchableOpacity
+         <TouchableOpacity
         onPress={() => {
           this.toggleModal(this.setState(i))
         }}
-      > */}
-        <Card.Image
-          style={styles.cardImg}
-          source={props.image}
-        ></Card.Image>
-      {/* </TouchableOpacity> */}
-      <Text style={{ marginLeft: 10, marginTop: 10 }}>
-        <Text style={styles.cardTitle}>{props.title}</Text>
-        <Text style={styles.price}> Price: ${props.price}</Text>
-      </Text>
-      <View style={styles.line}></View>
-      <View
-        style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
-      >
-        <Text style={styles.artistHeader}>Artist</Text>
-        <Text style={styles.artistName}>{props.title}</Text>
-      </View>
-    </Card>
-    );
-}
-return <View />
+      > 
+        <Card.Image style={styles.cardImg} source={props.image}></Card.Image>
+       </TouchableOpacity> 
+        <Text style={{ marginLeft: 10, marginTop: 10 }}>
+          <Text style={styles.cardTitle}>{props.title}</Text>
+          <Text style={styles.price}> Price: ${props.price}</Text>
+        </Text>
+        <View style={styles.line}></View>
+        <View style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}>
+          <Text style={styles.artistHeader}>Artist</Text>
+          <Text style={styles.artistName}>{props.title}</Text>
+        </View>
+      </Card>
+    )
+  }
+  return <View />
+} */
 }
 
 // Newest START
 function Newest() {
-  
- 
-
-    return (
-      <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
-        <View>
-          <RenderTabArr />
-          {/* {NewestDate.map((i) => {
-            return (
-              <View key={i.id}>
-                <Card containerStyle={styles.cardContainer}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      this.toggleModal(this.setState(i))
-                    }}
-                  >
-                    <Card.Image
-                      style={styles.cardImg}
-                      source={i.image}
-                    ></Card.Image>
-                  </TouchableOpacity>
-                  <Text style={{ marginLeft: 10, marginTop: 10 }}>
-                    <Text style={styles.cardTitle}>{i.title}</Text>
-                    <Text style={styles.price}> Price: ${i.price}</Text>
-                  </Text>
-                  <View style={styles.line}></View>
-                  <View
-                    style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
-                  >
-                    <Text style={styles.artistHeader}>Artist</Text>
-                    <Text style={styles.artistName}>{i.title}</Text>
-                  </View>
-                </Card>
-                <View style={{ marginBottom: 50 }}></View>
-              </View>
-            )
-          })} */}
-        </View>
-        {/* <Modal
+  // const createNewest = useSelector((state) => state.gallery.newest)
+  return (
+    <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
+      <View>
+        {/* {createNewest.map((i) => {
+          return (
+            <View key={i.id}>
+              <Card containerStyle={styles.cardContainer}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.toggleModal(this.setState(i))
+                  }}
+                >
+                  <Card.Image
+                    style={styles.cardImg}
+                    source={i.image}
+                  ></Card.Image>
+                </TouchableOpacity>
+                <Text style={{ marginLeft: 10, marginTop: 10 }}>
+                  <Text style={styles.cardTitle}>{i.title}</Text>
+                  <Text style={styles.price}> Price: ${i.price}</Text>
+                </Text>
+                <View style={styles.line}></View>
+                <View
+                  style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
+                >
+                  <Text style={styles.artistHeader}>Artist</Text>
+                  <Text style={styles.artistName}>{i.title}</Text>
+                </View>
+              </Card>
+              <View style={{ marginBottom: 50 }}></View>
+            </View>
+          )
+        })} */}
+      </View>
+      {/* <Modal
           animationType={"slide"}
           transparent={false}
           visible={this.props.showModal}
@@ -439,9 +425,8 @@ function Newest() {
             </Card>
           </View>
         </Modal> */}
-      </ScrollView>
-    )
-  
+    </ScrollView>
+  )
 }
 // Newest END
 
@@ -805,4 +790,4 @@ const styles = StyleSheet.create({
     color: "#F2F2F2",
   },
 })
-export default connect(mapStateToProps)(Gallery)
+export default Gallery

@@ -75,8 +75,8 @@ class AccordionView extends Component {
     updateSections = (activeSections) => {
         this.setState({activeSections});
         this.toggleExpanded(activeSections[0])
-        console.log(activeSections[0])
-        // console.log(this.state.activeSections)
+        
+        
     }   
 
     render() {

@@ -1,11 +1,12 @@
-import React, { useState, useLayoutEffect } from "react"
-import { Text, View, SafeAreaView, TextInput, StyleSheet } from "react-native"
+import React, { Component, useState, useLayoutEffect } from "react"
+import { Text, View, SafeAreaView, TextInput, StyleSheet, Image } from "react-native"
 import { Icon, Card } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
-import { NavigationContainer } from "@react-navigation/native"
+import { NavigationContainer, ThemeProvider } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import * as Animatable from "react-native-animatable"
 
+// Search Bar View Component
 function HomeScreen({ navigation }) {
   const [shouldShow, setShouldShow] = useState(false)
   const [overlay, setOverlay] = useState(false)
@@ -31,7 +32,7 @@ function HomeScreen({ navigation }) {
   // const openSearchOverlay=()=>{
   // styles.searchOverlay
   // }
-
+  // Home Screen Styling
   return (
     <SafeAreaView style={styles.mainView}>
       {shouldShow ? (
@@ -65,7 +66,9 @@ function HomeScreen({ navigation }) {
                 Learn more
               </Text>
             </View>
-
+            <View>
+              <Carousel />
+            </View>
             <Card
               containerStyle={{
                 backgroundColor: "#48494B",
@@ -121,6 +124,7 @@ function HomeScreen({ navigation }) {
   )
 }
 
+// Header and Drawer Navigation components
 const Stack = createStackNavigator()
 
 function Home({ navigation }) {
@@ -179,7 +183,8 @@ const styles = StyleSheet.create({
     height: 350,
   },
   banner: {
-    padding: 50,
+    padding: 30,
+    paddingTop: 20,
   },
   bannerText: {
     fontSize: 50,
@@ -195,5 +200,91 @@ const styles = StyleSheet.create({
   //   backgroundColor: "",
   // },
 })
+
+class Carousel extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      images: [
+        require('./images/MostViewedBanner.png'),
+        require('./images/NewestBanner.png'),
+        require('./images/LowToHighBanner.png'),
+        require('./images/HighToLowBanner.png'),
+      ], 
+      imageOpacity: 0,
+      currentImage: 0,
+    }
+  }
+
+  componentDidMount() {
+    this.imageFadeIn()
+    this.switchImage()
+  }
+
+  imageFadeOut() {
+    let imageOpacity = this.state.imageOpacity
+    if(imageOpacity > 0) {
+      this.setState(
+        {
+          imageOpacity: imageOpacity - 0.1
+        },
+        () => {
+          setTimeout(() => {
+            this.imageFadeOut();
+          }, 10)
+        }
+      )
+    }
+  }
+
+  imageFadeIn() {
+    let imageOpacity = this.state.imageOpacity
+    if(imageOpacity < 1) {
+      this.setState(
+        {
+          imageOpacity: imageOpacity + 0.1,
+        },
+        () => {
+          setTimeout(() => {
+            this.imageFadeIn()
+          }, 30)
+        }
+      )
+    }
+  }
+
+  switchImage() {
+    let { images } = this.state
+    setInterval(() => { //6 second pause between images
+      this.imageFadeOut();
+      setTimeout(() => { // .5 sec delay after image fade out begins
+        this.setState(
+          {
+            currentImage: this.state.currentImage < images.length-1 ? this.state.currentImage + 1 : 0,
+            imageOpacity: 0,
+          }, 
+          () => {
+            setTimeout(() => { // 0.1 sec delay before new image fade in
+              this.imageFadeIn();
+            }, 300)
+          }
+        )
+      }, 500)
+    }, 6000)
+  }
+
+  render() {
+    return(
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Image
+          fluid
+          source={ this.state.images[this.state.currentImage]}
+          style={{flex: 1, opacity: this.state.imageOpacity, position:'relative'}}
+        />
+      </View>
+    )
+  }
+
+}
 
 export default Home

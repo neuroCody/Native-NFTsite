@@ -1,12 +1,11 @@
-import * as ActionTypes from "./ActionTypes"
+import * as ActionTypes from "./actionTypes"
 import { IMAGES } from "../arrays/images"
 
-const initialState = {
+export const initialState = {
   images: IMAGES,
 }
-// console.log(IMAGES)
+
 export const NewestArr = (state = initialState, action) => {
-    console.log(state)
   switch (action.type) {
     case ActionTypes.NEWEST_RENDERING:
       const NewestDate = {...state, images: state.images.sort(function (a, b) {

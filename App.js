@@ -1,11 +1,22 @@
 import React, { useState } from "react"
-import { Provider } from "react-redux"
+
 import * as Font from "expo-font"
 import Main from "./components/MainComponent"
-import { ConfigureStore } from './redux/store';
+
 import { AppLoading } from "expo"
 
-const store = ConfigureStore()
+import { IMAGES } from "./arrays/images"
+//REDUX IMPORTS
+import { createStore } from "redux"
+import galleryReducer from "./redux/GalleryReducer"
+import { Provider } from "react-redux"
+
+const initialState = {
+  showModal: false,
+  images: IMAGES,
+}
+
+const store = createStore(galleryReducer, initialState)
 
 //Imported fonts
 const getFonts = () => {
@@ -28,15 +39,12 @@ export default function App() {
   if (fontsLoaded) {
     return (
       <Provider store={store}>
-      <Main />
+        <Main />
       </Provider>
     )
   } else {
-    ///Unsure whether to wrap APPLOADING in PROVIDER
     return (
-      // <Provider store={store}>
       <AppLoading startAsync={getFonts} onFinish={() => setFontsLoaded(true)} />
-      // </Provider>
     )
   }
 }

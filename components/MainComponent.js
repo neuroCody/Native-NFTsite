@@ -10,24 +10,24 @@ import { createDrawerNavigator } from "@react-navigation/drawer"
 import { NavigationContainer } from "@react-navigation/native"
 import CustomDrawerContentComponent from "./DrawerStyleComponent"
 
-
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator()
 
 function MainNavigator() {
   return (
-    <NavigationContainer >
-      <Drawer.Navigator drawerContent={props => <CustomDrawerContentComponent {...props} />} >
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Gallery" component={Gallery} />
-        <Drawer.Screen name="Faq" component={Faq} />
-        <Drawer.Screen name="Sell" component={Sell} />
-        <Drawer.Screen name="Login" component={Login} />
-        <Drawer.Screen name="SignUp" component={SignUp} />
+    <NavigationContainer>
+      <Drawer.Navigator
+        drawerContent={(props) => <CustomDrawerContentComponent {...props} />}
+      >
+        <Drawer.Screen name='Home' component={Home} />
+        <Drawer.Screen name='Gallery' component={Gallery} />
+        <Drawer.Screen name='Faq' component={Faq} />
+        <Drawer.Screen name='Sell' component={Sell} />
+        <Drawer.Screen name='Login' component={Login} />
+        <Drawer.Screen name='SignUp' component={SignUp} />
       </Drawer.Navigator>
     </NavigationContainer>
   )
 }
-
 
 class Main extends Component {
   render() {

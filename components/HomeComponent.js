@@ -1,5 +1,12 @@
 import React, { Component, useState, useLayoutEffect } from "react"
-import { Text, View, SafeAreaView, TextInput, StyleSheet, Image } from "react-native"
+import {
+  Text,
+  View,
+  SafeAreaView,
+  TextInput,
+  StyleSheet,
+  Image,
+} from "react-native"
 import { Icon, Card } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 import { NavigationContainer, ThemeProvider } from "@react-navigation/native"
@@ -202,15 +209,15 @@ const styles = StyleSheet.create({
 })
 
 class Carousel extends Component {
-  constructor(props){
-    super(props);
+  constructor(props) {
+    super(props)
     this.state = {
       images: [
-        require('./images/MostViewedBanner.png'),
-        require('./images/NewestBanner.png'),
-        require('./images/LowToHighBanner.png'),
-        require('./images/HighToLowBanner.png'),
-      ], 
+        require("./images/MostViewedBanner.png"),
+        require("./images/NewestBanner.png"),
+        require("./images/LowToHighBanner.png"),
+        require("./images/HighToLowBanner.png"),
+      ],
       imageOpacity: 0,
       currentImage: 0,
     }
@@ -223,14 +230,14 @@ class Carousel extends Component {
 
   imageFadeOut() {
     let imageOpacity = this.state.imageOpacity
-    if(imageOpacity > 0) {
+    if (imageOpacity > 0) {
       this.setState(
         {
-          imageOpacity: imageOpacity - 0.1
+          imageOpacity: imageOpacity - 0.1,
         },
         () => {
           setTimeout(() => {
-            this.imageFadeOut();
+            this.imageFadeOut()
           }, 10)
         }
       )
@@ -239,7 +246,7 @@ class Carousel extends Component {
 
   imageFadeIn() {
     let imageOpacity = this.state.imageOpacity
-    if(imageOpacity < 1) {
+    if (imageOpacity < 1) {
       this.setState(
         {
           imageOpacity: imageOpacity + 0.1,
@@ -255,17 +262,23 @@ class Carousel extends Component {
 
   switchImage() {
     let { images } = this.state
-    setInterval(() => { //6 second pause between images
-      this.imageFadeOut();
-      setTimeout(() => { // .5 sec delay after image fade out begins
+    setInterval(() => {
+      //6 second pause between images
+      this.imageFadeOut()
+      setTimeout(() => {
+        // .5 sec delay after image fade out begins
         this.setState(
           {
-            currentImage: this.state.currentImage < images.length-1 ? this.state.currentImage + 1 : 0,
+            currentImage:
+              this.state.currentImage < images.length - 1
+                ? this.state.currentImage + 1
+                : 0,
             imageOpacity: 0,
-          }, 
+          },
           () => {
-            setTimeout(() => { // 0.1 sec delay before new image fade in
-              this.imageFadeIn();
+            setTimeout(() => {
+              // 0.1 sec delay before new image fade in
+              this.imageFadeIn()
             }, 300)
           }
         )
@@ -274,17 +287,20 @@ class Carousel extends Component {
   }
 
   render() {
-    return(
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Image
           fluid
-          source={ this.state.images[this.state.currentImage]}
-          style={{flex: 1, opacity: this.state.imageOpacity, position:'relative'}}
+          source={this.state.images[this.state.currentImage]}
+          style={{
+            flex: 1,
+            opacity: this.state.imageOpacity,
+            position: "relative",
+          }}
         />
       </View>
     )
   }
-
 }
 
 export default Home

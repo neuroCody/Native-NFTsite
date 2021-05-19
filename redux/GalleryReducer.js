@@ -1,4 +1,4 @@
-import { MOSTVIEWED, NEWEST, LOWTOHIGH, HIGHTOLOW } from "./ActionTypes"
+import { MOSTVIEWED, NEWEST, LOWTOHIGH, HIGHTOLOW } from "./actionTypes"
 
 //reducer- function used to update store, takes two arguments, state and action
 //the state holds the old state, action is what to update

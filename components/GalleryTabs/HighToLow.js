@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import React from "react"
+import React, { useState } from "react"
 import {
   Text,
   View,
@@ -12,10 +12,11 @@ import { Icon, Card, Button } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 
 function HighToLow(props) {
-  // MODAL
-  //   toggleModal() {
-  //     this.setState({ showModal: !props.showModal })
-  //   }
+  // show/hide modal Hook
+  const[modalOpen, setModalOpen] = useState(false)
+  // render modal card data Hook
+  const[modalData, setModalData] = useState({})
+ 
   const highToLowArray = props.images.sort(function (a, b) {
     return b.price - a.price
   })
@@ -29,19 +30,14 @@ function HighToLow(props) {
               <Card containerStyle={styles.cardContainer}>
                 <TouchableOpacity
                   onPress={() => {
-                    this.toggleModal(this.setState(i))
+                    setModalOpen(true);
+                    setModalData(i);
                   }}
                 >
-                  <TouchableOpacity
-                    onPress={() => {
-                      this.toggleModal(this.setState(i))
-                    }}
-                  >
                     <Card.Image
                       style={styles.cardImg}
                       source={i.image}
                     ></Card.Image>
-                  </TouchableOpacity>
                 </TouchableOpacity>
                 <Text style={{ marginLeft: 10, marginTop: 10 }}>
                   <Text style={styles.cardTitle}>{i.title}</Text>
@@ -60,11 +56,10 @@ function HighToLow(props) {
           )
         })}
       </View>
-      {/* <Modal
+      <Modal
           animationType={"slide"}
           transparent={false}
-          visible={props.showModal}
-          onRequestClose={() => this.toggleModal()}
+          visible={modalOpen}
         >
           <View style={styles.modal}>
             <View style={{ padding: 10 }}>
@@ -76,13 +71,13 @@ function HighToLow(props) {
                   marginLeft: "90%",
                 }}
                 size={35}
-                onPress={() => this.toggleModal()}
+                onPress={() => setModalOpen(false)}
               />
             </View>
             <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
-              <Text style={styles.modalTitle}>{props.images.title}</Text>
+              <Text style={styles.modalTitle}>{modalData.title}</Text>
               <Icon
                 name='heart'
                 type='font-awesome'
@@ -92,12 +87,13 @@ function HighToLow(props) {
                   marginTop: 14,
                 }}
                 size={25}
+                onPress={()=> console.log(modalData)}
               />
             </View>
             <Card containerStyle={styles.cardContainer}>
               <Card.Image
                 style={styles.cardImg}
-                source={props.images.image}
+                source={modalData.image}
               ></Card.Image>
               <Text style={{ marginLeft: 10, marginTop: 10 }}>
                 <Text style={styles.modalArtist}>Artist</Text>
@@ -105,7 +101,7 @@ function HighToLow(props) {
               <View style={styles.line}></View>
               <View style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}>
                 <Text style={styles.modalHeader}>Current Price</Text>
-                <Text style={styles.modalPrice}>${props.images.price}</Text>
+                <Text style={styles.modalPrice}>${modalData.price}</Text>
               </View>
               <Button
                 title={"Buy Now"}
@@ -135,7 +131,7 @@ function HighToLow(props) {
               />
             </Card>
           </View>
-        </Modal> */}
+        </Modal>
     </ScrollView>
   )
 }

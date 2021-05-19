@@ -46,7 +46,7 @@ function GalleryScreen(props) {
     <SafeAreaView style={{ flex: 1, backgroundColor: "#232323" }}>
       {shouldShow ? (
         <Animatable.View
-          animation='slideInRight' //slide in ffrom top preferrred
+          animation='slideInDown'
           duration={900}
           style={{
             height: 40,

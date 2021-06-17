@@ -38,7 +38,7 @@ function SellScreen({ navigation }) {
     <SafeAreaView style={{ flex: 1, backgroundColor: "#232323" }}>
       {shouldShow ? (
         <Animatable.View
-          animation='slideInRight'
+          animation='slideInDown'
           duration={900}
           style={{
             height: 40,
@@ -150,36 +150,36 @@ const Stack = createStackNavigator()
 
 function Sell({ navigation }) {
   return (
-      <Stack.Navigator>
-        <Stack.Screen
-          name='Visualux'
-          component={SellScreen}
-          options={{
-            Headertitle: "Visualux",
-            headerStyle: {
-              backgroundColor: "#232323",
-            },
-            headerTitleStyle: {
-              fontFamily: "satisfy-regular",
-              color: "#F2F2F2",
-              fontSize: 30,
-              marginLeft: "33%",
-            },
-            headerLeft: () => (
-              <Icon
-                name='bars'
-                type='font-awesome'
-                iconStyle={{
-                  color: "#8B51F5",
-                  margin: 15,
-                }}
-                size={35}
-                onPress={() => navigation.toggleDrawer()}
-              />
-            ),
-          }}
-        />
-      </Stack.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen
+        name='Visualux'
+        component={SellScreen}
+        options={{
+          Headertitle: "Visualux",
+          headerStyle: {
+            backgroundColor: "#232323",
+          },
+          headerTitleStyle: {
+            fontFamily: "satisfy-regular",
+            color: "#F2F2F2",
+            fontSize: 30,
+            marginLeft: "33%",
+          },
+          headerLeft: () => (
+            <Icon
+              name='bars'
+              type='font-awesome'
+              iconStyle={{
+                color: "#8B51F5",
+                margin: 15,
+              }}
+              size={35}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        }}
+      />
+    </Stack.Navigator>
   )
 }
 

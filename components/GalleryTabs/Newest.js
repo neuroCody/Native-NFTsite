@@ -14,9 +14,9 @@ import { ScrollView } from "react-native-gesture-handler"
 //MOST VIEWED TAB
 const Newest = (props) => {
   // show/hide modal Hook
-  const[modalOpen, setModalOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
   // render modal card data Hook
-  const[modalData, setModalData] = useState({})
+  const [modalData, setModalData] = useState({})
 
   const NewestDate = props.images.sort(function (a, b) {
     return a.date - b.date
@@ -31,7 +31,8 @@ const Newest = (props) => {
               <Card containerStyle={styles.cardContainer}>
                 <TouchableOpacity
                   onPress={() => {
-                    this.toggleModal(this.setState(i))
+                    setModalOpen(true)
+                    setModalData(i)
                   }}
                 >
                   <Card.Image
@@ -56,82 +57,78 @@ const Newest = (props) => {
           )
         })}
       </View>
-      <Modal
-          animationType={"slide"}
-          transparent={false}
-          visible={modalOpen}
-        >
-          <View style={styles.modal}>
-            <View style={{ padding: 10 }}>
-              <Icon
-                name='close'
-                type='font-awesome'
-                iconStyle={{
-                  color: "#8B51F5",
-                  marginLeft: "90%",
-                }}
-                size={35}
-                onPress={() => setModalOpen(false)}
-              />
-            </View>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <Text style={styles.modalTitle}>{modalData.title}</Text>
-              <Icon
-                name='heart'
-                type='font-awesome'
-                iconStyle={{
-                  color: "#D7EB5A",
-                  marginRight: "30%",
-                  marginTop: 14,
-                }}
-                size={25}
-                onPress={()=> console.log(modalData)}
-              />
-            </View>
-            <Card containerStyle={styles.cardContainer}>
-              <Card.Image
-                style={styles.cardImg}
-                source={modalData.image}
-              ></Card.Image>
-              <Text style={{ marginLeft: 10, marginTop: 10 }}>
-                <Text style={styles.modalArtist}>Artist: {modalData.artist}</Text>
-              </Text>
-              <View style={styles.line}></View>
-              <View style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}>
-                <Text style={styles.modalHeader}>Current Price</Text>
-                <Text style={styles.modalPrice}>${modalData.price}</Text>
-              </View>
-              <Button
-                title={"Buy Now"}
-                titleStyle={{ color: "#232323", fontSize: 20 }}
-                buttonStyle={{
-                  backgroundColor: "#D7EB5A",
-                  marginTop: 15,
-                  marginLeft: 25,
-                  marginRight: 25,
-                  marginBottom: 50,
-                  padding: 15,
-                  borderRadius: 17,
-                }}
-                onPress={() =>
-                  Alert.alert(
-                    "Connect Wallet",
-                    "Please connect your ETH Wallet to continue",
-                    [
-                      {
-                        text: "OK",
-                        style: "cancel",
-                      },
-                    ],
-                    { cancelable: true }
-                  )
-                }
-              />
-            </Card>
+      <Modal animationType={"slide"} transparent={false} visible={modalOpen}>
+        <View style={styles.modal}>
+          <View style={{ padding: 10 }}>
+            <Icon
+              name='close'
+              type='font-awesome'
+              iconStyle={{
+                color: "#8B51F5",
+                marginLeft: "90%",
+              }}
+              size={35}
+              onPress={() => setModalOpen(false)}
+            />
           </View>
-        </Modal>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <Text style={styles.modalTitle}>{modalData.title}</Text>
+            <Icon
+              name='heart'
+              type='font-awesome'
+              iconStyle={{
+                color: "#D7EB5A",
+                marginRight: "30%",
+                marginTop: 14,
+              }}
+              size={25}
+              onPress={() => console.log(modalData)}
+            />
+          </View>
+          <Card containerStyle={styles.cardContainer}>
+            <Card.Image
+              style={styles.cardImg}
+              source={modalData.image}
+            ></Card.Image>
+            <Text style={{ marginLeft: 10, marginTop: 10 }}>
+              <Text style={styles.modalArtist}>Artist: {modalData.artist}</Text>
+            </Text>
+            <View style={styles.line}></View>
+            <View style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}>
+              <Text style={styles.modalHeader}>Current Price</Text>
+              <Text style={styles.modalPrice}>${modalData.price}</Text>
+            </View>
+            <Button
+              title={"Buy Now"}
+              titleStyle={{ color: "#232323", fontSize: 20 }}
+              buttonStyle={{
+                backgroundColor: "#D7EB5A",
+                marginTop: 15,
+                marginLeft: 25,
+                marginRight: 25,
+                marginBottom: 50,
+                padding: 15,
+                borderRadius: 17,
+              }}
+              onPress={() =>
+                Alert.alert(
+                  "Connect Wallet",
+                  "Please connect your ETH Wallet to continue",
+                  [
+                    {
+                      text: "OK",
+                      style: "cancel",
+                    },
+                  ],
+                  { cancelable: true }
+                )
+              }
+            />
+          </Card>
+        </View>
+      </Modal>
     </ScrollView>
   )
 }

@@ -8,14 +8,17 @@ import Accordion from 'react-native-collapsible/Accordion'
 
 const SECTIONS = [
     {
+        id: 0,
         title: "NFT?",
         content: "NFT's are like cryptocurrency but even more confusing!"
     },
     {
+        id: 1,
         title: "Valuable?",
         content: "Sure, they can be as valuable as a rolex watch or a pack of gum."
     },
     {
+        id: 2,
         title: "Me NFT?",
         content: `Possibly! there are currently cryptoesque blockchains that are using the same computing rigs designed for mining called Folders, or to be more specific, using them to map the data of protien folds. The exact stuff you and I are made up of!`,
     }
@@ -42,7 +45,7 @@ class AccordionView extends Component {
     renderHeader = (section, isActive) => {
         return(
             
-            <View style={styles.header}>
+            <View key={this.state.id} style={styles.header}>
                 
                 <Text style={styles.headerText}>
                 {section.title}

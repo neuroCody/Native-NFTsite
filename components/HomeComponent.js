@@ -60,7 +60,10 @@ function HomeScreen({ navigation }) {
               <BannerCarousel />
             </View>
             <View style={styles.banner}>
-              <Text style={styles.bannerText}>Buy and Sell NFT Art</Text>
+              <Text style={styles.bannerText}>Buy, Sell & Create NFT Art</Text>
+              
+            </View>
+            <View style={styles.subBanner}>
               <Text
                 style={{ color: "#D7EB5A" }}
                 onPress={() => navigation.navigate("Faq")}
@@ -182,13 +185,17 @@ const styles = StyleSheet.create({
     height: 350,
   },
   banner: {
-    padding: 30,
+    padding: 10,
     paddingTop: 20,
   },
   bannerText: {
-    fontSize: 50,
-    fontFamily: "KoHo-bold",
+    fontSize: 30,
+    fontFamily: "asap-regular",
     color: "#F2F2F2",
+  },
+  subBanner: {
+    paddingLeft:20 ,
+    paddingTop: 2,
   }
 })
 

@@ -1,145 +1,78 @@
-import React, { Component, useState, useLayoutEffect } from "react"
-import {
-  Text,
-  View,
-  SafeAreaView,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native"
-import { Icon, Card } from "react-native-elements"
-import { ScrollView } from "react-native-gesture-handler"
-import { createStackNavigator } from "@react-navigation/stack"
+import React, {Component, useState, useLayoutEffect} from 'react';
+import { View, TouchableOpacity, Text, StyleSheet, LayoutAnimation, Platform, UIManager, SafeAreaView, ScrollView, TextInput} from "react-native";
+import { createStackNavigator } from '@react-navigation/stack';
+import Icon from "react-native-vector-icons/FontAwesome";
 import * as Animatable from "react-native-animatable"
-import Accordion from "react-native-collapsible/Accordion"
+
+
 
 const SECTIONS = [
-<<<<<<< HEAD
     {
         id: 0,
         title: "NFT?",
-        content: "NFT's are like cryptocurrency but even more confusing!"
+        data: "NFT's are like cryptocurrency but even more confusing!"
     },
     {
         id: 1,
         title: "Valuable?",
-        content: "Sure, they can be as valuable as a rolex watch or a pack of gum."
+        data: "Sure, they can be as valuable as a rolex watch or a pack of gum."
     },
     {
         id: 2,
         title: "Me NFT?",
-        content: `Possibly! there are currently cryptoesque blockchains that are using the same computing rigs designed for mining called Folders, or to be more specific, using them to map the data of protien folds. The exact stuff you and I are made up of!`,
+        data: `Possibly! there are currently cryptoesque blockchains that are using the same computing rigs designed for mining called Folders, or to be more specific, using them to map the data of protien folds. The exact stuff you and I are made up of!`,
     }
-=======
-  {
-    title: "NFT?",
-    content: "NFT's are like cryptocurrency but even more confusing!",
-  },
-  {
-    title: "Valuable?",
-    content: "Sure, they can be as valuable as a rolex watch or a pack of gum.",
-  },
-  {
-    title: "Me NFT?",
-    content: `Possibly! there are currently cryptoesque blockchains that are using the same computing rigs designed for mining called Folders, or to be more specific, using them to map the data of protien folds. The exact stuff you and I are made up of!`,
-  },
->>>>>>> 00b0a3195257ab3b28d067e76166488120cb5030
 ]
 
-class AccordionView extends Component {
+class Accordian extends Component{
+
   constructor(props) {
-    super(props)
-    this.state = {
-      activeSections: [],
-      expanded: false,
-    }
+      super(props);
+      this.state = { 
+        id: SECTIONS.id,
+        title: SECTIONS.title,
+        data: SECTIONS.data,
+        expanded : false,
+      }
+
+      if (Platform.OS === 'android') {
+          UIManager.setLayoutAnimationEnabledExperimental(true);
+      }
   }
 
-<<<<<<< HEAD
-    renderHeader = (section, isActive) => {
-        return(
-            
-            <View key={this.state.id} style={styles.header}>
-                
-                <Text style={styles.headerText}>
-                {section.title}
-                </Text>
-                <Icon 
-                    name={this.state.expanded ? 'minus' : 'plus'}
-                    type='font-awesome'
-                    iconStyle={{
-                    color: "#8B51F5",
-                    paddingBottom: 10,
-                    paddingLeft: '20%'
-                    }}
-                    size={35}
-                />
-                
-            </View>
-        
-        )
-    }
+render() {
 
-
-    renderContent = (section) => {
-        return(
-            <View style={styles.content}>
-                <Text style={styles.contentText}>{section.content}</Text>
-            </View>
-        )
-    }
-=======
-  toggleExpanded = () => {
-    this.setState({ expanded: !this.state.expanded })
-  }
->>>>>>> 00b0a3195257ab3b28d067e76166488120cb5030
-
-  renderHeader = (section, isActive) => {
-    return (
-      <View style={styles.header}>
-        <Text style={styles.headerText}>{section.title}</Text>
-        <Icon
-          name={this.state.expanded ? "minus" : "plus"}
-          type='font-awesome'
-          iconStyle={{
-            color: "#8B51F5",
-            paddingBottom: 10,
-            paddingLeft: "20%",
-          }}
-          size={35}
-        />
-      </View>
-    )
-  }
-
-  renderContent = (section) => {
-    return (
-      <View style={styles.content}>
-        <Text style={styles.contentText}>{section.content}</Text>
-      </View>
-    )
-  }
-
-  updateSections = (activeSections) => {
-    this.setState({ activeSections })
-    this.toggleExpanded(activeSections[0])
-  }
-
-  render() {
-    return (
-      <Accordion
-        sections={SECTIONS}
-        activeSections={this.state.activeSections}
-        // renderSectionTitle={this.renderSectionTitle}
-        renderHeader={this.renderHeader}
-        renderContent={this.renderContent}
-        onChange={this.updateSections}
-      />
-    )
-  }
+  return (
+     <View>
+          <TouchableOpacity ref={this.accordian} style={styles.row} onPress={()=>this.toggleExpand()}>
+              <Text style={styles.title}>{this.state.title}</Text>
+              <Icon name={this.state.expanded ? 'minus' : 'plus'} size={30} color={"black"} />
+          </TouchableOpacity>
+          <View style={styles.parentHr}/>
+          {
+              this.state.expanded &&
+              <View style={styles.child}>
+                  <Text>{this.state.data}</Text>    
+              </View>
+          }
+          
+     </View>
+  )
 }
 
-function FaqScreen({ navigation }) {
+toggleExpand=()=>{
+  LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+  this.setState({expanded : !this.state.expanded})
+}
+
+}
+
+
+
+
+
+function FaqScreen(props) {
+  const {navigation} = props
   const [shouldShow, setShouldShow] = useState(false)
 
   useLayoutEffect(() => {
@@ -147,18 +80,26 @@ function FaqScreen({ navigation }) {
       headerRight: () => (
         <Icon
           name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
+          color={"#D7EB5A"}
           size={32}
           onPress={() => setShouldShow(!shouldShow)}
         />
       ),
     })
   })
+
+  renderAccordians=()=> {
+    const items = [];
+    for (item of props) {
+        items.push(
+            <Accordian 
+                title = {item.title}
+                data = {item.data}
+            />
+        );
+    }
+    return items;
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#232323" }}>
@@ -187,7 +128,9 @@ function FaqScreen({ navigation }) {
             Asked{"\n"}
             Questions{"\n"}
           </Text>
-          <AccordionView />
+          <View>
+          {/* { renderAccordians() } */}
+          </View>
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -216,11 +159,7 @@ function Faq({ navigation }) {
           headerLeft: () => (
             <Icon
               name='bars'
-              type='font-awesome'
-              iconStyle={{
-                color: "#8B51F5",
-                margin: 15,
-              }}
+              color={"#8B51F5"}
               size={35}
               onPress={() => navigation.toggleDrawer()}
             />
@@ -284,6 +223,30 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: "#48494B",
   },
+  title:{
+    color: "#D7EB5A",
+    fontSize: 35,
+    fontFamily: "asap-regular",
+    paddingBottom: 20,
+  },
+  row:{
+      flexDirection: 'row',
+      justifyContent:'space-between',
+      height:56,
+      paddingLeft:25,
+      paddingRight:18,
+      alignItems:'center',
+      backgroundColor: "gray",
+  },
+  parentHr:{
+      height:1,
+      color: "white",
+      width:'100%'
+  },
+  child:{
+      backgroundColor: "white",
+      padding:16,
+  }
 })
 
 export default Faq

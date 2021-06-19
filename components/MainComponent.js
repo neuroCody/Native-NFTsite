@@ -5,6 +5,7 @@ import Faq from "./FaqComponent"
 import Sell from "./SellComponent"
 import Login from "./LoginComponent"
 import SignUp from "./SignUpComponent"
+import UserProfile from './UserProfile'
 import { View, Platform, StyleSheet, Text } from "react-native"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import { NavigationContainer } from "@react-navigation/native"

@@ -66,6 +66,15 @@ function CustomDrawerContentComponent(props) {
               Sell on Visualux
             </Text>
           </View>
+          {/* Profile Navigator */}
+          <View style={styles.drawerItem}>
+            <Text
+              style={styles.drawerItemText}
+              onPress={(() => navigation.navigate("Profile"))}
+            >
+              Profile
+            </Text>
+          </View>
           {/* Login Navigator */}
           <View style={styles.drawerItem}>
             <Text

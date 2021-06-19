@@ -32,7 +32,9 @@ class Accordian extends Component{
         id: SECTIONS.id,
         title: SECTIONS.title,
         data: SECTIONS.data,
-        expanded : false,
+        expanded1 : false,
+        expanded2 : false,
+        expanded3 : false,
       }
 
       if (Platform.OS === 'android') {
@@ -44,25 +46,58 @@ render() {
 
   return (
      <View>
-          <TouchableOpacity ref={this.accordian} style={styles.row} onPress={()=>this.toggleExpand()}>
-              <Text style={styles.title}>{this.state.title}</Text>
-              <Icon name={this.state.expanded ? 'minus' : 'plus'} size={30} color={"black"} />
+          <TouchableOpacity ref={this.accordian} style={styles.row} onPress={()=>this.toggleExpand1()}>
+              <Text style={styles.title}>NFT?</Text>
+              <Icon name={this.state.expanded1 ? 'minus' : 'plus'} size={30} color={"#8B51F5"} />
           </TouchableOpacity>
           <View style={styles.parentHr}/>
           {
-              this.state.expanded &&
+              this.state.expanded1 &&
               <View style={styles.child}>
-                  <Text>{this.state.data}</Text>    
+                  <Text style={styles.contentText}>NFT's are like cryptocurrency but even more confusing!</Text>    
+              </View>
+          }
+          <TouchableOpacity ref={this.accordian} style={styles.row} onPress={()=>this.toggleExpand2()}>
+              <Text style={styles.title}>Valuable?</Text>
+              <Icon name={this.state.expanded2 ? 'minus' : 'plus'} size={30} color={"#8B51F5"} />
+          </TouchableOpacity>
+          <View style={styles.parentHr}/>
+          {
+              this.state.expanded2 &&
+              <View style={styles.child}>
+                  <Text style={styles.contentText}>Sure, they can be as valuable as a rolex watch or a pack of gum.</Text>    
+              </View>
+          }
+          <TouchableOpacity ref={this.accordian} style={styles.row} onPress={()=>this.toggleExpand3()}>
+              <Text style={styles.title}>Me NFT?</Text>
+              <Icon name={this.state.expanded3 ? 'minus' : 'plus'} size={30} color={"#8B51F5"} />
+          </TouchableOpacity>
+          <View style={styles.parentHr}/>
+          {
+              this.state.expanded3 &&
+              <View style={styles.child}>
+                  <Text style={styles.contentText}>Possibly! there are currently cryptoesque blockchains that are using the same 
+                  computing rigs designed for mining called Folders, or to be more specific, using them 
+                  to map the data of protien folds. The exact stuff you and I are made up of!
+                  </Text>
               </View>
           }
           
-     </View>
+    </View>
   )
 }
 
-toggleExpand=()=>{
+toggleExpand1=()=>{
   LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-  this.setState({expanded : !this.state.expanded})
+  this.setState({expanded1 : !this.state.expanded1})
+}
+toggleExpand2=()=>{
+  LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+  this.setState({expanded2 : !this.state.expanded2})
+}
+toggleExpand3=()=>{
+  LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+  this.setState({expanded3 : !this.state.expanded3})
 }
 
 }
@@ -83,23 +118,13 @@ function FaqScreen(props) {
           color={"#D7EB5A"}
           size={32}
           onPress={() => setShouldShow(!shouldShow)}
+          style={{margin: 20, marginBottom: 35}}
         />
       ),
     })
   })
 
-  renderAccordians=()=> {
-    const items = [];
-    for (item of props) {
-        items.push(
-            <Accordian 
-                title = {item.title}
-                data = {item.data}
-            />
-        );
-    }
-    return items;
-  }
+  
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#232323" }}>
@@ -129,7 +154,7 @@ function FaqScreen(props) {
             Questions{"\n"}
           </Text>
           <View>
-          {/* { renderAccordians() } */}
+          <Accordian />
           </View>
         </ScrollView>
       </View>
@@ -162,6 +187,7 @@ function Faq({ navigation }) {
               color={"#8B51F5"}
               size={35}
               onPress={() => navigation.toggleDrawer()}
+              style={{margin: 15}}
             />
           ),
         }}
@@ -198,12 +224,6 @@ const styles = StyleSheet.create({
     padding: 2,
     margin: 10,
   },
-  headerText: {
-    color: "#D7EB5A",
-    fontSize: 35,
-    fontFamily: "asap-regular",
-    paddingBottom: 20,
-  },
   content: {
     flexGrow: 1,
     alignItems: "center",
@@ -218,7 +238,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
-    textAlign: "center",
     padding: 5,
     borderBottomWidth: 2,
     borderBottomColor: "#48494B",
@@ -236,7 +255,7 @@ const styles = StyleSheet.create({
       paddingLeft:25,
       paddingRight:18,
       alignItems:'center',
-      backgroundColor: "gray",
+      backgroundColor: "#232323",
   },
   parentHr:{
       height:1,
@@ -244,8 +263,9 @@ const styles = StyleSheet.create({
       width:'100%'
   },
   child:{
-      backgroundColor: "white",
+      backgroundColor: "#48494B",
       padding:16,
+      color: "#F2F2F2"
   }
 })
 

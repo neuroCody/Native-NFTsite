@@ -82,17 +82,18 @@ function HomeScreen({ navigation }) {
               }}
             >
               <Card.Image
-                source={require("./images/organic_mass.jpg")}
+                source={require("./images/priester-pink-eclipse.jpg")}
                 style={styles.cardImg}
               ></Card.Image>
               <Text
                 style={{
                   margin: 10,
                   fontFamily: "KoHo-bold",
+                  fontSize: 25,
                   color: "#f2f2f2",
                 }}
               >
-                Home Page
+                Most Viewed
               </Text>
             </Card>
             <Card
@@ -106,17 +107,68 @@ function HomeScreen({ navigation }) {
               }}
             >
               <Card.Image
-                source={require("./images/laser_cloud.jpg")}
+                source={require("./images/nebulashorejpg.jpg")}
                 style={styles.cardImg}
               ></Card.Image>
               <Text
                 style={{
                   margin: 10,
                   fontFamily: "KoHo-bold",
+                  fontSize: 25,
                   color: "#f2f2f2",
                 }}
               >
-                Home Page
+                Newest
+              </Text>
+            </Card>
+            <Card
+              containerStyle={{
+                backgroundColor: "#48494B",
+                display: "flex",
+                borderColor: "#78797B",
+                borderWidth: 3,
+                borderRadius: 6,
+                padding: 0,
+              }}
+            >
+              <Card.Image
+                source={require("./images/yo.png")}
+                style={styles.cardImg}
+              ></Card.Image>
+              <Text
+                style={{
+                  margin: 10,
+                  fontFamily: "KoHo-bold",
+                  fontSize: 25,
+                  color: "#f2f2f2",
+                }}
+              >
+                Most Value
+              </Text>
+            </Card>
+            <Card
+              containerStyle={{
+                backgroundColor: "#48494B",
+                display: "flex",
+                borderColor: "#78797B",
+                borderWidth: 3,
+                borderRadius: 6,
+                padding: 0,
+              }}
+            >
+              <Card.Image
+                source={require("./images/cats.jpg")}
+                style={styles.cardImg}
+              ></Card.Image>
+              <Text
+                style={{
+                  margin: 10,
+                  fontFamily: "KoHo-bold",
+                  fontSize: 25,
+                  color: "#f2f2f2",
+                }}
+              >
+                High End NFTs
               </Text>
             </Card>
           </View>

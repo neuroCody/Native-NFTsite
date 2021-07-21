@@ -53,7 +53,7 @@ function HighToLow(props) {
                   style={{ marginTop: 5, marginLeft: 10, marginBottom: 10 }}
                 >
                   <Text style={styles.artistHeader}>Artist</Text>
-                  <Text style={styles.artistName}>{i.title}</Text>
+                  <Text style={styles.artistName}>{i.artist}</Text>
                 </View>
               </Card>
               <View style={{ marginBottom: 50 }}></View>

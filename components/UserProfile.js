@@ -22,12 +22,18 @@ export default function UserProfile(props) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.headerView}>
-        <View style={styles.editBox}>
-
-          <Text style={styles.editText}>Edit Profile</Text>
+        <View style={styles.coverImage}>
+            <Image
+              source={require("./images/galaxyraccoon.jpg")}
+              style={styles.coverImage}
+            />
+          <View style={styles.editBox}>
+            <Text style={styles.editText}>Edit Profile</Text>
+          </View>
         </View>
+        
         <View style={styles.profileImage}>
-          {/* <Image style={styles.profileImage} source={props.image} /> */}
+          <Image style={styles.profileImage} source={require("./images/elon_and_doge.jpg") } />
         </View>
         <View style={styles.location}>
           <Icon
@@ -42,7 +48,7 @@ export default function UserProfile(props) {
           <Text style={{ color: "#EBEBEB" }}>Location</Text>
         </View>
 
-        <Text style={styles.username}>Tatum Bray</Text>
+        <Text style={styles.username}>Elon Doge</Text>
         <View style={styles.bioView}>
           <Text style={styles.bioText}>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur,
@@ -74,7 +80,7 @@ export default function UserProfile(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#001219",
+    backgroundColor: "#232323",
   },
   headerView: {
     flex: 1,
@@ -89,20 +95,25 @@ const styles = StyleSheet.create({
   editBox: {
     width: "20%",
     height: 20,
-    alignItems: "flex-end",
+    alignItems: "center",
     justifyContent: "flex-start",
-    borderColor: "black",
-    borderWidth: 1,
+    //borderColor: "black",
+    //borderWidth: 1,
     margin: 10,
   },
   editText: {
-    color: "#929292",
+    color: "#D7EB5A",
+  },
+  coverImage: {
+    backgroundColor: "red",
+    width: "100%",
+    height: 145,
   },
   profileImage: {
     width: 90,
     height: 90,
     borderRadius: 100,
-    backgroundColor: "blue",
+    //backgroundColor: "blue",
     alignSelf: "center",
     marginBottom: 5,
     marginTop:2
@@ -111,13 +122,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignSelf: "center",
     color: "#929292",
-    fontFamily: "Assistant-Regular",
+    fontFamily: "asap-regular",
     fontSize: 15,
   },
   username: {
     alignSelf: "center",
     color: "#EBEBEB",
-    fontFamily: "Cairo-Bold",
+    fontFamily: "KoHo-bold",
     fontSize:20,
   },
   bioView: {
@@ -142,13 +153,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#1E2E33",
   },
   favoritesHeader: {
-    fontFamily: "Cairo-Regular",
+    fontFamily: "KoHo-regular",
     fontSize: 24,
     color: "#EBEBEB",
     marginLeft: 10,
   },
   buttons: {
-    backgroundColor: "#001219",
+    backgroundColor: "#232323",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -159,7 +170,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   btnText: {
-    fontFamily: "Cairo-Regular",
+    fontFamily: "KoHo-regular",
     fontSize: 20,
     color: "#EBEBEB",
     marginLeft: 10,

@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import { View, Image } from "react-native"
 
 class BannerCarousel extends Component {
+    isMounted = false
+
     constructor(props){
       super(props);
       this.state = {
@@ -17,6 +19,7 @@ class BannerCarousel extends Component {
     }
   
     componentDidMount() {
+      this.isMounted = true;
       this.imageFadeIn()
       this.switchImage()
     }
@@ -72,7 +75,11 @@ class BannerCarousel extends Component {
         }, 500)
       }, 6000)
     }
-  
+
+    componentWillUnmount() {
+      this.isMounted = false;
+    }
+
     render() {
       return(
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

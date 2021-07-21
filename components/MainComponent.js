@@ -23,6 +23,7 @@ function MainNavigator() {
         <Drawer.Screen name='Gallery' component={Gallery} />
         <Drawer.Screen name='Faq' component={Faq} />
         <Drawer.Screen name='Sell' component={Sell} />
+        <Drawer.Screen name='Profile' component={UserProfile} />
         <Drawer.Screen name='Login' component={Login} />
         <Drawer.Screen name='SignUp' component={SignUp} />
       </Drawer.Navigator>

@@ -15,18 +15,13 @@ const itemWidth = (Dimensions.get("screen").width * (0.55)) - (offset *2)
 const itemHeight= 200
 
 const favorites = [
-    // { title: '', posterUrl: require("../../assets/images/lady-in-red.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/geo-room.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/priester-moon.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/trash-tree.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/vaporwave-in-space.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/orange-blue-pour.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/lady-in-red.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/geo-room.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/priester-moon.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/trash-tree.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/vaporwave-in-space.jpg")},
-    // { title: '', posterUrl: require("../../assets/images/orange-blue-pour.jpg")},
+    { title: '', posterUrl: require("./images/elon_and_doge.jpg")},
+    { title: '', posterUrl: require("./images/uniswap.jpg")},
+    { title: '', posterUrl: require("./images/priester-tetra.jpg")},
+    { title: '', posterUrl: require("./images/cats.jpg")},
+    { title: '', posterUrl: require("./images/vaporwave-in-space.jpg")},
+    { title: '', posterUrl: require("./images/ai_napoleon.jpeg")},
+ 
 ]
 
 export default function FavoritesCarousel() {

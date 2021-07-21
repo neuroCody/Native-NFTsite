@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     color: "#D7EB5A",
   },
   coverImage: {
-    backgroundColor: "red",
+    //backgroundColor: "red",
     width: "100%",
     height: 145,
   },
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height:200,
     width: "100%",
-    backgroundColor: "#1E2E33",
+    backgroundColor: "#48494B",
   },
   favoritesHeader: {
     fontFamily: "KoHo-regular",

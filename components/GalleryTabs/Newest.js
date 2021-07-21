@@ -17,6 +17,11 @@ const Newest = (props) => {
   const [modalOpen, setModalOpen] = useState(false)
   // render modal card data Hook
   const [modalData, setModalData] = useState({})
+  // changing favorite icon Hook
+  const[favorite, setFavorite] = useState(false)
+
+    // Function to toggle favorite icon
+    const toggleFav = () => setFavorite(!favorite)
 
   const NewestDate = props.images.sort(function (a, b) {
     return a.date - b.date
@@ -76,16 +81,18 @@ const Newest = (props) => {
           >
             <Text style={styles.modalTitle}>{modalData.title}</Text>
             <Icon
-              name='heart'
-              type='font-awesome'
-              iconStyle={{
-                color: "#D7EB5A",
-                marginRight: "30%",
-                marginTop: 14,
-              }}
-              size={25}
-              onPress={() => console.log(modalData)}
-            />
+                name={'heart'}
+                type='font-awesome'
+                iconStyle={!favorite ?{
+                  color: "#78797B",
+                  marginRight: "30%",
+                  marginTop: 14,
+                } : {color: "#D7EB5A",
+                  marginRight: "30%",
+                  marginTop: 14}}
+                size={25}
+                onPress={toggleFav}
+              />
           </View>
           <Card containerStyle={styles.cardContainer}>
             <Card.Image

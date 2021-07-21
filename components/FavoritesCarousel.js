@@ -79,7 +79,7 @@ export default function FavoritesCarousel() {
 const styles = StyleSheet.create({
     container:{
         flex: 1, 
-        backgroundColor: "#1E2E33",
+        backgroundColor: "#48494B",
     },
     carouselView:{
         marginTop:20,

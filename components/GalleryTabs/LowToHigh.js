@@ -17,6 +17,11 @@ const LowToHigh = (props) => {
   const[modalOpen, setModalOpen] = useState(false)
   // render modal card data Hook
   const[modalData, setModalData] = useState({})
+  // changing favorite icon Hook
+  const[favorite, setFavorite] = useState(false)
+
+  // Function to toggle favorite icon
+  const toggleFav = () => setFavorite(!favorite)
 
   const lowToHighArray = props.images.sort(function (a, b) {
     return a.price - b.price
@@ -80,15 +85,17 @@ const LowToHigh = (props) => {
             >
               <Text style={styles.modalTitle}>{modalData.title}</Text>
               <Icon
-                name='heart'
+                name={'heart'}
                 type='font-awesome'
-                iconStyle={{
-                  color: "#D7EB5A",
+                iconStyle={!favorite ?{
+                  color: "#78797B",
                   marginRight: "30%",
                   marginTop: 14,
-                }}
+                } : {color: "#D7EB5A",
+                  marginRight: "30%",
+                  marginTop: 14}}
                 size={25}
-                onPress={()=> console.log(modalData)}
+                onPress={toggleFav}
               />
             </View>
             <Card containerStyle={styles.cardContainer}>

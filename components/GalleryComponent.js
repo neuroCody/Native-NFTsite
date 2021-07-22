@@ -1,4 +1,4 @@
-import React, { Component, useState, useLayoutEffect } from "react"
+import React, { Component, useState, useLayoutEffect, useEffect } from "react"
 import {
   Text,
   View,
@@ -16,6 +16,7 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { IMAGES } from "../arrays/images"
 import * as Animatable from "react-native-animatable"
+import Spinner from "react-native-loading-spinner-overlay"
 import MostViewed from "./GalleryTabs/MostViewed"
 import Newest from "./GalleryTabs/Newest"
 import LowToHigh from "./GalleryTabs/LowToHigh"
@@ -23,6 +24,11 @@ import HighToLow from "./GalleryTabs/HighToLow"
 
 function GalleryScreen(props) {
   const [shouldShow, setShouldShow] = useState(false)
+  const [search, setSearch] = useState("")
+
+  const newSearch = (text) => {
+    search = setSearch(text)
+  }
 
   useLayoutEffect(() => {
     props.navigation.setOptions({
@@ -44,6 +50,7 @@ function GalleryScreen(props) {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#232323" }}>
+    
       {shouldShow ? (
         <Animatable.View
           animation='slideInDown'
@@ -57,7 +64,7 @@ function GalleryScreen(props) {
           <TextInput
             placeholder='Search'
             style={styles.input}
-            // onChangeText={onChangeText}
+            onChangeText={newSearch}
             // value={text}
           />
         </Animatable.View>
@@ -70,9 +77,30 @@ function GalleryScreen(props) {
 const Stack = createStackNavigator()
 
 //MAINEXPORT/////////////////////////////////////////
-function Gallery(props) {
+class Gallery extends Component{
+  state = {
+    spinner: true
+  };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        spinner: !this.state.spinner
+      });
+      }, 3000);
+  }
+
+  render(){
   return (
     <NavigationContainer independent={true}>
+      <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          textStyle={styles.spinnerTextStyle}
+          color={'#8B51F5'}
+          overlayColor={"rgba(0, 18, 25, 0.9)"}
+          size={'large'}
+      />
       <Stack.Navigator>
         <Stack.Screen
           name='Visualux'
@@ -97,7 +125,7 @@ function Gallery(props) {
                   margin: 15,
                 }}
                 size={35}
-                onPress={() => props.navigation.toggleDrawer()}
+                onPress={() => this.props.navigation.toggleDrawer()}
               />
             ),
           }}
@@ -105,13 +133,16 @@ function Gallery(props) {
       </Stack.Navigator>
     </NavigationContainer>
   )
+  }
 }
 
 const Tab = createMaterialTopTabNavigator()
 
 class GalleryNav extends Component {
+
   render() {
     return (
+      
       <Tab.Navigator
         tabBarOptions={{
           indicatorStyle: {
@@ -131,6 +162,7 @@ class GalleryNav extends Component {
         <Tab.Screen name='Price: low to high' component={LowToHigh} />
         <Tab.Screen name='Price: high to low' component={HighToLow} />
       </Tab.Navigator>
+      
     )
   }
 }
@@ -217,6 +249,9 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: "KoHo-bold",
     color: "#F2F2F2",
+  },
+  spinnerTextStyle: {
+    color: '#8B51F5',
   },
 })
 

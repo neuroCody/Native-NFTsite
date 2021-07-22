@@ -1,5 +1,5 @@
 import React, { Component, useState, useLayoutEffect } from "react"
-import { Text, View, SafeAreaView, TextInput, StyleSheet, Image} from "react-native"
+import { Text, View, SafeAreaView, TextInput, StyleSheet, Image, TouchableOpacity} from "react-native"
 import { Icon, Card, Button } from "react-native-elements"
 import { FlatList, ScrollView } from "react-native-gesture-handler"
 import { createStackNavigator } from "@react-navigation/stack"
@@ -71,31 +71,35 @@ function HomeScreen({ navigation }) {
                 Learn more
               </Text>
             </View>
-            <Card
-              containerStyle={{
-                backgroundColor: "#48494B",
-                display: "flex",
-                borderColor: "#78797B",
-                borderWidth: 3,
-                borderRadius: 6,
-                padding: 0,
-              }}
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Gallery")}
             >
-              <Card.Image
-                source={require("./images/priester-pink-eclipse.jpg")}
-                style={styles.cardImg}
-              ></Card.Image>
-              <Text
-                style={{
-                  margin: 10,
-                  fontFamily: "KoHo-bold",
-                  fontSize: 25,
-                  color: "#f2f2f2",
+              <Card
+                containerStyle={{
+                  backgroundColor: "#48494B",
+                  display: "flex",
+                  borderColor: "#78797B",
+                  borderWidth: 3,
+                  borderRadius: 6,
+                  padding: 0,
                 }}
               >
-                Most Viewed
-              </Text>
-            </Card>
+                <Card.Image
+                  source={require("./images/priester-pink-eclipse.jpg")}
+                  style={styles.cardImg}
+                ></Card.Image>
+                <Text
+                  style={{
+                    margin: 10,
+                    fontFamily: "KoHo-bold",
+                    fontSize: 25,
+                    color: "#f2f2f2",
+                  }}
+                >
+                  Most Viewed
+                </Text>
+              </Card>
+            </TouchableOpacity>
             <Card
               containerStyle={{
                 backgroundColor: "#48494B",

@@ -11,6 +11,7 @@ import {
 import { Icon, Card, Button } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
 
+
 //MOST VIEWED TAB
 const MostViewed = (props) => {
 
@@ -20,9 +21,12 @@ const MostViewed = (props) => {
   const[modalData, setModalData] = useState({})
   // changing favorite icon Hook
   const[favorite, setFavorite] = useState(false)
+  
 
   // Function to toggle favorite icon
   const toggleFav = () => setFavorite(!favorite)
+
+  
 
   const MostViewedArray = props.images.filter(({ views }) => views > 100000)
   const SortedViewArray = MostViewedArray.sort(function (a, b) {
@@ -31,6 +35,7 @@ const MostViewed = (props) => {
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#232323" }}>
+    
       <View>
         {SortedViewArray.map((i) => {
           return (
@@ -226,6 +231,7 @@ const styles = StyleSheet.create({
     fontFamily: "KoHo-bold",
     color: "#F2F2F2",
   },
+ 
 })
 
 const mapState = (state) => {

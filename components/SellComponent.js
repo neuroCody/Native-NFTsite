@@ -16,23 +16,23 @@ import * as Animatable from "react-native-animatable"
 function SellScreen({ navigation }) {
   const [shouldShow, setShouldShow] = useState(false)
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
-          onPress={() => setShouldShow(!shouldShow)}
-        />
-      ),
-    })
-  })
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerRight: () => (
+  //       <Icon
+  //         name='search'
+  //         type='font-awesome'
+  //         iconStyle={{
+  //           color: "#D7EB5A",
+  //           margin: 20,
+  //           marginBottom: 35,
+  //         }}
+  //         size={32}
+  //         onPress={() => setShouldShow(!shouldShow)}
+  //       />
+  //     ),
+  //   })
+  // })
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#232323" }}>
@@ -163,7 +163,7 @@ function Sell({ navigation }) {
             fontFamily: "satisfy-regular",
             color: "#F2F2F2",
             fontSize: 30,
-            marginLeft: "33%",
+            marginLeft: "30%",
           },
           headerLeft: () => (
             <Icon

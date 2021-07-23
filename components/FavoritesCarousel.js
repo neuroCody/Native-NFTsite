@@ -15,12 +15,13 @@ const itemWidth = (Dimensions.get("screen").width * (0.55)) - (offset *2)
 const itemHeight= 200
 
 const favorites = [
-    { title: '', posterUrl: require("./images/elon_and_doge.jpg")},
+    { title: '', posterUrl: require("./images/Astronaut-Surreal.jpg")},
     { title: '', posterUrl: require("./images/uniswap.jpg")},
-    { title: '', posterUrl: require("./images/priester-tetra.jpg")},
+    { title: '', posterUrl: require("./images/digital-cat.jpg")},
     { title: '', posterUrl: require("./images/cats.jpg")},
-    { title: '', posterUrl: require("./images/vaporwave-in-space.jpg")},
-    { title: '', posterUrl: require("./images/ai_napoleon.jpeg")},
+    { title: '', posterUrl: require("./images/manipulation.jpg")},
+    { title: '', posterUrl: require("./images/fantasy-beach.jpg")},
+    { title: '', posterUrl: require("./images/Tiger-Parakeet.jpg")},
  
 ]
 

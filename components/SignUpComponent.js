@@ -80,7 +80,7 @@ function SignUp({navigation}) {
               fontFamily: "satisfy-regular",
               color: "#F2F2F2",
               fontSize: 30,
-              marginLeft: "33%",
+              marginLeft: "30%",
             },
             headerLeft: () => (
               <Icon

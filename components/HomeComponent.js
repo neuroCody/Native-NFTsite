@@ -2,33 +2,35 @@ import React, { Component, useState, useLayoutEffect } from "react"
 import { Text, View, SafeAreaView, TextInput, StyleSheet, Image, TouchableOpacity} from "react-native"
 import { Icon, Card, Button } from "react-native-elements"
 import { FlatList, ScrollView } from "react-native-gesture-handler"
+import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import * as Animatable from "react-native-animatable"
+import AnimatedLoader from "react-native-animated-loader"
 import BannerCarousel from "./BannerCarousel"
 
 
 // Search Bar View Component
 function HomeScreen({ navigation }) {
   const [shouldShow, setShouldShow] = useState(false)
-  const [overlay, setOverlay] = useState(false)
+  //const [overlay, setOverlay] = useState(false)
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
-          onPress={() => setShouldShow(!shouldShow)}
-        />
-      ),
-    })
-  })
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerRight: () => (
+  //       <Icon
+  //         name='search'
+  //         type='font-awesome'
+  //         iconStyle={{
+  //           color: "#D7EB5A",
+  //           margin: 20,
+  //           marginBottom: 35,
+  //         }}
+  //         size={32}
+  //         onPress={() => setShouldShow(!shouldShow)}
+  //       />
+  //     ),
+  //   })
+  // })
 
 
   // Home Screen Styling
@@ -57,7 +59,11 @@ function HomeScreen({ navigation }) {
         <ScrollView style={{ height: 600 }}>
           <View>
             <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Gallery")}
+            >
               <BannerCarousel />
+            </TouchableOpacity>
             </View>
             <View style={styles.banner}>
               <Text style={styles.bannerText}>Buy, Sell & Create NFT Art</Text>
@@ -100,6 +106,9 @@ function HomeScreen({ navigation }) {
                 </Text>
               </Card>
             </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Gallery")}
+            >
             <Card
               containerStyle={{
                 backgroundColor: "#48494B",
@@ -125,6 +134,10 @@ function HomeScreen({ navigation }) {
                 Newest
               </Text>
             </Card>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Gallery")}
+            >
             <Card
               containerStyle={{
                 backgroundColor: "#48494B",
@@ -150,6 +163,10 @@ function HomeScreen({ navigation }) {
                 Most Value
               </Text>
             </Card>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Gallery")}
+            >
             <Card
               containerStyle={{
                 backgroundColor: "#48494B",
@@ -175,6 +192,7 @@ function HomeScreen({ navigation }) {
                 High End NFTs
               </Text>
             </Card>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>
@@ -185,38 +203,42 @@ function HomeScreen({ navigation }) {
 // Header and Drawer Navigation components
 const Stack = createStackNavigator()
 
-function Home({ navigation }) {
+function Home({navigation}) {
+  
+  
+
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name='Visualux'
-        component={HomeScreen}
-        options={{
-          headerTitle: "Visualux",
-          headerStyle: {
-            backgroundColor: "#232323",
-          },
-          headerTitleStyle: {
-            fontFamily: "satisfy-regular",
-            color: "#F2F2F2",
-            fontSize: 30,
-            marginLeft: "33%",
-          },
-          headerLeft: () => (
-            <Icon
-              name='bars'
-              type='font-awesome'
-              iconStyle={{
-                color: "#8B51F5",
-                margin: 15,
-              }}
-              size={35}
-              onPress={() => navigation.toggleDrawer()}
-            />
-          ),
-        }}
-      />
-    </Stack.Navigator>
+      <Stack.Navigator>
+
+        <Stack.Screen
+          name='Visualux'
+          component={HomeScreen}
+          options={{
+            headerTitle: "Visualux",
+            headerStyle: {
+              backgroundColor: "#232323",
+            },
+            headerTitleStyle: {
+              fontFamily: "satisfy-regular",
+              color: "#F2F2F2",
+              fontSize: 30,
+              marginLeft: "30%",
+            },
+            headerLeft: () => (
+              <Icon
+                name='bars'
+                type='font-awesome'
+                iconStyle={{
+                  color: "#8B51F5",
+                  margin: 15,
+                }}
+                size={35}
+                onPress={() => navigation.toggleDrawer()}
+              />
+            ),
+          }}
+        />
+      </Stack.Navigator>
   )
 }
 
@@ -252,7 +274,11 @@ const styles = StyleSheet.create({
   subBanner: {
     paddingLeft:20 ,
     paddingTop: 2,
-  }
+  },
+  lottie: {
+    width: 200,
+    height: 200,
+  },
 })
 
 class Carousel extends Component {
@@ -330,6 +356,7 @@ class Carousel extends Component {
   render() {
     return(
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      
         <Image
           fluid
           source={ this.state.images[this.state.currentImage]}

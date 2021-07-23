@@ -25,23 +25,23 @@ function mapStateToProps(state) {
 function UserProfileScreen(props) {
   const [shouldShow, setShouldShow] = useState(false)
 
-  useLayoutEffect(() => {
-    props.navigation.setOptions({
-      headerRight: () => (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
-          onPress={() => setShouldShow(!shouldShow)}
-        />
-      ),
-    })
-  })
+  // useLayoutEffect(() => {
+  //   props.navigation.setOptions({
+  //     headerRight: () => (
+  //       <Icon
+  //         name='search'
+  //         type='font-awesome'
+  //         iconStyle={{
+  //           color: "#D7EB5A",
+  //           margin: 20,
+  //           marginBottom: 35,
+  //         }}
+  //         size={32}
+  //         onPress={() => setShouldShow(!shouldShow)}
+  //       />
+  //     ),
+  //   })
+  // })
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#232323" }}>
@@ -94,8 +94,7 @@ function UserProfileScreen(props) {
           <Text style={styles.username}>Elon Doge</Text>
           <View style={styles.bioView}>
             <Text style={styles.bioText}>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur,
-              corporis fugit
+            What is Dogecoin? It's the future of currency. It's an unstoppable financial vehicle that's going to take over the world.
             </Text>
           </View>
         </View>
@@ -137,7 +136,7 @@ export default function UserProfile({ navigation }) {
             fontFamily: "satisfy-regular",
             color: "#F2F2F2",
             fontSize: 30,
-            marginLeft: "33%",
+            marginLeft: "30%",
           },
           headerLeft: () => (
             <Icon

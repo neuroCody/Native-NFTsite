@@ -47,38 +47,55 @@ render() {
   return (
      <View>
           <TouchableOpacity ref={this.accordian} style={styles.row} onPress={()=>this.toggleExpand1()}>
-              <Text style={styles.title}>NFT?</Text>
+              <Text style={styles.title}>What are NFTs?</Text>
               <Icon name={this.state.expanded1 ? 'minus' : 'plus'} size={30} color={"#8B51F5"} />
           </TouchableOpacity>
           <View style={styles.parentHr}/>
           {
               this.state.expanded1 &&
               <View style={styles.child}>
-                  <Text style={styles.contentText}>NFT's are like cryptocurrency but even more confusing!</Text>    
+                  <Text style={styles.contentText}>Non-Fungible Tokens (NFT) are unique digital assets that are part of a
+                   blockchain and verify ownership of a specific item. “Non-fungible” means something is one-of-a-kind and 
+                   cannot be replaced with the same item. Fungible items, such as fiat currencies or cryptocurrencies differ 
+                   in that they can be traded for the same item. For example, if you replace one bitcoin with another, you 
+                   will have the same thing. If you have a non-fungible item, such as a movie ticket, you cannot replace it 
+                   with any other movie ticket as the ticket is unique to a time and place.</Text>    
               </View>
           }
           <TouchableOpacity ref={this.accordian} style={styles.row} onPress={()=>this.toggleExpand2()}>
-              <Text style={styles.title}>Valuable?</Text>
+              <Text style={styles.title}>NFT Art?</Text>
               <Icon name={this.state.expanded2 ? 'minus' : 'plus'} size={30} color={"#8B51F5"} />
           </TouchableOpacity>
           <View style={styles.parentHr}/>
           {
               this.state.expanded2 &&
               <View style={styles.child}>
-                  <Text style={styles.contentText}>Sure, they can be as valuable as a rolex watch or a pack of gum.</Text>    
+                  <Text style={styles.contentText}>Crypto art has been around for a few years but has exploded in popularity since
+                   the start of 2021 as a hot new tech trend. The first uses of NFTs was for an online game called Cryptokitties 
+                   which allowed users to trade and sell digital kittens. There are numerous digital marketplaces where users can 
+                   buy and sell digital items. While sellers can accept any currency for their NFTs, cryptocurrencies like Bitcoin 
+                   and Ethereum tend to be the most popular. How it works is buyers get the ownership rights, or license, to a 
+                   digital item.</Text>    
               </View>
           }
           <TouchableOpacity ref={this.accordian} style={styles.row} onPress={()=>this.toggleExpand3()}>
-              <Text style={styles.title}>Me NFT?</Text>
+              <Text style={styles.title}>Who can Use NFTs?</Text>
               <Icon name={this.state.expanded3 ? 'minus' : 'plus'} size={30} color={"#8B51F5"} />
           </TouchableOpacity>
           <View style={styles.parentHr}/>
           {
               this.state.expanded3 &&
               <View style={styles.child}>
-                  <Text style={styles.contentText}>Possibly! there are currently cryptoesque blockchains that are using the same 
-                  computing rigs designed for mining called Folders, or to be more specific, using them 
-                  to map the data of protien folds. The exact stuff you and I are made up of!
+                  <Text style={styles.contentText}>In a word, anyone!
+                  {"\n"}
+                    Celebrities such as Lindsay Lohan and Post Malone have jumped into the world of NFTs, 
+                    selling videos and experiences online. Digital marketplaces have made buying and selling 
+                    of NFTs easy for anyone. If you have something to sell or enough currency to purchase an NFT, 
+                    then it’s all yours.
+                  {"\n"}
+                    As NFTs are still relatively new, there is a first-mover advantage. Memes and tweets are just 
+                    the start of it, there is still so much unexplored space in the industry and those who get there 
+                    first will benefit from the media exposure and new audiences.
                   </Text>
               </View>
           }
@@ -110,19 +127,19 @@ function FaqScreen(props) {
   const {navigation} = props
   const [shouldShow, setShouldShow] = useState(false)
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <Icon
-          name='search'
-          color={"#D7EB5A"}
-          size={32}
-          onPress={() => setShouldShow(!shouldShow)}
-          style={{margin: 20, marginBottom: 35}}
-        />
-      ),
-    })
-  })
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerRight: () => (
+  //       <Icon
+  //         name='search'
+  //         color={"#D7EB5A"}
+  //         size={32}
+  //         onPress={() => setShouldShow(!shouldShow)}
+  //         style={{margin: 20, marginBottom: 35}}
+  //       />
+  //     ),
+  //   })
+  // })
 
   
 
@@ -179,7 +196,7 @@ function Faq({ navigation }) {
             fontFamily: "satisfy-regular",
             color: "#F2F2F2",
             fontSize: 30,
-            marginLeft: "33%",
+            marginLeft: "30%",
           },
           headerLeft: () => (
             <Icon

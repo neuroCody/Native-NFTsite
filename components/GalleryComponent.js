@@ -16,7 +16,8 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { IMAGES } from "../arrays/images"
 import * as Animatable from "react-native-animatable"
-import Spinner from "react-native-loading-spinner-overlay"
+//import Spinner from "react-native-loading-spinner-overlay"
+import AnimatedLoader from "react-native-animated-loader"
 import MostViewed from "./GalleryTabs/MostViewed"
 import Newest from "./GalleryTabs/Newest"
 import LowToHigh from "./GalleryTabs/LowToHigh"
@@ -24,29 +25,29 @@ import HighToLow from "./GalleryTabs/HighToLow"
 
 function GalleryScreen(props) {
   const [shouldShow, setShouldShow] = useState(false)
-  const [search, setSearch] = useState("")
+  // const [search, setSearch] = useState("")
 
-  const newSearch = (text) => {
-    search = setSearch(text)
-  }
+  // const newSearch = (text) => {
+  //   search = setSearch(text)
+  // }
 
-  useLayoutEffect(() => {
-    props.navigation.setOptions({
-      headerRight: () => (
-        <Icon
-          name='search'
-          type='font-awesome'
-          iconStyle={{
-            color: "#D7EB5A",
-            margin: 20,
-            marginBottom: 35,
-          }}
-          size={32}
-          onPress={() => setShouldShow(!shouldShow)}
-        />
-      ),
-    })
-  })
+  // useLayoutEffect(() => {
+  //   props.navigation.setOptions({
+  //     headerRight: () => (
+  //       <Icon
+  //         name='search'
+  //         type='font-awesome'
+  //         iconStyle={{
+  //           color: "#D7EB5A",
+  //           margin: 20,
+  //           marginBottom: 35,
+  //         }}
+  //         size={32}
+  //         onPress={() => setShouldShow(!shouldShow)}
+  //       />
+  //     ),
+  //   })
+  // })
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#232323" }}>
@@ -78,29 +79,41 @@ const Stack = createStackNavigator()
 
 //MAINEXPORT/////////////////////////////////////////
 class Gallery extends Component{
-  state = {
-    spinner: true
-  };
-
+  constructor(props){
+    super(props)
+    this.state = {
+      visible: true,
+    }
+  }
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        spinner: !this.state.spinner
+        visible: !this.state.visible
       });
       }, 3000);
   }
 
   render(){
+    const { visible } = this.state
+
   return (
     <NavigationContainer independent={true}>
-      <Spinner
+      {/* <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
           textStyle={styles.spinnerTextStyle}
           color={'#8B51F5'}
           overlayColor={"rgba(0, 18, 25, 0.9)"}
           size={'large'}
-      />
+          customIndicator={cryptoSpinner}
+      /> */}
+      <AnimatedLoader
+        visible={visible}
+        overlayColor="rgba(0, 18, 25, 0.9)"
+        animationStyle={styles.lottie}
+        speed={1}
+        source={require("../assets/11765-loading-motion.json")}
+        />
       <Stack.Navigator>
         <Stack.Screen
           name='Visualux'
@@ -114,7 +127,7 @@ class Gallery extends Component{
               fontFamily: "satisfy-regular",
               color: "#F2F2F2",
               fontSize: 30,
-              marginLeft: "33%",
+              marginLeft: "30%",
             },
             headerLeft: () => (
               <Icon
@@ -252,6 +265,10 @@ const styles = StyleSheet.create({
   },
   spinnerTextStyle: {
     color: '#8B51F5',
+  },
+  lottie: {
+    width: 200,
+    height: 200,
   },
 })
 

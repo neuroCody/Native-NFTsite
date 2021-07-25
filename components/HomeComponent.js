@@ -1,5 +1,5 @@
 import React, { Component, useState, useLayoutEffect } from "react"
-import { Text, View, SafeAreaView, TextInput, StyleSheet, Image, TouchableOpacity} from "react-native"
+import { Text, View, SafeAreaView, TextInput, StyleSheet, Image, TouchableOpacity, Platform} from "react-native"
 import { Icon, Card, Button } from "react-native-elements"
 import { FlatList, ScrollView } from "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native"
@@ -208,7 +208,7 @@ function Home({navigation}) {
   
 
   return (
-      <Stack.Navigator>
+      <Stack.Navigator style={styles.Header}>
 
         <Stack.Screen
           name='Visualux'
@@ -223,6 +223,7 @@ function Home({navigation}) {
               color: "#F2F2F2",
               fontSize: 30,
               marginLeft: "30%",
+              
             },
             headerLeft: () => (
               <Icon
@@ -231,10 +232,12 @@ function Home({navigation}) {
                 iconStyle={{
                   color: "#8B51F5",
                   margin: 15,
+                  height: Platform.OS === 'ios' ? 50 : 40
                 }}
                 size={35}
                 onPress={() => navigation.toggleDrawer()}
               />
+            
             ),
           }}
         />

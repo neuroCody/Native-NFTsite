@@ -83,7 +83,17 @@ const LowToHigh = (props) => {
             <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
-              <Text style={styles.modalTitle}>{modalData.title}</Text>
+              <Text numberOfLines={1} ellipsizeMode='tail' style={styles.modalTitle}>{modalData.title}</Text>
+              <Icon 
+                  name={'eye'}
+                  type='font-awesome'
+                  iconStyle={{
+                    color: "#8B51F5",
+                    paddingLeft: "2%",
+                    marginRight: "5%",
+                    marginTop: 14}}
+              />
+              <Text style={styles.modalViews}>{modalData.views}</Text>
               <Icon
                 name={'heart'}
                 type='font-awesome'
@@ -213,6 +223,13 @@ const styles = StyleSheet.create({
     fontFamily: "KoHo-bold",
     color: "#F2F2F2",
     marginLeft: 15,
+    width: 150
+  },
+  modalViews: {
+    fontFamily: "KoHo-regular",
+    fontSize: 15,
+    paddingTop: "4%",
+    color: "#8B51F5",
   },
   modalHeader: {
     fontFamily: "KoHo-bold",

@@ -10,6 +10,7 @@ import { View, Platform, StyleSheet, Text } from "react-native"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import { NavigationContainer } from "@react-navigation/native"
 import CustomDrawerContentComponent from "./DrawerStyleComponent"
+import Constants from 'expo-constants'
 
 const Drawer = createDrawerNavigator()
 
@@ -39,7 +40,7 @@ class Main extends Component {
           flex: 1,
 
           paddingTop:
-            Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
+            Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
         }}
       >
         <MainNavigator

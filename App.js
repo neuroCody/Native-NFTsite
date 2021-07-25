@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import * as Font from "expo-font"
 import Main from "./components/MainComponent"
 
-import { AppLoading } from "expo"
+import AppLoading from "expo-app-loading"
 
 import { IMAGES } from "./arrays/images"
 //REDUX IMPORTS
@@ -44,7 +44,7 @@ export default function App() {
     )
   } else {
     return (
-      <AppLoading startAsync={getFonts} onFinish={() => setFontsLoaded(true)} />
+      <AppLoading startAsync={getFonts} onFinish={() => setFontsLoaded(true)} onError={console.warn} />
     )
   }
 }

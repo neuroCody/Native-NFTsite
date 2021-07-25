@@ -1,20 +1,14 @@
 import React, { Component, useState, useLayoutEffect, useEffect } from "react"
 import {
-  Text,
-  View,
   StyleSheet,
   SafeAreaView,
   TextInput,
-  TouchableOpacity,
-  Modal,
-  Alert,
+  Platform
 } from "react-native"
-import { Icon, Card, Button } from "react-native-elements"
-import { ScrollView } from "react-native-gesture-handler"
+import { Icon, } from "react-native-elements"
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
-import { IMAGES } from "../arrays/images"
 import * as Animatable from "react-native-animatable"
 //import Spinner from "react-native-loading-spinner-overlay"
 import AnimatedLoader from "react-native-animated-loader"
@@ -136,6 +130,7 @@ class Gallery extends Component{
                 iconStyle={{
                   color: "#8B51F5",
                   margin: 15,
+                  height: Platform.OS === 'ios' ? 50 : 40
                 }}
                 size={35}
                 onPress={() => this.props.navigation.toggleDrawer()}

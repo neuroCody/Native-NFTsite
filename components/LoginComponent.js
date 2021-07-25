@@ -1,6 +1,5 @@
-import React, { Component, UseState } from "react"
-import { NavigationActions } from "react-navigation"
-import { Text, View, StyleSheet, TextInput } from "react-native"
+import React from "react"
+import { Text, View, StyleSheet, TextInput, Platform } from "react-native"
 import { Button, Icon } from "react-native-elements"
 import { createStackNavigator } from "@react-navigation/stack"
 
@@ -82,6 +81,7 @@ function Login({navigation}) {
                 iconStyle={{
                   color: "#8B51F5",
                   margin: 15,
+                  height: Platform.OS === 'ios' ? 50 : 40
                 }}
                 size={35}
                 onPress={() => navigation.toggleDrawer()}

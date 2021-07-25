@@ -6,6 +6,7 @@ import {
   TextInput,
   StyleSheet,
   Image,
+  Platform,
 } from "react-native"
 import { Icon, Card, Button } from "react-native-elements"
 import { ScrollView } from "react-native-gesture-handler"
@@ -172,6 +173,7 @@ function Sell({ navigation }) {
               iconStyle={{
                 color: "#8B51F5",
                 margin: 15,
+                height: Platform.OS === 'ios' ? 50 : 40
               }}
               size={35}
               onPress={() => navigation.toggleDrawer()}

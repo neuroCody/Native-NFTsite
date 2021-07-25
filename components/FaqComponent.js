@@ -1,5 +1,5 @@
 import React, {Component, useState, useLayoutEffect} from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, LayoutAnimation, Platform, UIManager, SafeAreaView, ScrollView, TextInput} from "react-native";
+import { View, TouchableOpacity, Text, StyleSheet, LayoutAnimation, Platform, UIManager, SafeAreaView, ScrollView, TextInput, } from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from "react-native-vector-icons/FontAwesome";
 import * as Animatable from "react-native-animatable"
@@ -204,7 +204,10 @@ function Faq({ navigation }) {
               color={"#8B51F5"}
               size={35}
               onPress={() => navigation.toggleDrawer()}
-              style={{margin: 15}}
+              style={{
+                margin: 15,
+                height: Platform.OS === 'ios' ? 50 : 40
+                }}
             />
           ),
         }}

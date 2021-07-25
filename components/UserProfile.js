@@ -8,6 +8,7 @@ import {
   Image,
   SafeAreaView,
   TextInput,
+  Platform,
 } from "react-native"
 import FavoritesCarousel from "./FavoritesCarousel"
 import { Icon } from "react-native-elements"
@@ -145,6 +146,7 @@ export default function UserProfile({ navigation }) {
                 iconStyle={{
                   color: "#8B51F5",
                   margin: 15,
+                  height: Platform.OS === 'ios' ? 50 : 40
                 }}
                 size={35}
                 onPress={() => navigation.toggleDrawer()}

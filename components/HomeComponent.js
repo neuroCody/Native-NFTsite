@@ -1,11 +1,9 @@
 import React, { Component, useState, useLayoutEffect } from "react"
 import { Text, View, SafeAreaView, TextInput, StyleSheet, Image, TouchableOpacity, Platform} from "react-native"
-import { Icon, Card, Button } from "react-native-elements"
-import { FlatList, ScrollView } from "react-native-gesture-handler"
-import { NavigationContainer } from "@react-navigation/native"
+import { Icon, Card, } from "react-native-elements"
+import { ScrollView } from "react-native-gesture-handler"
 import { createStackNavigator } from "@react-navigation/stack"
 import * as Animatable from "react-native-animatable"
-import AnimatedLoader from "react-native-animated-loader"
 import BannerCarousel from "./BannerCarousel"
 
 

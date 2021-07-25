@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import { ScrollView, Text, View, StyleSheet } from "react-native"
 import SafeAreaView from "react-native-safe-area-view"
 import { Icon } from "react-native-elements"
